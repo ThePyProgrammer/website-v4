@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+// import { Button } from '@/components/ui/button';
+// import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,23 +28,23 @@ export function Navigation() {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:space-x-6">
+        {/* <div className="hidden md:flex md:items-center md:space-x-6">
           <NavLinks />
-        </div>
+        </div> */}
 
         {/* Mobile Menu Button */}
-        <Button
+        {/* <Button
           variant="ghost"
           size="icon"
           className="md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
+        </Button> */}
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      {/* {isMobileMenuOpen && (
         <div className="absolute w-full bg-background/95 backdrop-blur-md md:hidden">
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col space-y-4">
@@ -52,23 +52,23 @@ export function Navigation() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </nav>
   );
 }
 
-function NavLinks() {
-  return (
-    <>
-      {/* <a href="/blog" className="text-muted-foreground hover:text-foreground">
-        Blog
-      </a>
-      <a href="/projects" className="text-muted-foreground hover:text-foreground">
-        Projects
-      </a> */}
-      {/* <Button variant="default" size="sm">
-        Resume
-      </Button> */}
-    </>
-  );
-}
+// function NavLinks() {
+//   return (
+//     <>
+//       {/* <a href="/blog" className="text-muted-foreground hover:text-foreground">
+//         Blog
+//       </a>
+//       <a href="/projects" className="text-muted-foreground hover:text-foreground">
+//         Projects
+//       </a> */}
+//       {/* <Button variant="default" size="sm">
+//         Resume
+//       </Button> */}
+//     </>
+//   );
+// }

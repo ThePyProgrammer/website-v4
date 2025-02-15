@@ -2,16 +2,17 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 // import { Button } from '@/components/ui/button';
 import { ReactTyped } from "react-typed";
+import cernUrl from "../../assets/img/cern.jpg";
 
 export function Hero() {
 
   return (
-    <section className="relative min-h-screen w-full">
+    <section className="relative min-h-screen w-screen">
       {/* Hero Background */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat"
         style={{
-          backgroundImage: 'url(assets/img/cern.jpg)',
+          backgroundImage: `url(${cernUrl})`,
           backgroundBlendMode: 'overlay'
         }}
       >
