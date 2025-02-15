@@ -24,21 +24,46 @@ export function Experience() {
       {
         iconUrl: raidLogoUrl,
         title: "AI Engineer @ RSAF RAiD",
-        description: <span>Serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, AETHER. Currently leading an innovation team developing human-machine interfaces to enhance RSAF-wide console-based operations. Investigating research methods to measure the cognitive load of controllers and developing decision support systems for training and operations purposes. Managing general team operations, including manpower, logistics and finance.</span>,
+        description: <span>
+            I am serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
+            <br/><br/>
+            Currently, I am leading an innovation team developing human-machine interfaces to enhance RSAF-wide console-based operations. 
+            We are investigating research methods to measure the cognitive load of controllers and developing decision support systems for training and operations purposes. 
+            <br/><br/>
+            Previously, our team has
+            <ul className="list-disc pl-4">
+                <li>deployed a basic MVP VSCode Extension for our RAiDers, using basic LLM-based Multi-Agent Systems as a backbone to communicate with multiple codebases and transfer code snippets between different systems.</li>
+                <li>conducted research in the domain of Air Traffic Control transcription, authoring a research paper comparing and fine-tuning various Whisper models against our own self-collected dataset.</li>
+            </ul>
+            <br/>
+            I also manage general team operations, including manpower, logistics and finance.
+        </span>,
         timeline: "Aug 2024 - Present",
         images: [raidAetherUrl, raidBciUrl, raidMgUrl]
       },
       {
         iconUrl: temusLogoUrl,
         title: "AI and Data Intern @ Temus",
-        description: "Led a team of interns to develop an LLM-powered HR management system for internal and external use. Assigned work and contributed actively to codebase and deployed application within Temus. Project attained Innovation Award at Google x IMDA Generative AI Trailblazers Competition. Worked on two side projects: a prompt engineering application supporting various service LLMs and a simple Air Traffic Control roleplaying software demo for RSAF's RAiD.",
+        description: <span>
+            I led a team of interns to develop an <a href="https://temus.com/case-study/ai-talent-acquisition-and-development-platform/">LLM-powered HR management system</a> for internal and external use. Our application was deployed within Temus. 
+            
+            This project, codenamed <b>Northstar</b>, attained <a href="https://temus.com/event/ai-trailblazers-demo-at-google-cloud-explore-ai-event/">Innovation Award at Google x IMDA Generative AI Trailblazers Competition</a>. 
+            <br/><br/>
+            I also worked on two side projects:
+            <ul className="list-disc pl-4">
+                <li>a prompt engineering application supporting various service LLMs.</li>
+                <li>a simple Air Traffic Control roleplaying software demo for <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF's RAiD</a>.</li>
+            </ul>
+            <br/>
+            I was later given the informal appointment "senior intern" for my contribution managing three interns on the project.
+        </span>,
         timeline: "Nov 2023 - Jan 2024",
         images: [temusTrailblazerUrl, temusTeamUrl, temusTeamdayUrl]
       },
       {
         iconUrl: aisgLogoUrl,
         title: "AI Intern @ AI Singapore",
-        description: "Worked with a bleeding-edge AI company under AI Singapore to develop a benchmarking tool and a Proof-of-Concept news classification application to pitch their potential models to Singaporean companies. Set up a MLflow interface for easy logging of experimental results.",
+        description: <span>Worked with a bleeding-edge AI company under AI Singapore to develop a benchmarking tool and a Proof-of-Concept news classification application to pitch their potential models to Singaporean companies. Set up a MLflow interface for easy logging of experimental results.</span>,
         timeline: "Dec 2022",
         images: []
       }
