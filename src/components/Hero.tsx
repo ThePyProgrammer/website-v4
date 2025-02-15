@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 // import { Button } from '@/components/ui/button';
 import { ReactTyped } from "react-typed";
-import cernUrl from "../../assets/img/cern.jpg";
+// import cernUrl from "../../assets/img/cern.jpg";
 
 export function Hero() {
 
@@ -12,7 +12,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat"
         style={{
-          backgroundImage: `url(${cernUrl})`,
+          backgroundImage: `url(/img/cern.jpg)`,
           backgroundBlendMode: 'overlay'
         }}
       >

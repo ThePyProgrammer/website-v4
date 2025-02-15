@@ -6,23 +6,23 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel"
 
-import raidLogoUrl from "../../assets/img/cmp/raid.svg";
-import raidAetherUrl from "../../assets/img/cmp/raid-aether.jpg";
-import raidBciUrl from "../../assets/img/cmp/raid-bci.jpg";
-import raidMgUrl from "../../assets/img/cmp/raid-mg.jpg";
+// import raidLogoUrl from "../../assets/img/cmp/raid.svg";
+// import raidAetherUrl from "../../assets/img/cmp/raid-aether.jpg";
+// import raidBciUrl from "../../assets/img/cmp/raid-bci.jpg";
+// import raidMgUrl from "../../assets/img/cmp/raid-mg.jpg";
 
-import temusLogoUrl from "../../assets/img/cmp/temus.jpg";
-import temusTrailblazerUrl from "../../assets/img/cmp/temus-trailblazer.jpg";
-import temusTeamUrl from "../../assets/img/cmp/temus-team.jpeg";
-import temusTeamdayUrl from "../../assets/img/cmp/temus-teamday.jpg";
+// import temusLogoUrl from "../../assets/img/cmp/temus.jpg";
+// import temusTrailblazerUrl from "../../assets/img/cmp/temus-trailblazer.jpg";
+// import temusTeamUrl from "../../assets/img/cmp/temus-team.jpeg";
+// import temusTeamdayUrl from "../../assets/img/cmp/temus-teamday.jpg";
 
-import aisgLogoUrl from "../../assets/img/cmp/aisg.png";
+// import aisgLogoUrl from "../../assets/img/cmp/aisg.png";
 
 
 export function Experience() {
     const workExperience = [
       {
-        iconUrl: raidLogoUrl,
+        iconUrl: "/img/cmp/raid.svg",
         title: "AI Engineer @ RSAF RAiD",
         description: <span>
             I am serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
@@ -39,10 +39,10 @@ export function Experience() {
             I also manage general team operations, including manpower, logistics and finance.
         </span>,
         timeline: "Aug 2024 - Present",
-        images: [raidAetherUrl, raidBciUrl, raidMgUrl]
+        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-mg.jpg"]
       },
       {
-        iconUrl: temusLogoUrl,
+        iconUrl: "/img/cmp/temus.jpg",
         title: "AI and Data Intern @ Temus",
         description: <span>
             I led a team of interns to develop an <a href="https://temus.com/case-study/ai-talent-acquisition-and-development-platform/">LLM-powered HR management system</a> for internal and external use. Our application was deployed within Temus. 
@@ -58,10 +58,10 @@ export function Experience() {
             I was later given the informal appointment "senior intern" for my contribution managing three interns on the project.
         </span>,
         timeline: "Nov 2023 - Jan 2024",
-        images: [temusTrailblazerUrl, temusTeamUrl, temusTeamdayUrl]
+        images: ["/img/cmp/temus-trailblazer.jpg", "/img/cmp/temus-team.jpeg", "/img/cmp/temus-teamday.jpg"]
       },
       {
-        iconUrl: aisgLogoUrl,
+        iconUrl: "/img/cmp/aisg.png",
         title: "AI Intern @ AI Singapore",
         description: <span>Worked with a bleeding-edge AI company under AI Singapore to develop a benchmarking tool and a Proof-of-Concept news classification application to pitch their potential models to Singaporean companies. Set up a MLflow interface for easy logging of experimental results.</span>,
         timeline: "Dec 2022",
