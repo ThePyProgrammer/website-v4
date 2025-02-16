@@ -7,7 +7,7 @@ import { ReactTyped } from "react-typed";
 export function Hero() {
 
   return (
-    <section className="relative min-h-screen w-screen">
+    <section className="relative min-h-screen w-full">
       {/* Hero Background */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat"

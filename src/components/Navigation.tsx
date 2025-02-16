@@ -28,9 +28,9 @@ export function Navigation() {
         </a>
 
         {/* Desktop Navigation */}
-        {/* <div className="hidden md:flex md:items-center md:space-x-6">
+        <div className="hidden md:flex md:items-center md:space-x-6">
           <NavLinks />
-        </div> */}
+        </div>
 
         {/* Mobile Menu Button */}
         {/* <Button
@@ -57,18 +57,18 @@ export function Navigation() {
   );
 }
 
-// function NavLinks() {
-//   return (
-//     <>
-//       {/* <a href="/blog" className="text-muted-foreground hover:text-foreground">
-//         Blog
-//       </a>
-//       <a href="/projects" className="text-muted-foreground hover:text-foreground">
-//         Projects
-//       </a> */}
-//       {/* <Button variant="default" size="sm">
-//         Resume
-//       </Button> */}
-//     </>
-//   );
-// }
+function NavLinks() {
+  return (
+    <>
+      {/* <a href="/blog" className="text-muted-foreground hover:text-foreground">
+        Blog
+      </a>
+      <a href="/projects" className="text-muted-foreground hover:text-foreground">
+        Projects
+      </a> */}
+      {/* <Button variant="default" size="sm">
+        Resume
+      </Button> */}
+    </>
+  );
+}

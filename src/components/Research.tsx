@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+import { Button } from './ui/button';
 
 type ResearchProject = {
     codename: string,
@@ -43,6 +44,11 @@ export function Research() {
                     link: "https://arxiv.org/pdf/2408.03837",
                     text: "pdf",
                     icon: "/img/research/logos/arxiv.png"
+                },
+                {
+                    link: "https://github.com/walledai/walledeval",
+                    text: "repo",
+                    icon: "/img/research/logos/github.png"
                 }
             ],
             timeline: "Jun 2024 - Aug 2024",
@@ -75,24 +81,71 @@ export function Research() {
                 "/img/research/parkinsons-ssef.jpg",
                 "/img/research/parkinsons-gystb.jpeg"
             ]
+        },
+        {
+            codename: "tris",
+            title: <span><b>Tris</b>: An Automated Screening System for Trinary Star Candidates</span>,
+            subtitle: <span>Developed a multi-stage algorithm to process astronomical light curves for signs of abnormalities indicative of tertiary influence. Released software as Python library.</span>,
+            description: "",
+            awards: [
+                "Accepted into The Physics Educator in 2025"
+            ],
+            links: [
+                {
+                    link: "https://www.worldscientific.com/doi/abs/10.1142/S2661339525500015",
+                    text: "publication",
+                    icon: "/img/research/logos/ws.png"
+                },
+                {
+                    link: "https://github.com/three-body-analysis/tris",
+                    text: "repo",
+                    icon: "/img/research/logos/github.png"
+                }
+            ],
+            timeline: "Jan 2021 - Aug 2023",
+            cover: "/img/research/tris-cover.png",
+            imgs: []
         }
     ]
 
     return (
-        <section id="experience" className="bg-muted/50 py-20">
-            <div className="container mx-6 px-4">
+        <section id="research" className="bg-muted/50 py-20">
+            <div className="container mx-0 sm:mx-6 px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="mb-16 text-left"
+                    className="mb-8 text-left"
                 >
-                    <h2 className="mb-8 text-3xl sm:text-4xl">my research</h2>
+                    <h2 className="text-3xl sm:text-4xl">my research</h2>
                 </motion.div>
-                <div className={`flex gap-16 mx-auto`}>
-                    <div className={`grid gap-12${(selectedProject == -1) ? " md:grid-cols-2 lg:grid-cols-3": " max-w-md"}`}>
-                        {researchProjects.map((project, index) => (
+                <div className={`flex flex-col md:flex-row gap-16 mx-auto w-full`}>
+                    <div className={`grid gap-12 ${(selectedProject == -1) ? " lg:mr-12 md:grid-cols-2 lg:grid-cols-3": " max-w-md"}`}>
+                        {(selectedProject != -1) && (
+                            <ResearchProjectCard key={selectedProject} 
+                            index={selectedProject} project={researchProjects[selectedProject]}
+                            selected={true}
+                            onClick={() => {
+                                setSelectedProject(-1);
+                            }} otherSelected={false} />
+                        )}
+                        {
+                            researchProjects.map((project, index) => ({ project, index, selected: selectedProject == index})).filter(it => !it.selected).map(({ project, index }) => (
+                                <ResearchProjectCard key={index} 
+                                index={index} project={project}
+                                selected={selectedProject == index}
+                                onClick={() => {
+                                    if(selectedProject == index) {
+                                        setSelectedProject(-1);
+                                    } else {
+                                        setSelectedProject(index);
+                                    }
+                                }}
+                                otherSelected={selectedProject != -1} />
+                            ))
+                        }
+                        {/* {researchProjects.map((project, index) => (
                             <ResearchProjectCard key={index} 
                             index={index} project={project}
                             selected={selectedProject == index}
@@ -103,7 +156,7 @@ export function Research() {
                                     setSelectedProject(index);
                                 }
                             }} />
-                        ))}
+                        ))} */}
                     </div>
                     {(selectedProject != -1) && (
                         <div className="w-full pr-12">
@@ -155,15 +208,16 @@ export function Research() {
     )
 }
 
-function ResearchProjectCard({ index, project, selected, onClick }: { index: number, project: ResearchProject, selected: boolean, onClick: () => void }) {
+function ResearchProjectCard({ index, project, selected, onClick, otherSelected }: { index: number, project: ResearchProject, selected: boolean, onClick: () => void, otherSelected: boolean }) {
     return (
         <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
+        className={otherSelected ? "md:block hidden" : ""}
       >
-        <Card className={`overflow-hidden${selected && " bg-gray-900"}`} onClick={onClick}>
+        <Card className={`overflow-hidden${selected && " bg-gray-900"}`} onClick={selected ? onClick : () => {}}>
           {(!selected) && (<div className="aspect-video w-full overflow-hidden">
             <img
               src={project.cover}
@@ -178,15 +232,19 @@ function ResearchProjectCard({ index, project, selected, onClick }: { index: num
           {(!selected) && (
             <CardContent>
                 <div className="flex flex-wrap gap-2">
-                {project.links.map((link, index) => (
-                    <a href={link.link} target="_blank" rel="noreferrer" key={index}>
-                        <Badge variant="secondary">
-                            <img src={link.icon} alt={link.text} className="h-4 w-4 mr-2 inline-block" />
-                        {link.text}
-                        </Badge>
-                    </a>
-                ))}
+                    {project.links.map((link, index) => (
+                        <a href={link.link} target="_blank" rel="noreferrer" key={index}>
+                            <Badge variant="secondary">
+                                <img src={link.icon} alt={link.text} className="h-4 w-4 mr-2 inline-block" />
+                            {link.text}
+                            </Badge>
+                        </a>
+                    ))}
                 </div>
+                <div className="w-full flex mt-3">
+                <Button variant="secondary" className="ml-auto" onClick={onClick}>Read More</Button>
+                </div>
+                
             </CardContent>
           )}
         </Card>

@@ -11,7 +11,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Navigation />
-      <main className="bg-background text-foreground">
+      <main className="bg-background text-foreground w-screen">
         <Hero />
         <About />
         <Experience />

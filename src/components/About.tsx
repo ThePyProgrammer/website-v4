@@ -34,17 +34,17 @@ export function About() {
 
   return (
     <section id="about" className="py-20">
-      <div className="container mx-6 px-4">
+      <div className="container mx-0 sm:mx-2 lg:mx-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-16 text-left"
+          className="lg:mb-16 text-left"
         >
           <h2 className="mb-4 text-3xl sm:text-4xl">about me</h2>
 
-          <div className="mx-auto grid max-w-4xl gap-24 lg:grid-cols-2">
+          <div className="mx-auto grid lg:max-w-4xl gap-8 lg:gap-24 lg:grid-cols-2">
             <div className="max-w-2xl text-muted-foreground mb-8">
               <p className="mb-4">
                 I am a recent graduate of the <a href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</a>.
