@@ -69,7 +69,7 @@ export function Experience() {
                     viewport={{ once: true }}
                     className="lg:mb-16 text-left w-full"
                 >
-                    <h2 className="mb-8 text-3xl sm:text-4xl">work experience</h2>
+                    <h2 className="mb-8 text-3xl sm:text-4xl">my work experience</h2>
                     <div className="flex flex-col md:flex-row gap-16 mx-auto w-full">
                         <ul className="flex flex-col w-full max-w-md">
                             {workExperience.map((item, index) => (
