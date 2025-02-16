@@ -105,6 +105,32 @@ export function Research() {
             timeline: "Jan 2021 - Aug 2023",
             cover: "/img/research/tris-cover.png",
             imgs: []
+        },
+        {
+            codename: "malwareAI",
+            title: <span>A Novel Feature Vector for AI-assisted Windows Malware Detection</span>,
+            subtitle: <span>Used simple Deep Learning and Deep Transfer Learning to find an optimal model for Dynamic Malware Analysis using the Cuckoo Sandbox and Tensorflow.</span>,
+            description: "",
+            awards: [
+                "Accepted into IEEE Intl Conf on Dependable, Autonomic & Secure Computing (DASC) 2023"
+            ],
+            links: [
+                {
+                    link: "https://ieeexplore.ieee.org/document/10361451",
+                    text: "publication",
+                    icon: "/img/research/logos/ieee.png"
+                },
+                {
+                    link: "https://www.researchgate.net/profile/Tram-Truong-Huu/publication/374030409_A_Novel_Feature_Vector_for_AI-assisted_Windows_Malware_Detection/links/650aafc7d5293c106cc8ce59/A-Novel-Feature-Vector-for-AI-Assisted-Windows-Malware-Detection.pdf#page=1.00&gsr=0",
+                    text: "pdf",
+                    icon: "/img/research/logos/rg.svg"
+                }
+            ],
+            timeline: "Jan 2022 - Jun 2023",
+            cover: "/img/research/malware-cover.jpg",
+            imgs: [
+                "/img/research/malware-ssef.jpg"
+            ]
         }
     ]
 
