@@ -68,10 +68,15 @@ export function Research() {
             ],
             links: [
                 {
+                    link: "/papers/parkinsons.pdf",
+                    text: "recent pdf",
+                    icon: "/img/research/logos/doc.png"
+                },
+                {
                     link: "https://link.springer.com/chapter/10.1007/978-981-16-9869-9_21",
                     text: "publication",
                     icon: "/img/research/logos/sn.png"
-                }
+                },
             ],
             timeline: "May 2020 - Dec 2023",
             cover: "/img/research/parkinsons-cover.jpg",
@@ -131,6 +136,50 @@ export function Research() {
             imgs: [
                 "/img/research/malware-ssef.jpg"
             ]
+        },
+        {
+            codename: "embodiedai",
+            title: <span>Embodied AI for Computational Perception of Spatial Designs</span>,
+            subtitle: <span>Trained Semantic Segmentation Models via Transfer Learning capable of segmenting HDB interiors and exteriors.</span>,
+            description: "",
+            awards: [],
+            links: [
+                {
+                    link: "/papers/embodied_ai.pdf",
+                    text: "paper",
+                    icon: "/img/research/logos/doc.png"
+                },
+                {
+                    link: "https://github.com/terminalai/EmbodiedAI",
+                    text: "repo",
+                    icon: "/img/research/logos/github.png"
+                }
+            ],
+            timeline: "May 2021 - Dec 2021",
+            cover: "/img/research/embodied-ai-cover.png",
+            imgs: []
+        },
+        {
+            codename: "writingAnalysis",
+            title: <span>Noisy Student Training to identify Textual Elements in Unsupervised News Data via Argumentative Essay Pieces</span>,
+            subtitle: <span>Used HuggingFace Transformers to develop a system of models capable of identifying Textual Elements in Opinion Editorials and Argumentative Essays. Created Vue2 and Flask-based web application to test these models.</span>,
+            description: "",
+            awards: [],
+            links: [
+                {
+                    link: "https://github.com/terminalai/writingAnalysis",
+                    text: "repo",
+                    icon: "/img/research/logos/github.png"
+                },
+                {
+                    link: "/papers/writing_analysis.pdf",
+                    text: "report",
+                    icon: "/img/research/logos/doc.png"
+                },
+            ],
+            timeline: "Feb 2022 - May 2022",
+            cover: "/img/research/writinganalysis-cover.png",
+            imgs: []
         }
     ]
 
