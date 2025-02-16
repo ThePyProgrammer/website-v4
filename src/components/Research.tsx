@@ -244,7 +244,7 @@ function ResearchProjectCard({ index, project, selected, onClick, otherSelected 
         className={otherSelected ? "md:block hidden" : ""}
       >
         <Card className={`overflow-hidden${selected && " bg-gray-900"}`} onClick={selected ? onClick : () => {}}>
-          {(!selected) && (<div className="aspect-video w-full overflow-hidden">
+          {(<div className="aspect-video w-full overflow-hidden">
             <img
               src={project.cover}
               alt={project.codename}
