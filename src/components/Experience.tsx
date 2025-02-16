@@ -6,18 +6,6 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel"
 
-// import raidLogoUrl from "../../assets/img/cmp/raid.svg";
-// import raidAetherUrl from "../../assets/img/cmp/raid-aether.jpg";
-// import raidBciUrl from "../../assets/img/cmp/raid-bci.jpg";
-// import raidMgUrl from "../../assets/img/cmp/raid-mg.jpg";
-
-// import temusLogoUrl from "../../assets/img/cmp/temus.jpg";
-// import temusTrailblazerUrl from "../../assets/img/cmp/temus-trailblazer.jpg";
-// import temusTeamUrl from "../../assets/img/cmp/temus-team.jpeg";
-// import temusTeamdayUrl from "../../assets/img/cmp/temus-teamday.jpg";
-
-// import aisgLogoUrl from "../../assets/img/cmp/aisg.png";
-
 
 export function Experience() {
     const workExperience = [
@@ -39,7 +27,7 @@ export function Experience() {
             I also manage general team operations, including manpower, logistics and finance.
         </span>,
         timeline: "Aug 2024 - Present",
-        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-mg.jpg"]
+        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-dotc.jpg"] //, "/img/cmp/raid-mg.jpg"]
       },
       {
         iconUrl: "/img/cmp/temus.jpg",
@@ -103,7 +91,7 @@ export function Experience() {
                                         ))}
                                     </CarouselContent>
                                 </Carousel>
-                        )}
+                            )}
                         </div>
                     </div>
                 </motion.div>

@@ -5,6 +5,7 @@ import { About } from '@/components/About';
 // import { Contact } from '@/components/Contact';
 import { Navigation } from '@/components/Navigation';
 import { Experience } from './components/Experience';
+import { Research } from './components/Research';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <About />
         <Experience />
+        <Research />
         {/* <Projects /> */}
         {/* <Contact /> */}
       </main>

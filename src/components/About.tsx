@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 // import { Brain, Heart, Cpu } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { FileText, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 
 export function About() {
   const links = [
@@ -24,6 +24,11 @@ export function About() {
       link: "https://x.com/PrannayaG",
       icon: <Twitter className="h-5 w-5" />,
       text: "x.com/PrannayaG"
+    },
+    {
+      link: "/cv.pdf",
+      icon: <FileText className="h-5 w-5" />,
+      text: "My Resume"
     }
   ]
 
@@ -52,20 +57,21 @@ export function About() {
               <p>
                 I have previously conducted research at <a href="https://github.com/walledai">Walled AI Labs</a> as a volunteer research assistant while serving my NS obligations.
 
-                I also served as the Overall-in-Charge at <a href="https://buildingblocs.sg/">BuildingBloCS</a> in 2023, leading 4 total conferences, including the inaugural <a href="https://blahaj.sg/">BlahajCTF</a>.
+                I also served as the Overall-in-Charge at <a href="https://buildingblocs.sg/">BuildingBloCS</a> in 2023. I also served as the president of NUS High's computing club, <a href="https://nush.app/">AppVenture</a> in 2023.
               </p>
             </div>
 
             <div>
               <Card>
                 <CardHeader>
-                  <CardTitle>Find me at...</CardTitle>
+                  <CardTitle>Find me via...</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {links.map((link, index) => (
                     <a
                       key={index}
                       href={link.link}
+                      target="_blank" rel="noreferrer" 
                       className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
                     >
                       {link.icon}
