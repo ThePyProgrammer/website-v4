@@ -68,14 +68,14 @@ export function Research() {
             ],
             links: [
                 {
-                    link: "/papers/parkinsons.pdf",
-                    text: "recent pdf",
-                    icon: "/img/research/logos/doc.png"
-                },
-                {
                     link: "https://link.springer.com/chapter/10.1007/978-981-16-9869-9_21",
                     text: "publication",
                     icon: "/img/research/logos/sn.png"
+                },
+                {
+                    link: "/papers/parkinsons.pdf",
+                    text: "pdf",
+                    icon: "/img/research/logos/doc.png"
                 },
             ],
             timeline: "May 2020 - Dec 2023",
@@ -146,7 +146,7 @@ export function Research() {
             links: [
                 {
                     link: "/papers/embodied_ai.pdf",
-                    text: "paper",
+                    text: "pdf",
                     icon: "/img/research/logos/doc.png"
                 },
                 {
@@ -173,7 +173,7 @@ export function Research() {
                 },
                 {
                     link: "/papers/writing_analysis.pdf",
-                    text: "report",
+                    text: "pdf",
                     icon: "/img/research/logos/doc.png"
                 },
             ],
