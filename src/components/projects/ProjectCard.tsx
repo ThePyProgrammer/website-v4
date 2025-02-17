@@ -8,7 +8,7 @@ export function ProjectCard({ project, index, total }: { project: Project, index
     <Card className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="tracking-widest font-bold absolute top-5 right-5 text-md">
             {/* {project.date.toUpperCase()} */}
-            { `${index}/${total}` }
+            { `${index+1}/${total}` }
         </div>
       <CardHeader>
         <CardTitle className="text-3xl font-bold">{project.title}</CardTitle>

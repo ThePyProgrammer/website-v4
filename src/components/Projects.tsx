@@ -83,16 +83,16 @@ export function Projects() {
   // const [currentIndex, setCurrentIndex] = React.useState(0)
 
   return (
-    <section id="projects" className="bg-muted/50 py-20">
+    <section id="projects" className="bg-muted/50 pb-20">
       <div className="container px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-16 text-left"
+          className="mb-8 text-left"
         >
-          <h2 className="mb-4 text-3xl sm:text-4xl">featured projects</h2>
+          <h2 className="text-3xl sm:text-4xl">(other) featured projects</h2>
         </motion.div>
 
         <div className="w-full max-w-5xl mx-auto">
