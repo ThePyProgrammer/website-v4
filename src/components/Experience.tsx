@@ -1,35 +1,10 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-} from "@/components/ui/carousel"
-import { Card, CardContent, CardFooter } from './ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-// import { Badge } from './ui/badge';
-import { ExternalLink } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { WorkExperience } from '@/types/work';
+import { TimelineItem } from './work/TimelineItem';
+import { RecommendationCard } from './work/RecommendationCard';
 
-type Recommendation = {
-    name: string;
-    firstName?: string;
-    relationship: string;
-    role: string;
-    currentJob?: string,
-    avatarUrl: string;
-    link: string,
-    recommendation: string | JSX.Element;
-}
-
-
-type WorkExperience = {
-    iconUrl: string;
-    title: string;
-    description: string | JSX.Element;
-    timeline: string;
-    images: string[];
-    reccs: Recommendation[];
-}
 
 export function Experience() {
     const workExperience: WorkExperience[] = [
@@ -181,98 +156,8 @@ export function Experience() {
     )
 }
 
-function RecommendationCard(recc: Recommendation) {
-    // Create a fallback for the avatar in case name is undefined
-    const avatarFallback = recc.name ? recc.name.charAt(0).toUpperCase() : "?"
-  
-    return (
-      <Card className="w-full max-w-md">
-        <CardContent className="pt-6">
-          <div className="flex items-start gap-4">
-            <Avatar className="w-16 h-16">
-              <AvatarImage src={recc.avatarUrl} alt={recc.name || "Recommender"} />
-              <AvatarFallback>{avatarFallback}</AvatarFallback>
-            </Avatar>
-            <div className="flex-1">
-              <h4 className="text-lg font-semibold">{recc.name || "Anonymous"}</h4>
-              <p className="text-sm text-muted-foreground mt-1">
-                {recc.currentJob ? <><b>Previously</b>: {recc.role}</> : recc.role }
-              </p>
-              
-              {recc.currentJob && (
-                <p className="text-sm text-muted-foreground mt-1"><b>Currently</b>: {recc.currentJob}</p>
-              )}
-                {/* <Badge variant="secondary" className="mt-1">
-                  {recc.relationship}
-                </Badge> */}
-            </div>
-          </div>
-          <blockquote className="mt-4 text-sm italic text-muted-foreground">
-            <p>{recc.recommendation}</p>
-          </blockquote>
-        </CardContent>
-        {recc.link && (
-          <CardFooter>
-            <a
-              href={recc.link}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center text-sm hover:underline"
-            >
-              Find { recc.firstName || recc.name.split(" ")[0] } on LinkedIn
-              <ExternalLink className="w-4 h-4 ml-1" />
-            </a>
-          </CardFooter>
-        )}
-      </Card>
-    )
-  }
+
   
   
 
 
-function TimelineItem({ iconUrl, title, timeline, focused, onClick }: { iconUrl: string; title: string; timeline: string, focused: boolean, onClick: () => void }) {
-    return (
-        <li className="relative flex flex-col gap-2 h-28 mb-4" onClick={onClick}>
-            <div
-            className={`relative flex items-center gap-8 py-3 pl-4 pr-8 shadow-lg rounded-xl border-blue-gray-50 shadow-blue-gray-900/5 max-w-md${focused ? " bg-gray-900" : " bg-black"}`}>
-                <span
-                className="relative z-[2] w-max flex-shrink-0 overflow-hidden rounded-full">
-                    <img src={iconUrl} alt={title}
-                        className="relative inline-block h-20 w-20 !rounded-full border-2 border-gray-900 object-cover object-center" />
-                </span>
-                <div className="flex flex-col gap-1">
-                <h6
-                    className="block font-sans text-xl antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
-                    {title}
-                </h6>
-                <p className="block font-sans text-md antialiased font-normal leading-normal text-gray-400">
-                    {timeline}
-                </p>
-                </div>
-            </div>
-        </li>
-    //   <li className="relative flex flex-col gap-2">
-    //     <span className="absolute left-0 grid justify-center transition-opacity duration-200 bg-transparent">
-    //       <span className="h-full w-0.5 bg-blue-gray-100"></span>
-    //     </span>
-    //     <div className="flex items-center gap-4">
-    //       <span className="relative z-[2] w-max flex-shrink-0 overflow-hidden rounded-full bg-gray-900 p-0 text-white">
-    //         <img src={iconUrl} alt="user 2"
-    //           className="relative inline-block h-9 w-9 !rounded-full border-2 border-gray-900 object-cover object-center" />
-    //       </span>
-    //       <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-    //         {title}
-    //       </h5>
-    //     </div>
-    //     <div className="flex gap-4 pb-8">
-    //       <span className="flex-shrink-0 invisible h-full pointer-events-none"></span>
-    //       <div>
-    //         <p className="block font-sans text-base antialiased font-normal leading-relaxed text-gray-600">
-    //           {description}
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </li>
-    )
-  }
