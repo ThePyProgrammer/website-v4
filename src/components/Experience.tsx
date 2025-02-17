@@ -5,10 +5,34 @@ import {
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel"
+import { Card, CardContent, CardFooter } from './ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+// import { Badge } from './ui/badge';
+import { ExternalLink } from 'lucide-react';
 
+type Recommendation = {
+    name: string;
+    firstName?: string;
+    relationship: string;
+    role: string;
+    currentJob?: string,
+    avatarUrl: string;
+    link: string,
+    recommendation: string | JSX.Element;
+}
+
+
+type WorkExperience = {
+    iconUrl: string;
+    title: string;
+    description: string | JSX.Element;
+    timeline: string;
+    images: string[];
+    reccs: Recommendation[];
+}
 
 export function Experience() {
-    const workExperience = [
+    const workExperience: WorkExperience[] = [
       {
         iconUrl: "/img/cmp/raid.svg",
         title: "AI Engineer @ RSAF RAiD",
@@ -27,7 +51,8 @@ export function Experience() {
             I also manage general team operations, including manpower, logistics and finance.
         </span>,
         timeline: "Aug 2024 - Present",
-        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-dotc.jpg"] //, "/img/cmp/raid-mg.jpg"]
+        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-dotc.jpg"], //, "/img/cmp/raid-mg.jpg"]
+        reccs: []
       },
       {
         iconUrl: "/img/cmp/temus.jpg",
@@ -39,21 +64,64 @@ export function Experience() {
             <br/><br/>
             I also worked on two side projects:
             <ul className="list-disc pl-4">
-                <li>a prompt engineering application supporting various service LLMs.</li>
-                <li>a simple Air Traffic Control roleplaying software demo for <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF's RAiD</a>.</li>
+                <li className="mb-2">a prompt engineering application supporting various service LLMs.</li>
+                <li>a simple Air Traffic Control roleplaying software demo for <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF's RAiD</a>.<br/><small>with <a href="https://www.linkedin.com/in/jamieljs/">Jamie Lim</a></small></li>
             </ul>
             <br/>
             I was later given the informal appointment "senior intern" for my contribution managing three interns on the project.
         </span>,
         timeline: "Nov 2023 - Jan 2024",
-        images: ["/img/cmp/temus-trailblazer.jpg", "/img/cmp/temus-team.jpeg", "/img/cmp/temus-teamday.jpg"]
+        images: ["/img/cmp/temus-trailblazer.jpg", "/img/cmp/temus-team.jpeg", "/img/cmp/temus-teamday.jpg"],
+        reccs: [
+            {
+                name: "John Ang",
+                relationship: "Supervisor",
+                role: "AI Technical Project Manager",
+                currentJob: "Associate Director @ Temus",
+                avatarUrl: "/img/cmp/temus-john.jpeg",
+                recommendation: <span>
+                    "Who's the kid and why is he such a seasoned engineer?"
+                    <br/><br/>
+                    Prannay landed at Temus for a two month AI and Data internship, and very quickly became the go-to engineer for an entire suite of Generative AI products that we were prototyping. No challenge appeared to be too great - from AI Engineering, and all the way to building the front end, Prannay proved himself to be a consummate engineer, able to navigate and tackle almost any engineering problem given to him.
+                    <br/><br/>
+                    In addition, Prannay's amazing can-do attitude and inqusitive nature helped him connect with almost all the engineers on our team, and the synergies that came out of that helped us to accelerate our engineering productivity in a major way.
+                    <br/><br/>
+                    Prannay is very sorely missed since he as gone to NS - we wish him all the best, and whichever organization gets the benefit of his skills next should count themselves very fortunate indeed!"
+                </span>,
+                link: "https://www.linkedin.com/in/johnangrs/"
+            }
+        ]
       },
       {
         iconUrl: "/img/cmp/aisg.png",
         title: "AI Intern @ AI Singapore",
         description: <span>Worked with a bleeding-edge AI company under AI Singapore to develop a benchmarking tool and a Proof-of-Concept news classification application to pitch their potential models to Singaporean companies. Set up a MLflow interface for easy logging of experimental results.</span>,
         timeline: "Dec 2022",
-        images: []
+        images: [],
+        reccs: [
+            {
+                name: "Ryzal Kamis",
+                relationship: "Supervisor",
+                role: "Assistant Head (MLOps), Platforms Engineering",
+                currentJob: "Lead MLOps @ ST Engineering",
+                avatarUrl: "/img/cmp/aisg-ryzal.jpg",
+                recommendation: <span>
+                    For the tenure of about a month, I mentored Prannaya as he was assigned to an internal project which requires one to quickly pick up concepts and display technical acumen. On top of having to work with AI models and programming tasks, he had to deal with some MLOps concepts which he had not much prior experience with. That however did not stop him from learning and putting whatever he learned in a short period of time to good use. Prannaya would certainly be a great addition to any team that would have him.
+                </span>,
+                link: "https://www.linkedin.com/in/ryzalkamis/"
+            },
+            {
+                name: "Kenny Chua",
+                relationship: "Supervisor",
+                role: "Senior AI Engineer",
+                currentJob: "Staff Research Scientist @ Numenta",
+                avatarUrl: "/img/cmp/aisg-kenny.jpg",
+                recommendation: <span>
+                    I mentored Prannaya during his internship at AI Singapore, during which he helped to develop a frontend GUI for benchmarking and demonstrating state-of-the-art sparse neural networks for natural language processing. Prannaya is a highly capable developer who greatly exceeded expectations by completing tasks far ahead of time. He was able to independently seek solutions to technical blockers with minimal supervision. Moreover, Prannaya is humble and receptive to feedback. He would be an asset to any organisation.
+                </span>,
+                link: "https://www.linkedin.com/in/kenny-wj-chua/"
+            },
+        ]
       }
     ]
 
@@ -95,6 +163,16 @@ export function Experience() {
                                 </Carousel>
                                 </div>
                             )}
+                            {(workExperience[focusedItem].reccs.length > 0) && (
+                                <div className="mt-8">
+                                    <h4 className="mb-4 text-lg">Recommendations</h4>
+                                    <div className={`grid gap-4 lg:grid-cols-2`}>
+                                    {workExperience[focusedItem].reccs.map((recc, index) => (
+                                        <RecommendationCard key={index} {...recc} />
+                                    ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </motion.div>
@@ -102,6 +180,55 @@ export function Experience() {
         </section>
     )
 }
+
+function RecommendationCard(recc: Recommendation) {
+    // Create a fallback for the avatar in case name is undefined
+    const avatarFallback = recc.name ? recc.name.charAt(0).toUpperCase() : "?"
+  
+    return (
+      <Card className="w-full max-w-md">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-4">
+            <Avatar className="w-16 h-16">
+              <AvatarImage src={recc.avatarUrl} alt={recc.name || "Recommender"} />
+              <AvatarFallback>{avatarFallback}</AvatarFallback>
+            </Avatar>
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold">{recc.name || "Anonymous"}</h4>
+              <p className="text-sm text-muted-foreground mt-1">
+                {recc.currentJob ? <><b>Previously</b>: {recc.role}</> : recc.role }
+              </p>
+              
+              {recc.currentJob && (
+                <p className="text-sm text-muted-foreground mt-1"><b>Currently</b>: {recc.currentJob}</p>
+              )}
+                {/* <Badge variant="secondary" className="mt-1">
+                  {recc.relationship}
+                </Badge> */}
+            </div>
+          </div>
+          <blockquote className="mt-4 text-sm italic text-muted-foreground">
+            <p>{recc.recommendation}</p>
+          </blockquote>
+        </CardContent>
+        {recc.link && (
+          <CardFooter>
+            <a
+              href={recc.link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center text-sm hover:underline"
+            >
+              Find { recc.firstName || recc.name.split(" ")[0] } on LinkedIn
+              <ExternalLink className="w-4 h-4 ml-1" />
+            </a>
+          </CardFooter>
+        )}
+      </Card>
+    )
+  }
+  
+  
 
 
 function TimelineItem({ iconUrl, title, timeline, focused, onClick }: { iconUrl: string; title: string; timeline: string, focused: boolean, onClick: () => void }) {
