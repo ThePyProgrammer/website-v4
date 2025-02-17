@@ -20,8 +20,8 @@ export function Experience() {
             <br/><br/>
             Previously, our team has
             <ul className="list-disc pl-4">
-                <li>deployed a basic MVP VSCode Extension for our RAiDers, using basic LLM-based Multi-Agent Systems as a backbone to communicate with multiple codebases and transfer code snippets between different systems.</li>
-                <li>conducted research in the domain of Air Traffic Control transcription, authoring a research paper comparing and fine-tuning various Whisper models against our own self-collected dataset.</li>
+                <li className="mb-2">deployed a basic MVP VSCode Extension for our RAiDers, using basic LLM-based Multi-Agent Systems as a backbone to communicate with multiple codebases and transfer code snippets between different systems.<br/><small>with <a href="https://scholar.google.com.sg/citations?user=xoQuuC0AAAAJ&hl=en">Cheong Sik Feng</a> and <a href="https://www.linkedin.com/in/en-hao-tew/">Tew En Hao</a></small></li>
+                <li>conducted research in the domain of Air Traffic Control transcription, authoring a research paper comparing and fine-tuning various Whisper models against our own self-collected dataset.<br/><small>with <a href="https://www.linkedin.com/in/marcuswee/">Marcus Wee</a> and <a href="https://www.linkedin.com/in/lynus-lim-286811219/">Lynus Lim</a></small></li>
             </ul>
             <br/>
             I also manage general team operations, including manpower, logistics and finance.
