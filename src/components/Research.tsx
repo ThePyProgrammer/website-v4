@@ -176,7 +176,7 @@ export function Research() {
                     viewport={{ once: true }}
                     className="mb-8 text-left"
                 >
-                    <h2 className="text-3xl sm:text-4xl">my research experience</h2>
+                    <h2 className="text-3xl sm:text-4xl">research projects</h2>
                 </motion.div>
                 <div className={`flex flex-col md:flex-row gap-16 mx-auto w-full`}>
                     <div className={`grid gap-12 ${(selectedProject == -1) ? " lg:mr-12 md:grid-cols-2 lg:grid-cols-3": " max-w-md"}`}>
