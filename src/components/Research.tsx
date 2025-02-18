@@ -55,7 +55,35 @@ export function Research() {
             codename: "parkinsons",
             title: <span><b>A Picture Is Worth A Thousand Steps</b>: Using Image Processing Techniques to predict Freezing of Gait (FoG) in Parkinson's Disease Patients</span>,
             subtitle: <span>Designed an Android Application that uses AI algorithms including Support Vector Machines and Convolutional Neural Networks (CNNs) to predict Freezing of Gait (FoG) for post-Parkinson's Disease treatment.</span>,
-            description: "",
+            description: <>
+                <p>
+                    This project initially started off within the <a href="https://sites.google.com/site/scimphome/about-smp">Science Mentorship Programme (SMP)</a> in 2020, where our team was grouped with <a href="https://cde.nus.edu.sg/ece/staff/arthur-tay/">Prof Arthur Tay</a> from the NUS ECE Department. We were tasked with developing a system that could predict Freezing of Gait (FoG) in Parkinson's Disease patients, specifically focused on adapting algorithms from <a href="https://www.sciencedirect.com/science/article/abs/pii/S0165027007004281">Moore et al</a> and <a href="https://ieeexplore.ieee.org/document/5325884">Bachlin et al</a> and using the <a href="https://archive.ics.uci.edu/dataset/245/daphnet+freezing+of+gait">DaphNET dataset</a>.
+                </p>
+                <p>
+                    Initially, we developed a simple system by using the Moore-Bächlin Algorithm for Freeze and Energy Indices as detailed in Moore et al to calculate a simple metric known as the Freeze Index. Unlike Moore et al, which decided to identify a baseline threshold value for the freeze indices, we attempted to train a Support Vector Machine (SVM) model to identify any patterns within the 3D space. We then attempted to deploy our best-performing SVM model onto a Arduino Nano 33 BLE Board to identify real-time freeze events based off the on-board accelerometers.
+                </p>
+                <p>
+                    We submitted this project for several local and international research fairs, including the <a href="https://www.science.edu.sg/for-schools/competitions/singapore-science-and-engineering-fair">Singapore Science and Engineering Fair (SSEF)</a> 2021 (where we attained a Gold Award) and the <a href="https://isyf.hci.edu.sg/">HCI International Science Youth Forum (ISYF)</a> 2021 (where we received 2nd Place for Poster Presentation). Due to our success at SSEF, we were later selected among 4 teams to represent Singapore internationally at the <a href="https://ce.hkfyg.org.hk/gystb/">Global Youth Science and Technology Bowl (GYSTB)</a> 2021 in Hong Kong, though we were unable to attend the competition physically due to COVID-19 restrictions at the time. We clinched the Third Prize at that competition.
+                </p>
+                <p>
+                    In tandem with all this, as part of the CS4131 Mobile Application Development module at NUS High, I embarked on a side quest to design a mobile application to interface with the sensor prototype we had created and store information on the web for easy tracking and emergency activation of medical resources in case of any injury. I designed an Android application in Kotlin to interface with the sensor via Bluetooth, and relied on Firebase Cloud Firestore to store major logs and authentication. We continued to develop this prototype application past the module too.
+                </p>
+                <p>
+                    We submitted a preliminary draft of our work to the <a href="https://ircset.org/main/conference-2021/">Seventh IRC Conference on Science, Engineering and Technology (IRC-SET) 2021</a>, presenting our work on the trained Support Vector Machine, our Arduino prototype as well as the new Android application. We clinched the Best Presenters' Award at the conference, and our paper was published in Springer Nature as <a href="https://link.springer.com/chapter/10.1007/978-981-16-9869-9_21">a chapter in the proceedings of the conference</a>.
+                </p>
+                <p>
+                    Around a year later, we restarted the project to explore more avenues of exploration. We had simply scratched the surface in terms of research development, and we wished to explore if there were better approaches to classifying the signal besides what was attained by the Moore-Bächlin Algorithm. We tested Google Cloud's AutoML service to identify if it could handle the data collected, but it was relatively unsuccessful. We also tested many traditional ML algorithms using cuml to attempt to extract any key insights from the freeze indices.
+                </p>
+                <p>
+                    After all this, we decided to try to map the overall accelerometer data into a 16x16 image, and try using a very small convolutional neural network (CNN) model to attempt to mimic the behaviour of the freeze index calculation, but without aggregation. It was able to classify all our data by a landslide, showing how effective a CNN would be in this sort of signal processing task. We attempted to deploy this CNN algorithm within the mobile application too.
+                </p>
+                <p>
+                    We finally submitted <a href="/papers/parkinsons.pdf">this work</a> (which has not yet been published) to the <a href="https://issf2023.com/">International Student Science Fair (ISSF) 2023</a> in Brisbane, and we attained 1st Place within the Computing & Mathematics category.
+                </p>
+                <p>
+                    This work has been truly instrumental in building up my interest in research, and especially in doing research in fields at the intersection point between technology and healthcare, which I would take with me moving forward. I am truly indebted to my two teammates, who have been very supportive in the development of this project.
+                </p>
+            </>,
             awards: [
                 <span>Singapore Science and Engineering Fair (SSEF) 2021 and 2023, <b>Gold Award</b></span>,
                 <span>International Student Science Fair (ISSF) 2023, <b>1st Place in CS Category</b></span>,
@@ -73,6 +101,11 @@ export function Research() {
                     text: "pdf",
                     icon: "/img/research/logos/doc.png"
                 },
+                {
+                    link: "https://www.researchgate.net/profile/Prannaya-Gupta/publication/362375886_Analysing_Gait_Patterns_of_Parkinsons'_Disease_Patients_to_Predict_Freezing_of_Gait_FoG_Using_Machine_Learning_Algorithms/links/6510dffcc05e6d1b1c2d6f8e/Analysing-Gait-Patterns-of-Parkinsons-Disease-Patients-to-Predict-Freezing-of-Gait-FoG-Using-Machine-Learning-Algorithms.pdf#page=1.00&gsr=0",
+                    text: "pdf",
+                    icon: "/img/research/logos/rg.svg"
+                }
             ],
             timeline: "May 2020 - Dec 2023",
             cover: "/img/research/parkinsons-cover.jpg",
@@ -87,7 +120,11 @@ export function Research() {
             codename: "tris",
             title: <span><b>Tris</b>: An Automated Screening System for Trinary Star Candidates</span>,
             subtitle: <span>Developed a multi-stage algorithm to process astronomical light curves for signs of abnormalities indicative of tertiary influence. Released software as Python library.</span>,
-            description: "",
+            description: <>
+                <p>
+                    
+                </p>
+            </>,
             awards: [
                 "Accepted into The Physics Educator in 2025"
             ],
