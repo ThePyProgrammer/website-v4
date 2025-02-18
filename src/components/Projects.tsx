@@ -21,7 +21,8 @@ export function Projects() {
       description: "A Website to compile your research projects, collaborate on competitions and more. Built with Flask, Vue3 and MySQL.",
       technologies: ["Flask", "Vue3", "MySQL"],
       image: "/img/projects/arxivnush.png",
-      date: "Dec 2022 -"
+      date: "Dec 2022 -",
+      link: "https://github.com/ThePyProgrammer/arxiv.nush"
     },
     {
       codename: "gitpolice",
@@ -30,7 +31,8 @@ export function Projects() {
       description: "Git Police is a VSCode extension that enforces creative commit messages through entertaining challenges. Inspired by \"The Password Game,\" it requires users to meet various rules when writing commit messages, such as composing haikus, creating palindromes, or using pig latin. The extension also includes interactive elements like answering trivia questions and using facial recognition to ensure users are smiling while committing. Built using Typer, NLTK, OpenCV2, and deepface, it integrates with VSCode through a React/MUI webview interface to make git commits more engaging while preventing generic messages like \"fix: minor fix.\"",
       technologies: ["VSCode", "React", "Material UI", "OpenCV", "NLTK"],
       image: "/img/projects/gitpolice.jpg",
-      date: "Jan 2025"
+      date: "Jan 2025",
+      link: "https://github.com/GitPoliceGroup/lib"
     },
     {
       codename: "figglespeak",
@@ -58,8 +60,19 @@ export function Projects() {
       description: "An Android Application capable of taking in audio recordings and converting them into text and moving lips using AI algorithms.",
       technologies: ["Android", "Tensorflow"],
       image: "/img/projects/hearme.png",
-      date: "Jun - Oct 2022"
+      date: "Jun - Oct 2022",
+      link: "https://github.com/terminalai/HearMe"
     },
+    // {
+    //   codename: "englishgenie",
+    //   title: "EnglishGenie",
+    //   subtitle: "AI powered English comprehension question generator and answer checker",
+    //   description: "",
+    //   technologies: ["Flask", "React", "sgnlp"],
+    //   image: "",
+    //   date: "Jan - Feb 2023",
+    //   link: "https://github.com/terminalai/EnglishGenie"
+    // },
     {
       codename: "cura",
       title: "Cura",
