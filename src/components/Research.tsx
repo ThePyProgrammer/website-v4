@@ -171,6 +171,17 @@ export function Research() {
             ]
         },
         {
+            codename: "nushsat",
+            title: <span>Optimization of the Telemetry, Tracking and Commmunications System in a CubeSat</span>,
+            subtitle: <span>Designed a link budget and fragmentation protocol inspired by NASA's ICER system. Developed a primitive user interface in PyQt5 for receiving data transmission from satellite.</span>,
+            description: "",
+            awards: [],
+            links: [],
+            timeline: "Mar 2021 - Jun 2023",
+            cover: "/img/research/nushsat-cover.jpg",
+            imgs: ["/img/research/nushsat-camera.png", "/img/research/nushsat-2022.jpg"]
+        },
+        {
             codename: "embodiedai",
             title: <span>Embodied AI for Computational Perception of Spatial Designs</span>,
             subtitle: <span>Trained Semantic Segmentation Models via Transfer Learning capable of segmenting HDB interiors and exteriors.</span>,
