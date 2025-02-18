@@ -13,7 +13,20 @@ export function Research() {
             codename: "walledeval",
             title: <span><b>WalledEval</b>: Safety Evaluation Toolkit for LLMs</span>,
             subtitle: <span>Developed a comprehensive and publicly-available Python library <code>walledeval</code> for LLM safety evaluation. Supported various LLMs, datasets, templates and judges.</span>,
-            description: "",
+            description: <>
+                <p className='pt-2'>
+                    This was a project I completed as part of a voluntary research assistant role I assumed during my time as an Ops Clerk in the Singapore Army. I spearheaded the development of <a href="https://github.com/walledai">Walled AI Labs</a>, a non-profit initiative within the larger Walled AI started by my close friend, <a href="https://sg.linkedin.com/in/rishabh-bhardwaj-nlp">Dr Rishabh Bhardwaj</a>, who, at the time, was a PhD candidate at the <a href="https://sutd.edu.sg">Singapore University of Technology and Design</a>.
+                </p>
+                <p>
+                    I spent a small block period from Jun to Aug 2024 developing <a href="https://hf.co/walledai/walledguard-c">models</a>, <a href="https://hf.co/datasets/walledai/SGXSTest">datasets</a> and a giant standalone <a href="https://github.com/walledai/walledeval">library named <code>walledeval</code></a>. These systems were built to evaluate the safety of large language models (LLMs) like GPT-4 and Claude. The library was designed to be user-friendly and accessible to researchers and practitioners in the field of AI safety.
+                </p>
+                <p>
+                    Under Rishabh's tutelage, I gained invaluable experience in the field of AI safety and research methodologies. This project not only honed my technical skills but also deepened my understanding of the ethical implications and safety concerns associated with large language models.
+                </p>
+                <p>
+                    We recently published a paper at EMNLP 2024, under the System Demonstrations Track! Check it out <a href="https://aclanthology.org/2024.emnlp-demo.42/">here</a>. The paper details the library and its capabilities, and how it can be used to evaluate the safety of LLMs.
+                </p>
+            </>,
             awards: [
                 "Accepted into EMNLP 2024 Demo Track"
             ],
@@ -222,9 +235,9 @@ export function Research() {
                             <div className="mb-8">
                                 <p className="text-muted-foreground font-mono">{researchProjects[selectedProject].timeline}</p>
                             </div>
-                            <p className="max-w-2xl text-muted-foreground mb-8">
+                            <div className="max-w-2xl text-muted-foreground mb-8 space-y-4">
                                 {researchProjects[selectedProject].description}
-                            </p>
+                            </div>
                             {/* <div className="flex flex-wrap gap-2">
                                 {researchProjects[selectedProject].awards.map((award, index) => (
                                     <Badge key={index} variant="secondary">{award}</Badge>
