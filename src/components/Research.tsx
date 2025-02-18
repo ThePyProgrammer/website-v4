@@ -122,7 +122,13 @@ export function Research() {
             subtitle: <span>Developed a multi-stage algorithm to process astronomical light curves for signs of abnormalities indicative of tertiary influence. Released software as Python library.</span>,
             description: <>
                 <p>
-                    
+                    I uptook this project at the start of 2021, when I was looking for interesting problem statements to explore in my 4th year of high school studies. At the time, this idea popped out for it's innovative premise: exploring the Three-Body Problem and finding such stellar triples. The root was highly comedic, as my friend Ernest proposed the idea after reading <a href="https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)">The Three-Body Problem by Liu Cixin</a>.
+                </p>
+                <p>
+                    Since 2021, this project has seen several different direction changes. Initially, we had built a <a href="https://youtu.be/V3xyT9h0Ong">Three-Body Simulator</a>, that would be able to simulate the light curves of systems based on the masses, initial positions and velocities of the bodies. We developed a system culling pipeline based on this to observe light curves and take out bodies with less than 3 bodies based off a simple culling method.
+                </p>
+                <p>
+                    After we consulted <a href="https://www.physics.nus.edu.sg/faculty/yang-jiahui-abel/">Prof Abel Yang Jiahui</a>, we had a better idea of the task at hand: we had to identify the eclipse time variations (ETVs) of the light curves, i.e. the variation in how long the eclipses were. We developed a simple pipeline for this, based on existing literature on the same, and we were able to get the paper published in The Physics Educator in 2025. Our work was also packaged into a Python library named <a href="https://three-body-analysis.github.io/tris/"><code>tris</code></a>.
                 </p>
             </>,
             awards: [
@@ -148,7 +154,14 @@ export function Research() {
             codename: "malwareAI",
             title: <span>A Novel Feature Vector for AI-assisted Windows Malware Detection</span>,
             subtitle: <span>Used simple Deep Learning and Deep Transfer Learning to find an optimal model for Dynamic Malware Analysis using the Cuckoo Sandbox and Tensorflow.</span>,
-            description: "",
+            description: <>
+                <p>
+                    I embarked on this project with my co-organisers from <a href="https://buildingblocs.sg/">BuildingBloCS</a>, and assembled an unlikely ensemble of 6 students from 4 different Junior Colleges across Singapore. Under the tutelage of <a href="https://sites.google.com/site/htrtruong/home">Prof Tram Truong-Huu</a>, we trained and hyperparameter tuned several CNN-based AI models for Dynamic Malware Classification.
+                </p>
+                <p>
+                    We worked to group and form a proper training plan, and trained many, many models for AI training. After this, we submitted and published this paper in the <a href="https://ieeexplore.ieee.org/xpl/conhome/10361260/proceeding">IEEE International Symposium on Dependable, Autonomic and Secure Computing (DASC)</a>.
+                </p>
+            </>,
             awards: [
                 "Accepted into IEEE Intl Conf on Dependable, Autonomic & Secure Computing (DASC) 2023"
             ],
@@ -174,7 +187,20 @@ export function Research() {
             codename: "nushsat",
             title: <span>Optimization of the Telemetry, Tracking and Commmunications System in a CubeSat</span>,
             subtitle: <span>Designed a link budget and fragmentation protocol inspired by NASA's ICER system. Developed a primitive user interface in PyQt5 for receiving data transmission from satellite.</span>,
-            description: "",
+            description: <>
+                <p>
+                    This might be the coolest project I worked on during my time at NUS High, which is unfortunate for it was also the one I was the least invested in. As part of our school's 15-year anniversary in 2020, this project was initiated and greenlit. The development of a full nanosatellite, from conception to planning to construction to takeoff, was a daunting task for NUS High students. Luckily, we had a lot of support from <a href="https://www.linkedin.com/in/zhen-ning-ng-206676141/">Mr Ng Zhen Ning</a>, the CEO of NuSpace and a nanosatellite expert.
+                </p>
+                <p>
+                    I joined this project in 2021, looking to explore the crazy madness of engineering and prototype development. I was tasked to work on developing a telemetry, tracking and communications (TT&C) system for the nanosatellite, mostly housed on a TT&C module procured by my predecessors. We had to explore methods to compress the images from the camera procured to transmit across RF to the ground station, in a lossless manner. Initially, we had explored using JPEG 2000 (JP2) for their image processing format, and attempted to use the <a href="https://github.com/jasper-software/jasper">JasPer Image Coding Toolkit</a>.
+                </p>
+                <p>
+                    However, with major support from senior Lin Yicheng, who had developed <a href="https://github.com/TheRealOrange/icer_compression">a robust toolkit</a> to use NASA's proposed <a href="https://ipnpr.jpl.nasa.gov/progress_report/42-155/155J.pdf">ICER algorithm</a> for lossless compression of images, we integrated his system to our final prototype. Of course, I would say "we" but my junior, <a href="https://github.com/cryptoAlgorithm">Vincent Kwok</a>, did a bulk of the work, and Vincent and Yicheng deserve unlimited credit for their work on this satellite.
+                </p>
+                <p>
+                    In case you're wondering, the satellite is indeed due to fly up to space soon! <a href="https://www.channelnewsasia.com/singapore/nus-high-school-nanosatellite-space-launch-4832781">Read here for more information!</a>
+                </p>
+            </>,
             awards: [],
             links: [],
             timeline: "Mar 2021 - Jun 2023",
@@ -185,7 +211,11 @@ export function Research() {
             codename: "embodiedai",
             title: <span>Embodied AI for Computational Perception of Spatial Designs</span>,
             subtitle: <span>Trained Semantic Segmentation Models via Transfer Learning capable of segmenting HDB interiors and exteriors.</span>,
-            description: "",
+            description: <>
+                <p>
+                    I joined this project as part of <a href="https://www.sutd.edu.sg/innovation/davincisutd/mentorship-programmes/research-mentorship-programme/">SUTD's Research Mentorship Programme</a>, where I applied to work with <a href="https://www.sutd.edu.sg/profile/immanuel-koh">Prof Immanuel Koh</a> from SUTD's Architecture and Sustainable Design (ASD) Pillar. We were assigned to develop a system to semantically segment features of HDB buildings, based off real buildings in a classified set. We finetuned models to conduct the semantic segmentation, and tested our systems against various different sample sets.
+                </p>
+            </>,
             awards: [],
             links: [
                 {
@@ -291,6 +321,7 @@ export function Research() {
                                     <Badge key={index} variant="secondary">{award}</Badge>
                                 ))}
                             </div> */}
+                            {(researchProjects[selectedProject].links.length > 0) && (
                             <div className="mt-8">
                                 <h4 className="mb-4 text-lg">Links</h4>
                                 <div className="flex gap-2">
@@ -304,6 +335,7 @@ export function Research() {
                                     ))}
                                 </div>
                             </div>
+                            )}
                             {(researchProjects[selectedProject].imgs.length > 0) && (
                                 <div className="mt-8">
                                     <h4 className="mb-4 text-lg">Gallery</h4>
