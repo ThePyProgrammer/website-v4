@@ -15,12 +15,12 @@ export function Experience() {
             I am serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
             <br/><br/>
             Currently, I am leading an innovation team developing human-machine interfaces to enhance RSAF-wide console-based operations. 
-            We are investigating research methods to measure the cognitive load of controllers and developing decision support systems for training and operations purposes. 
+            We are investigating research methods to measure the cognitive load of controllers and developing decision support systems for training and operations purposes.
             <br/><br/>
             Previously, our team has
             <ul className="list-disc pl-4">
                 <li className="mb-2">deployed a basic MVP VSCode Extension for our RAiDers, using basic LLM-based Multi-Agent Systems as a backbone to communicate with multiple codebases and transfer code snippets between different systems.<br/><small>with <a href="https://scholar.google.com.sg/citations?user=xoQuuC0AAAAJ&hl=en">Cheong Sik Feng</a> and <a href="https://www.linkedin.com/in/en-hao-tew/">Tew En Hao</a></small></li>
-                <li>conducted research in the domain of Air Traffic Control transcription, authoring a research paper comparing and fine-tuning various Whisper models against our own self-collected dataset.<br/><small>with <a href="https://www.linkedin.com/in/marcuswee/">Marcus Wee</a> and <a href="https://www.linkedin.com/in/lynus-lim-286811219/">Lynus Lim</a></small></li>
+                <li>conducted research in the domain of Air Traffic Control transcription, authoring a <a href="https://arxiv.org/abs/2502.20311">research paper</a> comparing and fine-tuning various Whisper models against our own self-collected dataset.<br/><small>with <a href="https://www.linkedin.com/in/marcuswee/">Marcus Wee</a> and <a href="https://www.linkedin.com/in/lynus-lim-286811219/">Lynus Lim</a></small></li>
             </ul>
             <br/>
             I also manage general team operations, including manpower, logistics and finance.
