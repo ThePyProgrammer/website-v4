@@ -254,6 +254,37 @@ export function Research() {
             timeline: "Feb 2022 - May 2022",
             cover: "/img/research/writinganalysis-cover.png",
             imgs: []
+        },
+        {
+            codename: "atcSpeech",
+            title: <span>Adapting Automatic Speech Recognition for Accented Air Traffic Control Communications</span>,
+            subtitle: <span>We developed and fine-tuned ASR models for Southeast Asian-accented ATC speech using a new dataset, achieving a 9.82% WER. Work done at RSAF RAiD.</span>,
+            description: <>
+                <p>
+                    This project was done in a 2-month block at RSAF RAiD, where I worked mostly as a general secondary research advisor and contributed (though not significantly) to the general codebase and development of the system. I must give credit to Marcus and Lynus for their significant work on this project, as they largely led the development of the AI models and the dataset processing.
+                </p>
+            </>,
+            awards: [],
+            links: [
+                // {
+                //     link: "https://aclanthology.org/2024.emnlp-demo.42/",
+                //     text: "publication",
+                //     icon: "/img/research/logos/emnlp.png"
+                // },
+                {
+                    link: "https://arxiv.org/pdf/2502.20311",
+                    text: "pdf",
+                    icon: "/img/research/logos/arxiv.png"
+                },
+                // {
+                //     link: "https://github.com/walledai/walledeval",
+                //     text: "repo",
+                //     icon: "/img/research/logos/github.png"
+                // }
+            ],
+            timeline: "Nov 2024 - Jan 2025",
+            cover: "/img/research/atcspeech-cover.jpg",
+            imgs: []
         }
     ]
 
