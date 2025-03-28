@@ -26,7 +26,14 @@ export function Experience() {
             I also manage general team operations, including manpower, logistics and finance.
         </span>,
         timeline: "Aug 2024 - Present",
-        images: ["/img/cmp/raid-aether.jpg", "/img/cmp/raid-bci.jpg", "/img/cmp/raid-dotc.jpg"], //, "/img/cmp/raid-mg.jpg"]
+        images: [
+            "/img/cmp/raid-aether.jpg", 
+            "/img/cmp/raid-bci.jpg",
+            "/img/cmp/raid-hd.jpg",
+            "/img/cmp/raid-caf.jpg",
+            "/img/cmp/raid-cds.jpg",
+            "/img/cmp/raid-dotc.jpg"
+        ], //, "/img/cmp/raid-mg.jpg"]
         reccs: []
       },
       {
