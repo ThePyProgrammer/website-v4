@@ -49,7 +49,7 @@ export function About() {
               <p className="mb-4">
                 I am a recent graduate of the <a href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</a>.
 
-                I am currently serving National Service at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a> as an AI Engineer.
+                I am currently serving National Service at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a> as an AI Researcher under the AETHER Branch.
 
                 I also currently serve as the Youth Community Lead at <a href="https://better.sg/">better.sg</a>, as part of the larger volunteer-composed executive committee.
               
