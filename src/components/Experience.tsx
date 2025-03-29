@@ -10,7 +10,7 @@ export function Experience() {
     const workExperience: WorkExperience[] = [
       {
         iconUrl: "/img/cmp/raid.svg",
-        title: "AI Engineer @ RSAF RAiD",
+        title: "AI Researcher @ RSAF RAiD",
         description: <span>
             I am serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
             <br/><br/>
@@ -33,7 +33,8 @@ export function Experience() {
             "/img/cmp/raid-caf.jpg",
             "/img/cmp/raid-cds.jpg",
             "/img/cmp/raid-cems.jpg",
-            "/img/cmp/raid-dotc.jpg"
+            "/img/cmp/raid-dotc.jpg",
+            "/img/cmp/raid-dotchack.jpg",
         ], //, "/img/cmp/raid-mg.jpg"]
         reccs: []
       },
