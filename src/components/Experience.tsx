@@ -35,6 +35,7 @@ export function Experience() {
             "/img/cmp/raid-cems.jpg",
             "/img/cmp/raid-dotc.jpg",
             "/img/cmp/raid-dotchack.jpg",
+            "/img/cmp/raid-dotchack2.jpg",
         ], //, "/img/cmp/raid-mg.jpg"]
         reccs: []
       },
