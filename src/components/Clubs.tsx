@@ -6,6 +6,7 @@ import React from 'react';
 
 export function Clubs() {
     const workExperience: ClubExperience[] = [
+      // Better.SG Youth Community Lead
       {
         iconUrl: "/img/clubs/bettersg.png",
         title: "EXCO Member @ Better.sg",
@@ -20,6 +21,7 @@ export function Clubs() {
             "/img/clubs/better-meeting.jpg"
         ]
       },
+      // BuildingBloCS 2023 OIC
       {
         iconUrl: "/img/clubs/bbcs.png",
         title: "Overall-in-Charge @ BBCS",
@@ -45,13 +47,48 @@ export function Clubs() {
             "/img/clubs/bbcs-network.png",
         ],
       },
+      // AppVenture President
+      {
+        iconUrl: "/img/clubs/appv.svg",
+        title: "President @ AppVenture",
+        description: <span>
+            During my term as the President of the Computer Science Interest Group at NUS High, namely <a href="https://nush.app/">AppVenture</a>, I was responsuble for several structural and operational changes to the club, including the introduction of two new divisions, namely <b>Outreach</b> and <b>AI</b>. Under the Outreach division, our club seconded students to volunteer with <a href="https://old.buildingblocs.sg/2023-newnew/">BuildingBloCS 2023</a> for their March, June and September conferences, and <a href="https://vivita.sg/">VIVITA</a> for the <a href="https://techsat.ai/">Tech Saturdays</a> event. Within AI, we crafted a full curriculum to teach students basic AI and Machine Learning concepts that students could use in future hackathon or research projects.
+            <br/><br/>
+            Beyond this, we also organised a learning journey to TikTok Singapore, where we were given a tour of the office and a talk on the workings of TikTok and how it is used in Singapore. We also organised the first ever Quanta-AppVenture Physics Tournament (QAPT), a collaboration with Quanta, the Physics Interest Group of NUS High, to promote Computational Physics in NUS High as a whole.
+        </span>,
+        timeline: "Dec 2022 - Dec 2023",
+        images: [
+            "/img/clubs/appv-openhouse.jpg",
+            "/img/clubs/appv-tiktok.jpg",
+            "/img/clubs/appv-via.jpg",
+            "/img/clubs/appv-via-engage.jpg",
+            "/img/clubs/appv-via-teach.jpg",
+            "/img/clubs/appv-dundies.jpg",
+            "/img/clubs/appv-gm.jpg",
+        ]
+      },
+      // SPhL Frontend Developer
       {
         iconUrl: "/img/clubs/sphl.png",
         title: "Frontend Developer @ SPhL",
         description: <span>
-            </span>,
+            I worked as one of the 2 (now 3) frontend developers on <a href="https://sgphysicsleague.org/">Singapore Physics League (SPhL)</a> website throughout the past 2 years. A large part of my work has also been to work with other leagues such as the <a href="https://sgbioleague.org/">Singapore Biology League (SBL)</a> and the Singapore Informatics League (SIL) to support their operations and foster a community of "League" competitions across Singapore.
+        </span>,
         timeline: "Oct 2023 - Present",
-        images: [],
+        images: [
+            "/img/clubs/sphl-2024.jpg",
+            "/img/clubs/sphl-2025.jpg"
+        ],
+      },
+      // NUSH Astro Club Director
+      {
+        iconUrl: "/img/clubs/astro.jpg",
+        title: "Club Director @ NUSH Astro",
+        description: <span>
+            I served as the Club Director of the <a href="https://nushastro.github.io/website/">NUS High Astronomy Club</a>, where I was in charge of developing slides and materials and teaching theoretical astronomy concepts to the rest of the club on a weekly basis. Part of this was actually developing the entire website from the ground up using MKDocs and GitHub Pages.
+        </span>,
+        timeline: "Dec 2021 - Nov 2022",
+        images: ["/img/clubs/astro-club.jpg"]
       }
     ]
 
