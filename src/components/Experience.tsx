@@ -32,6 +32,7 @@ export function Experience() {
             "/img/cmp/raid-hd.jpg",
             "/img/cmp/raid-caf.jpg",
             "/img/cmp/raid-cds.jpg",
+            "/img/cmp/raid-msft.png",
             "/img/cmp/raid-cems.jpg",
             "/img/cmp/raid-dotc.jpg",
             "/img/cmp/raid-dotchack.jpg",
