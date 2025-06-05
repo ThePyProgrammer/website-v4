@@ -12,15 +12,26 @@ export function Experience() {
         iconUrl: "/img/cmp/raid.svg",
         title: "AI Researcher @ RSAF RAiD",
         description: <span>
-            I am serving my National Service obligations as a Software Support Assistant at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
+            I am serving my National Service obligations as a Software Support Assistant (colloquially an AI Engineer / Researcher) at the <a href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</a>, under their Experimentations branch, <a href="https://maps.app.goo.gl/GLhfqexgm6xFeuRS9">AETHER</a>. 
             <br/><br/>
-            Currently, I am leading an innovation team developing human-machine interfaces to enhance RSAF-wide console-based operations. 
-            We are investigating research methods to measure the cognitive load of controllers and developing decision support systems for training and operations purposes.
+            Currently, I am serving on dual appointment as the lead of the Cognitive Superiority and AETHER AI Agents (A3) Teams.
+            <br/><br/>
+            On the Cognitive Superiority side, I am currently leading an innovation team developing human-machine interfaces to enhance RSAF-wide console-based operations. Part of this work includes
+            <ul className="list-disc pl-4">
+                <li className="mb-2">Investigating research methods to monitor cognitive states of controllers via psychophysiological monitors such as EEG and eye-tracking data, we are currently experimenting with foundation models, JEPA and more!<br/><small>with <a href="https://www.linkedin.com/in/wuglenn/">Glenn Wu</a> and <a href="https://www.linkedin.com/in/sohan-daniel-singh-1b3831235/">Sohan Singh</a></small></li>
+                <li>Developing a centralised next-generation training system...<br/><small>with <a href="https://www.linkedin.com/in/ethan-chew/">Ethan Chew</a>, <a href="https://www.linkedin.com/in/darius-koh/">Darius Koh</a>, <a href="lim-wq-ian">Ian Lim</a> and <a href="https://www.linkedin.com/in/brandonkohzh/">Brandon Koh</a></small></li>
+                <li>...powered by AI agent-based CGFs for optimized and fine-tuned training.<br/><small>with <a href="https://www.linkedin.com/in/kaleb-nim/">Kaleb Nim</a>, <a href="https://www.linkedin.com/in/galen-tay-331029263/">Galen Tay</a> and <a href="https://www.linkedin.com/in/jonathan-koong-015309202/">Jonathan Koong</a></small></li>
+                <li>(in the near future) Developing decision support systems for training and operations purposes.</li>
+            </ul>
+            <br/>
+            On the A3 side, I co-lead a small team working on developing agentic AI-based solutions to optimize the lab's general finance, manpower and logistics operations. We are building <b>🛦 Wingman</b>, a centralized desktop application for hosting all our AI agents in a centralised manner.<br/>
+            <small>with <a href="https://www.linkedin.com/in/lwj-nicholas/">Nicholas Lee</a>, <a href="https://www.linkedin.com/in/dillion-lim/">Dillion Lim</a> and <a href="https://www.linkedin.com/in/nistelrooy-lim/">Nistelrooy Lim</a></small>
             <br/><br/>
             Previously, our team has
             <ul className="list-disc pl-4">
                 <li className="mb-2">deployed a basic MVP VSCode Extension for our RAiDers, using basic LLM-based Multi-Agent Systems as a backbone to communicate with multiple codebases and transfer code snippets between different systems.<br/><small>with <a href="https://scholar.google.com.sg/citations?user=xoQuuC0AAAAJ&hl=en">Cheong Sik Feng</a> and <a href="https://www.linkedin.com/in/en-hao-tew/">Tew En Hao</a></small></li>
                 <li>conducted research in the domain of Air Traffic Control transcription, authoring a <a href="https://arxiv.org/abs/2502.20311">research paper</a> comparing and fine-tuning various Whisper models against our own self-collected dataset.<br/><small>with <a href="https://www.linkedin.com/in/marcuswee/">Marcus Wee</a> and <a href="https://www.linkedin.com/in/lynus-lim-286811219/">Lynus Lim</a></small></li>
+                <li>developed a modular search framework for intelligent search operations, developing a <a href="https://github.com/aether-raid/modular-search">modular Python library</a> for taxonomy definition and search implementation purposes.<br/><small>with <a href="https://www.linkedin.com/in/en-hao-tew/">Tew En Hao</a> and <a href="https://www.linkedin.com/in/lwj-nicholas/">Nicholas Lee</a></small></li>
             </ul>
             <br/>
             I also manage general team operations, including manpower, logistics and finance.
