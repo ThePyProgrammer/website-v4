@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 import { ResearchProjectCard } from './projects/ResearchProjectCard';
 import { researchProjects } from '@/data/research';
+import { researchContent } from '@/content';
+import { MarkdownContent } from './MarkdownContent';
 
 export function Research() {
     const [selectedProject, setSelectedProject] = React.useState(-1);
@@ -53,7 +55,7 @@ export function Research() {
                                 <p className="text-muted-foreground font-mono">{researchProjects[selectedProject].timeline}</p>
                             </div>
                             <div className="max-w-2xl text-muted-foreground mb-8 space-y-4">
-                                {researchProjects[selectedProject].description}
+                                <MarkdownContent content={researchContent[researchProjects[selectedProject].codename] ?? ''} />
                             </div>
                             {(researchProjects[selectedProject].links.length > 0) && (
                             <div className="mt-8">

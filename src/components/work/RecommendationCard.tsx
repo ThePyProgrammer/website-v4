@@ -2,11 +2,12 @@ import { ExternalLink } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Card, CardContent, CardFooter } from "../ui/card"
 import { Recommendation } from "@/types/work"
+import { reccsContent } from "@/content"
+import { MarkdownContent } from "../MarkdownContent"
 
 export function RecommendationCard(recc: Recommendation) {
-    // Create a fallback for the avatar in case name is undefined
     const avatarFallback = recc.name ? recc.name.charAt(0).toUpperCase() : "?"
-  
+
     return (
       <Card className="w-full max-w-md">
         <CardContent className="pt-6">
@@ -20,17 +21,14 @@ export function RecommendationCard(recc: Recommendation) {
               <p className="text-sm text-muted-foreground mt-1">
                 {recc.currentJob ? <><b>Previously</b>: {recc.role}</> : recc.role }
               </p>
-              
+
               {recc.currentJob && (
                 <p className="text-sm text-muted-foreground mt-1"><b>Currently</b>: {recc.currentJob}</p>
               )}
-                {/* <Badge variant="secondary" className="mt-1">
-                  {recc.relationship}
-                </Badge> */}
             </div>
           </div>
           <blockquote className="mt-4 text-sm italic text-muted-foreground">
-            <p>{recc.recommendation}</p>
+            <MarkdownContent content={reccsContent[recc.slug] ?? ''} />
           </blockquote>
         </CardContent>
         {recc.link && (

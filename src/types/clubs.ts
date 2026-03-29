@@ -1,7 +1,7 @@
 export type ClubExperience = {
+    slug: string;
     iconUrl: string;
     title: string;
-    description: string | JSX.Element;
     timeline: string;
     images: string[];
 }

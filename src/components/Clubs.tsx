@@ -3,6 +3,8 @@ import { TimelineItem } from './work/TimelineItem';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 import React from 'react';
 import { clubExperience } from '@/data/clubs';
+import { clubsContent } from '@/content';
+import { MarkdownContent } from './MarkdownContent';
 
 export function Clubs() {
     const [focusedItem, setFocusedItem] = React.useState(0);
@@ -26,9 +28,9 @@ export function Clubs() {
                         </ul>
                         <div className="w-full md:pr-12">
                             <h3 className="mb-6 text-2xl sm:text-3xl">{clubExperience[focusedItem].title.toLowerCase()}</h3>
-                            <p className="max-w-2xl text-muted-foreground mb-8">
-                                {clubExperience[focusedItem].description}
-                            </p>
+                            <div className="max-w-2xl text-muted-foreground mb-8">
+                                <MarkdownContent content={clubsContent[clubExperience[focusedItem].slug] ?? ''} />
+                            </div>
                             {(clubExperience[focusedItem].images.length > 0) && (
                                 <div className="mt-8">
                                     <h4 className="mb-4 text-lg">Gallery</h4>

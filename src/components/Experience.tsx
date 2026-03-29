@@ -4,6 +4,8 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { TimelineItem } from './work/TimelineItem';
 import { RecommendationCard } from './work/RecommendationCard';
 import { workExperience } from '@/data/experience';
+import { experienceContent } from '@/content';
+import { MarkdownContent } from './MarkdownContent';
 
 
 export function Experience() {
@@ -28,9 +30,9 @@ export function Experience() {
                         </ul>
                         <div className="w-full md:pr-12">
                             <h3 className="mb-6 text-2xl sm:text-3xl">{workExperience[focusedItem].title.toLowerCase()}</h3>
-                            <p className="max-w-2xl text-muted-foreground mb-8">
-                                {workExperience[focusedItem].description}
-                            </p>
+                            <div className="max-w-2xl text-muted-foreground mb-8">
+                                <MarkdownContent content={experienceContent[workExperience[focusedItem].slug] ?? ''} />
+                            </div>
                             {(workExperience[focusedItem].images.length > 0) && (
                                 <div className="mt-8">
                                     <h4 className="mb-4 text-lg">Gallery</h4>

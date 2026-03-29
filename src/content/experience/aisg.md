@@ -1,0 +1,1 @@
+Worked with a bleeding-edge AI company under AI Singapore to develop a benchmarking tool and a Proof-of-Concept news classification application to pitch their potential models to Singaporean companies. Set up a MLflow interface for easy logging of experimental results.

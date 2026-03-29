@@ -19,10 +19,8 @@ export type ResearchProject = {
     codename: string,
     title: string | JSX.Element,
     subtitle: string | JSX.Element,
-    description: string | JSX.Element,
-    awards: (string | JSX.Element)[],
+    awards: string[],
     links: ProjectLink[],
-    // pdfs?: string[],
     timeline: string,
     cover: string,
     imgs: string[]

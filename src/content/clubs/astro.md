@@ -1,0 +1,1 @@
+I served as the Club Director of the [NUS High Astronomy Club](https://nushastro.github.io/website/), where I was in charge of developing slides and materials and teaching theoretical astronomy concepts to the rest of the club on a weekly basis. Part of this was actually developing the entire website from the ground up using MKDocs and GitHub Pages.
