@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCHITECT_OS // TERMINAL_CORE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#000000",
+                        "surface-bright": "#2c2c2f",
+                        "surface-container-low": "#131315",
+                        "primary-container": "#00fc40",
+                        "surface-container-highest": "#262528",
+                        "on-secondary-fixed-variant": "#00586c",
+                        "on-background": "#f9f5f8",
+                        "tertiary-container": "#fe00e9",
+                        "on-primary-fixed": "#00440a",
+                        "surface-container-high": "#1f1f22",
+                        "surface-container": "#19191c",
+                        "on-primary-fixed-variant": "#006513",
+                        "surface-tint": "#9cff93",
+                        "inverse-surface": "#fcf8fb",
+                        "on-tertiary-fixed": "#33002e",
+                        "on-error-container": "#ffd2c8",
+                        "on-tertiary": "#41003b",
+                        "outline": "#767577",
+                        "on-primary": "#006413",
+                        "on-tertiary-container": "#1b0018",
+                        "secondary-container": "#00677e",
+                        "outline-variant": "#48474a",
+                        "error-dim": "#d53d18",
+                        "tertiary-fixed": "#ff84e7",
+                        "inverse-primary": "#006f16",
+                        "secondary-fixed-dim": "#1cd5ff",
+                        "secondary": "#00d2fd",
+                        "secondary-fixed": "#79dfff",
+                        "surface-dim": "#0e0e10",
+                        "primary-fixed-dim": "#00ec3b",
+                        "on-secondary": "#004352",
+                        "on-primary-container": "#005a10",
+                        "surface": "#0e0e10",
+                        "error-container": "#b92902",
+                        "on-secondary-container": "#eefaff",
+                        "on-secondary-fixed": "#003a47",
+                        "on-surface": "#f9f5f8",
+                        "on-error": "#450900",
+                        "primary-fixed": "#00fc40",
+                        "primary-dim": "#00ec3b",
+                        "secondary-dim": "#00c3eb",
+                        "error": "#ff7351",
+                        "tertiary": "#ff58e7",
+                        "on-tertiary-fixed-variant": "#6d0063",
+                        "primary": "#9cff93",
+                        "surface-variant": "#262528",
+                        "inverse-on-surface": "#565457",
+                        "on-surface-variant": "#adaaad",
+                        "tertiary-fixed-dim": "#ff66e7",
+                        "background": "#0e0e10",
+                        "tertiary-dim": "#ff58e7"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline-overlay {
+            background: repeating-linear-gradient(0deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0e0e10; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #00d2fd; }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden selection:bg-primary selection:text-on-primary">
+
+    <!-- TopAppBar -->
+    <header class="fixed top-0 left-0 right-0 h-16 bg-[#0e0e10] z-50 flex justify-between items-center px-8 w-full max-w-none border-b-0">
+        <div class="flex items-center gap-4">
+            <span class="text-xl font-bold text-[#00ff41] drop-shadow-[0_0_8px_rgba(0,255,65,0.4)] font-headline tracking-tighter uppercase">[TERMINAL_CORE]</span>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#" class="font-['Space_Grotesk'] tracking-tighter uppercase text-sm text-[#00ff41] border-b-2 border-[#00ff41] pb-1 transition-all duration-300">[ home ]</a>
+            <a href="#" class="font-['Space_Grotesk'] tracking-tighter uppercase text-sm text-[#00ff41]/60 hover:text-[#00ff41] hover:bg-[#00ff41]/10 hover:shadow-[0_0_15px_rgba(0,255,65,0.2)] transition-all duration-300">[ articles ]</a>
+            <a href="#" class="font-['Space_Grotesk'] tracking-tighter uppercase text-sm text-[#00ff41]/60 hover:text-[#00ff41] hover:bg-[#00ff41]/10 hover:shadow-[0_0_15px_rgba(0,255,65,0.2)] transition-all duration-300">[ logs ]</a>
+            <a href="#" class="font-['Space_Grotesk'] tracking-tighter uppercase text-sm text-[#00ff41]/60 hover:text-[#00ff41] hover:bg-[#00ff41]/10 hover:shadow-[0_0_15px_rgba(0,255,65,0.2)] transition-all duration-300">[ terminal ]</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <div class="relative group">
+                <input type="text" placeholder="QUERY_DB..." class="bg-surface-container-low border-b border-outline-variant focus:border-secondary outline-none px-4 py-1 text-xs font-label text-primary transition-all w-48 focus:w-64 placeholder:text-outline-variant">
+                <span class="absolute right-2 top-1/2 -translate-y-1/2 material-symbols-outlined text-sm text-outline-variant" data-icon="terminal">terminal</span>
+            </div>
+            <button class="material-symbols-outlined text-[#00ff41] p-2 hover:bg-[#00ff41]/10 transition-all active:scale-95 duration-75" data-icon="terminal">terminal</button>
+        </div>
+    </header>
+
+    <!-- SideNavBar -->
+    <aside class="fixed left-0 top-16 bottom-0 w-64 bg-[#131315] hidden lg:flex flex-col pt-8 border-r-0 z-40">
+        <div class="px-6 mb-8">
+            <h2 class="font-headline text-xs font-bold text-primary tracking-widest uppercase">DIRECTORY_LIST</h2>
+            <p class="font-label text-[10px] text-outline-variant">/root/categories</p>
+        </div>
+
+        <nav class="flex flex-col flex-1">
+            <a href="#" class="flex items-center gap-3 text-xs font-medium text-[#00ff41] bg-[#262528] border-l-4 border-[#00d2fd] px-6 py-4 font-label transition-all active:translate-x-1 duration-150">
+                <span class="material-symbols-outlined text-lg" data-icon="memory">memory</span>
+                [ai]
+            </a>
+            <a href="#" class="flex items-center gap-3 text-xs font-medium text-[#00ff41]/40 px-6 py-4 font-label hover:bg-[#262528]/50 hover:text-[#00ff41] transition-all active:translate-x-1 duration-150">
+                <span class="material-symbols-outlined text-lg" data-icon="code">code</span>
+                [web-dev]
+            </a>
+            <a href="#" class="flex items-center gap-3 text-xs font-medium text-[#00ff41]/40 px-6 py-4 font-label hover:bg-[#262528]/50 hover:text-[#00ff41] transition-all active:translate-x-1 duration-150">
+                <span class="material-symbols-outlined text-lg" data-icon="settings_ethernet">settings_ethernet</span>
+                [rust]
+            </a>
+        </nav>
+
+        <div class="p-6">
+            <button class="w-full bg-primary text-on-primary py-3 font-headline font-bold text-xs tracking-widest hover:shadow-[0_0_15px_rgba(156,255,147,0.4)] transition-all">
+                EXECUTE_QUERY
+            </button>
+        </div>
+
+        <div class="mt-auto border-t border-outline-variant/10">
+            <a href="#" class="flex items-center gap-3 text-[#00ff41]/40 px-6 py-3 font-label text-[10px] hover:bg-[#262528]/50 transition-all">
+                <span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+                SETTINGS
+            </a>
+            <a href="#" class="flex items-center gap-3 text-[#00ff41]/40 px-6 py-3 font-label text-[10px] hover:bg-[#262528]/50 transition-all">
+                <span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+                LOGOUT
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="lg:ml-64 pt-16 min-h-screen">
+        
+        <!-- Hero Section: Active Logs -->
+        <section class="relative h-[409px] bg-surface-container-lowest overflow-hidden">
+            <div class="absolute inset-0 scanline-overlay"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-dim"></div>
+            
+            <div class="relative h-full flex flex-col justify-end p-12 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+                    <div>
+                        <span class="font-label text-primary text-sm mb-2 block">01_ [SYSTEM_STATUS: ONLINE]</span>
+                        <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none text-on-background mb-4">
+                            Sovereign<br><span class="text-secondary">Architect</span>.
+                        </h1>
+                        <p class="text-on-surface-variant max-w-md font-body leading-relaxed">
+                            A high-end technical editorial for the modern engineer. Exploring the intersection of brutalist efficiency and premium craftsmanship.
+                        </p>
+                    </div>
+                    <div class="hidden md:block bg-surface-container-low/80 backdrop-blur-md p-6 h-48 border-l-2 border-primary overflow-hidden">
+                        <div class="flex justify-between items-center mb-4 border-b border-outline-variant/20 pb-2">
+                            <span class="text-[10px] font-label text-primary uppercase">Active Logs // live_feed</span>
+                            <div class="flex gap-1">
+                                <div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                            </div>
+                        </div>
+                        <div class="font-mono text-[10px] space-y-1 text-primary-dim opacity-80 custom-scrollbar overflow-y-auto h-full">
+                            <p>[12:44:01] <span class="text-secondary">SYS_INIT</span>: Kernel loaded.</p>
+                            <p>[12:44:02] <span class="text-tertiary">AUTH_SUCCESS</span>: User "Architect" validated.</p>
+                            <p>[12:44:05] <span class="text-primary">LOAD_MODULE</span>: Rust Runtime environment ready.</p>
+                            <p>[12:44:10] <span class="text-primary-container">FETCH_CONTENT</span>: 4 new articles retrieved from CDN.</p>
+                            <p>[12:44:12] <span class="text-on-surface-variant">LOG_DEBUG</span>: Memory usage at 12%.</p>
+                            <p>[12:44:15] <span class="text-primary">PUSH_UPDATE</span>: Scaling Web Dev article live.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Grid -->
+        <section class="p-12 max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="font-label text-secondary text-xs uppercase tracking-[0.2em] mb-2 block">Featured_Insights</span>
+                    <h2 class="font-headline text-3xl font-bold">LATEST_ENTRIES</h2>
+                </div>
+                <div class="flex gap-4">
+                    <button class="p-2 border border-outline-variant hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                    </button>
+                    <button class="p-2 border border-outline-variant hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+                <!-- Article 1 -->
+                <article class="group relative bg-surface-container-low border border-outline-variant/10 p-8 hover:bg-surface-container-high transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="font-headline text-4xl font-black text-primary/20">01</span>
+                    </div>
+                    <div class="mb-6 relative h-48 bg-surface-container-lowest overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop" 
+                             alt="Abstract visualization of code flow" 
+                             data-alt="Intricate glowing 3D network of binary code and geometric shapes in neon green and cyan on black background"
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-80 scale-105 group-hover:scale-110">
+                    </div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-0.5 bg-secondary-container/20 text-secondary text-[10px] font-label uppercase">[rust]</span>
+                        <span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-label uppercase">12 MIN READ</span>
+                    </div>
+                    <h3 class="font-headline text-xl font-bold mb-4 group-hover:text-primary transition-colors leading-tight">The Rust Lifecycle: Beyond the Borrow Checker</h3>
+                    <p class="text-on-surface-variant text-sm line-clamp-3 mb-8 font-body leading-relaxed">
+                        Deep dive into memory safety, ownership, and why the compiler is your best friend when building high-concurrency systems.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-primary text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
+                        INITIATE_READ
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                    </a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="group relative bg-surface-container-high border border-outline-variant/10 p-8 hover:bg-surface-container-highest transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="font-headline text-4xl font-black text-secondary/20">02</span>
+                    </div>
+                    <div class="mb-6 relative h-48 bg-surface-container-lowest overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" 
+                             alt="Neural network visualization" 
+                             data-alt="Abstract digital neural network with floating nodes and thin connecting lines in deep blue and violet with soft light glows"
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-80 scale-105 group-hover:scale-110">
+                    </div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-0.5 bg-primary-container/20 text-primary text-[10px] font-label uppercase">[ai]</span>
+                        <span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-label uppercase">8 MIN READ</span>
+                    </div>
+                    <h3 class="font-headline text-xl font-bold mb-4 group-hover:text-secondary transition-colors leading-tight">Scaling Web Dev with AI-Driven Architectures</h3>
+                    <p class="text-on-surface-variant text-sm line-clamp-3 mb-8 font-body leading-relaxed">
+                        How Large Language Models are shifting the paradigm of backend development and automated infrastructure scaling.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
+                        INITIATE_READ
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                    </a>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="group relative bg-surface-container-low border border-outline-variant/10 p-8 hover:bg-surface-container-high transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                        <span class="font-headline text-4xl font-black text-tertiary/20">03</span>
+                    </div>
+                    <div class="mb-6 relative h-48 bg-surface-container-lowest overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" 
+                             alt="Cybersecurity data flow" 
+                             data-alt="Technical schematic overlay of a computer circuit board with digital data streams in vibrant pink and green"
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-80 scale-105 group-hover:scale-110">
+                    </div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="px-2 py-0.5 bg-tertiary-container/20 text-tertiary text-[10px] font-label uppercase">[security]</span>
+                        <span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-label uppercase">15 MIN READ</span>
+                    </div>
+                    <h3 class="font-headline text-xl font-bold mb-4 group-hover:text-tertiary transition-colors leading-tight">Hardening the Core: Zero Trust for Solo Devs</h3>
+                    <p class="text-on-surface-variant text-sm line-clamp-3 mb-8 font-body leading-relaxed">
+                        Security shouldn't be an afterthought. Implementing robust authentication without the enterprise bloat.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-tertiary text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
+                        INITIATE_READ
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Bento Grid: Secondary Feed -->
+        <section class="p-12 max-w-7xl mx-auto bg-surface-container-low">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Large Featured Block -->
+                <div class="lg:col-span-2 bg-surface-container-highest p-10 border-l-4 border-primary">
+                    <span class="font-label text-primary text-[10px] mb-4 block tracking-[0.3em]">QUICK_ACCESS // TOP_THREAD</span>
+                    <h2 class="font-headline text-3xl font-bold mb-6">Optimizing WASM for Real-time Visualization</h2>
+                    <p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Leveraging WebAssembly to offload heavy calculations from the main thread, achieving 60fps in complex 3D data renders.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-8 h-8 rounded-full border-2 border-surface bg-primary/20 flex items-center justify-center text-[10px] font-bold">JS</div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface bg-secondary/20 flex items-center justify-center text-[10px] font-bold">RS</div>
+                            <div class="w-8 h-8 rounded-full border-2 border-surface bg-tertiary/20 flex items-center justify-center text-[10px] font-bold">CPP</div>
+                        </div>
+                        <span class="text-[10px] font-label text-outline-variant">34 COMMENTS // 892 QUERIES</span>
+                    </div>
+                </div>
+
+                <!-- Stats Block -->
+                <div class="bg-surface-container-lowest p-8 flex flex-col justify-center border border-outline-variant/10">
+                    <span class="font-label text-secondary text-5xl font-bold mb-2">99.9</span>
+                    <span class="text-[10px] font-headline text-outline-variant uppercase tracking-widest">Uptime_Percentage</span>
+                    <div class="mt-4 h-1 bg-surface-container-highest w-full overflow-hidden">
+                        <div class="h-full bg-secondary w-[99.9%]"></div>
+                    </div>
+                </div>
+
+                <!-- Small Utility Block -->
+                <div class="bg-surface p-8 border border-outline-variant/10 flex flex-col justify-between group hover:border-primary/50 transition-colors">
+                    <span class="material-symbols-outlined text-primary text-3xl" data-icon="database">database</span>
+                    <div>
+                        <h4 class="font-headline font-bold text-sm mb-1 uppercase">Local_Cache</h4>
+                        <p class="text-[10px] text-on-surface-variant uppercase">3.2 GB Free</p>
+                    </div>
+                </div>
+
+                <!-- Full Width Small Row -->
+                <div class="lg:col-span-4 bg-[#00d2fd]/5 border border-secondary/20 p-6 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-secondary animate-pulse" data-icon="sensors">sensors</span>
+                        <p class="font-label text-xs uppercase text-secondary">Broadcasting global developer trends in real-time...</p>
+                    </div>
+                    <button class="text-[10px] font-headline font-bold border-b border-secondary text-secondary uppercase hover:text-white hover:border-white transition-all">LISTEN_STREAM</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full py-8 px-12 bg-[#0e0e10] flex flex-col md:flex-row justify-between items-center border-t border-outline-variant/5 mt-20">
+            <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+                <span class="text-[#00ff41] font-bold font-headline text-lg tracking-tighter mb-1">ARCHITECT_OS</span>
+                <p class="font-['Space_Grotesk'] text-[10px] opacity-50 uppercase">© 2024 ARCHITECT_OS // ALL_RIGHTS_RESERVED</p>
+            </div>
+            
+            <div class="flex gap-8">
+                <a href="#" class="font-['Space_Grotesk'] text-[10px] opacity-50 hover:opacity-100 hover:text-[#00d2fd] transition-colors uppercase">LICENSE</a>
+                <a href="#" class="font-['Space_Grotesk'] text-[10px] opacity-50 hover:opacity-100 hover:text-[#00d2fd] transition-colors uppercase">DOCS</a>
+                <a href="#" class="font-['Space_Grotesk'] text-[10px] opacity-50 hover:opacity-100 hover:text-[#00d2fd] transition-colors uppercase">SOURCE</a>
+            </div>
+
+            <div class="mt-6 md:mt-0 flex gap-4">
+                <span class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors cursor-pointer" data-icon="hub">hub</span>
+                <span class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors cursor-pointer" data-icon="terminal">terminal</span>
+                <span class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors cursor-pointer" data-icon="code_blocks">code_blocks</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Floating Action Element (Hidden on detail pages, shown here) -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button class="bg-primary text-on-primary w-14 h-14 flex items-center justify-center shadow-[0_0_20px_rgba(156,255,147,0.4)] hover:scale-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined" data-icon="add">add</span>
+        </button>
+    </div>
+
+</body>
+</html></style></head><body></body></html>
