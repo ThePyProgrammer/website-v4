@@ -60,15 +60,9 @@ export function Navigation() {
 function NavLinks() {
   return (
     <>
-      {/* <a href="/blog" className="text-muted-foreground hover:text-foreground">
+      <a href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
         Blog
       </a>
-      <a href="/projects" className="text-muted-foreground hover:text-foreground">
-        Projects
-      </a> */}
-      {/* <Button variant="default" size="sm">
-        Resume
-      </Button> */}
     </>
   );
 }
