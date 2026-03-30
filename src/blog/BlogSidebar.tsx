@@ -1,13 +1,6 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { getCategories } from '@/content/blog';
 
-const categoryIcons: Record<string, string> = {
-  'ai': 'memory',
-  'web-dev': 'code',
-  'rust': 'settings_ethernet',
-  'security': 'shield',
-};
-
 export function BlogSidebar() {
   const categories = getCategories();
   const [searchParams] = useSearchParams();
