@@ -554,6 +554,7 @@ Five things.
 
 Thanks to the [Midnight Code Cup 2026](https://codeforces.com) organisers
 and [Recraft](https://www.recraft.ai/) for Problem B and keeping the weekend
-interesting.
+interesting. And thanks to Jiang Pang and Yu Pin for roping me into this 
+tournament!
 
 Back to work, I guess.
