@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-export function TerminalBlock({ children, filename }: { children: React.ReactNode; filename?: string }) {
+export function TerminalBlock({ children, filename, rawCode }: { children: React.ReactNode; filename?: string; rawCode?: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    const text = (children as any)?.props?.children
-      ? String((children as any).props.children)
-      : '';
+    const text = rawCode ?? (
+      (children as any)?.props?.children ? String((children as any).props.children) : ''
+    );
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
