@@ -5,7 +5,6 @@ tags: [react, typescript, web-architecture]
 category: web-dev
 excerpt: "Exploring the non-linear execution contexts and state superposition in modern rendering architectures."
 coverImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop"
-readingTime: "12 min"
 published: false
 ---
 

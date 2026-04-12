@@ -7,7 +7,8 @@ export interface BlogFrontmatter {
   coverImage?: string;
   splash?: boolean;
   published?: boolean;
-  readingTime: string;
+  /** Optional override. When omitted, computed automatically from content. */
+  readingTime?: string;
 }
 
 export interface BlogPost {

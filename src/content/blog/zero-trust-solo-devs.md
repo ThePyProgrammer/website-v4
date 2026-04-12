@@ -5,7 +5,6 @@ tags: [security, devops, infrastructure]
 category: security
 excerpt: "Security shouldn't be an afterthought. Implementing robust authentication without the enterprise bloat."
 coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
-readingTime: "10 min"
 published: false
 ---
 

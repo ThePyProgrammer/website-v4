@@ -1,4 +1,5 @@
 import { parseFrontmatter } from '@/lib/frontmatter';
+import { estimateReadingTime } from '@/lib/readingTime';
 import { BlogPost, BlogFrontmatter } from '@/types/blog';
 
 const blogMd = import.meta.glob('./blog/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -10,9 +11,10 @@ function slugFromPath(path: string): string {
 const allPosts: BlogPost[] = Object.entries(blogMd)
   .map(([path, raw]) => {
     const { frontmatter, content } = parseFrontmatter(raw);
+    const fm = frontmatter as unknown as BlogFrontmatter;
     return {
       slug: slugFromPath(path),
-      frontmatter: frontmatter as unknown as BlogFrontmatter,
+      frontmatter: { ...fm, readingTime: fm.readingTime ?? estimateReadingTime(content) },
       content,
     };
   })

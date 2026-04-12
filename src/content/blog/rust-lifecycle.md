@@ -5,7 +5,6 @@ tags: [rust, systems, memory]
 category: rust
 excerpt: "Deep dive into memory safety, ownership, and why the compiler is your best friend when building high-concurrency systems."
 coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
-readingTime: "15 min"
 splash: true
 published: false
 ---

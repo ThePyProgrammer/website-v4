@@ -6,7 +6,6 @@ category: ai
 excerpt: "How we went from signal processing to CNNs to predict Freezing of Gait in Parkinson's patients, winning Gold at SSEF (twice.) and 1st Place at ISSF along the way."
 coverImage: "/img/research/parkinsons-nush.jpg"
 splash: false
-readingTime: "10 min"
 ---
 
 ## How it started
