@@ -12,7 +12,7 @@ published: false
 
 ## Understanding Ownership at Scale
 
-Rust's ownership model is often introduced through simple examples — move semantics, borrowing, and lifetimes. But when you're building a distributed system processing millions of events per second, the borrow checker becomes your most trusted ally.
+Rust's ownership model is often introduced through simple examples, move semantics, borrowing, and lifetimes. But when you're building a distributed system processing millions of events per second, the borrow checker becomes your most trusted ally.
 
 ## Zero-Cost Abstractions in Practice
 
@@ -33,4 +33,4 @@ fn process_events(events: &[Event]) -> Vec<ProcessedEvent> {
 
 ## The Borrow Checker as Architecture Guide
 
-When the borrow checker rejects your code, it's not being pedantic — it's telling you that your architecture has a data race waiting to happen. Learning to listen to the compiler is what separates Rust beginners from Rust architects.
+When the borrow checker rejects your code, it's not being pedantic, it's telling you that your architecture has a data race waiting to happen. Learning to listen to the compiler is what separates Rust beginners from Rust architects.

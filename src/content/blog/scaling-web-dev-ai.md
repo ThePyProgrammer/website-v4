@@ -11,7 +11,7 @@ published: false
 
 ## The New Development Paradigm
 
-Large Language Models are not just code completion tools — they represent a fundamental shift in how we think about software architecture. When an AI can generate, test, and deploy infrastructure-as-code, the role of the developer evolves from implementer to architect.
+Large Language Models are not just code completion tools, they represent a fundamental shift in how we think about software architecture. When an AI can generate, test, and deploy infrastructure-as-code, the role of the developer evolves from implementer to architect.
 
 ## Automated Infrastructure Scaling
 

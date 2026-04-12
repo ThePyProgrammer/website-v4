@@ -11,7 +11,7 @@ published: false
 
 ## Why Solo Devs Need Zero Trust
 
-The "it's just a side project" mentality is exactly what attackers exploit. Zero Trust architecture isn't just for enterprise — it's a mindset that treats every request as potentially hostile, regardless of origin.
+The "it's just a side project" mentality is exactly what attackers exploit. Zero Trust architecture isn't just for enterprise, it's a mindset that treats every request as potentially hostile, regardless of origin.
 
 ## Implementing mTLS Without the Overhead
 
