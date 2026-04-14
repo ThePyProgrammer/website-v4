@@ -44,7 +44,7 @@ function ScrambleLabel({ target }: { target: string }) {
   const scrambleTo = (finalText: string) => {
     clear();
     const maxLen = IDLE_TEXT.length;
-    const padded = finalText.padEnd(maxLen, ' ');
+    const padded = finalText.padStart(maxLen, ' ');
     const totalSteps = 18;
     let step = 0;
 
