@@ -274,11 +274,19 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
               className="w-full text-left flex items-center gap-3 p-3 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
               <img src={item.iconUrl} alt="" className="w-10 h-10 rounded-full object-cover bg-[#0e0e10] shrink-0" />
-              <div className="min-w-0 flex-1 leading-none">
-                <p className={`font-headline text-base md:text-lg font-bold tracking-tight break-words leading-[1.1] ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+              <div className="min-w-0 flex-1">
+                <p
+                  className={`font-headline text-base md:text-lg font-bold tracking-tight break-words ${isActive ? accent.text : 'text-[#f9f5f8]'}`}
+                  style={{ lineHeight: 1.1 }}
+                >
                   {item.title}
                 </p>
-                <p className="font-headline text-xs text-[#767577] uppercase tracking-widest tabular-nums leading-[1.1] mt-1">[{item.timeline}]</p>
+                <p
+                  className="font-headline text-xs text-[#767577] uppercase tracking-widest tabular-nums mt-1"
+                  style={{ lineHeight: 1 }}
+                >
+                  [{item.timeline}]
+                </p>
               </div>
             </button>
           </li>
