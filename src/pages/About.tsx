@@ -246,9 +246,9 @@ function BioTerminal() {
   );
 }
 
-function SectionHeader({ index, heading, count, accent }: { index: number; heading: string; count: number; accent: Accent }) {
+function SectionHeader({ index, heading, count, accent, collapsed, onToggle }: { index: number; heading: string; count: number; accent: Accent; collapsed: boolean; onToggle: () => void }) {
   return (
-    <div className="flex items-baseline gap-3 md:gap-4 mb-8 md:mb-10 flex-wrap">
+    <div className={`flex items-baseline gap-3 md:gap-4 ${collapsed ? 'mb-0' : 'mb-8 md:mb-10'} flex-wrap`}>
       <h2 className="font-headline text-2xl md:text-4xl font-extrabold tracking-tighter text-[#f9f5f8] break-all">
         <span className={accent.text}>{String(index).padStart(2, '0')}_</span>{heading}
       </h2>
@@ -256,8 +256,21 @@ function SectionHeader({ index, heading, count, accent }: { index: number; headi
       <span className="font-headline text-[10px] md:text-xs text-[#767577] uppercase tracking-widest shrink-0">
         {count} {count === 1 ? 'entry' : 'entries'}
       </span>
+      <button
+        onClick={onToggle}
+        aria-expanded={!collapsed}
+        className={`font-headline text-[10px] md:text-xs uppercase tracking-widest shrink-0 px-2 py-1 border border-[#262528] hover:border-[color:var(--accent)] transition-colors ${accent.text}`}
+        style={{ ['--accent' as string]: accent.hex }}
+      >
+        {collapsed ? '[ expand ] ▼' : '[ collapse ] ▲'}
+      </button>
     </div>
   );
+}
+
+function useCollapsed() {
+  const [collapsed, setCollapsed] = useState(false);
+  return { collapsed, toggle: () => setCollapsed(v => !v) };
 }
 
 type TimelineItem = { key: string; title: string; timeline: string; iconUrl: string };
@@ -314,10 +327,12 @@ function ExperienceSection() {
   const accent = sectionAccent.experience;
   const [activeKey, setActiveKey] = useState(workExperience[0].slug);
   const active = workExperience.find(e => e.slug === activeKey)!;
+  const { collapsed, toggle } = useCollapsed();
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
-      <SectionHeader index={1} heading="EXPERIENCE" count={workExperience.length} accent={accent} />
+      <SectionHeader index={1} heading="EXPERIENCE" count={workExperience.length} accent={accent} collapsed={collapsed} onToggle={toggle} />
+      {!collapsed && (
       <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
         <TimelineSelector
           items={workExperience.map(e => ({ key: e.slug, title: e.title, timeline: e.timeline, iconUrl: e.iconUrl }))}
@@ -347,6 +362,7 @@ function ExperienceSection() {
           </motion.div>
         </AnimatePresence>
       </div>
+      )}
     </section>
   );
 }
@@ -370,11 +386,13 @@ function ResearchSection() {
   const accent = sectionAccent.research;
   const [activeCodename, setActiveCodename] = useState<string | null>(null);
   const toggle = (c: string) => setActiveCodename(prev => (prev === c ? null : c));
+  const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
-      <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} />
+      <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
 
+      {!collapsed && (
       <div className={`grid gap-6 items-start ${activeCodename ? 'lg:grid-cols-[minmax(0,340px)_1fr]' : ''}`}>
         <div className={`grid gap-4 ${activeCodename ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
           {researchProjects.map(p => {
@@ -473,6 +491,7 @@ function ResearchSection() {
           })()}
         </AnimatePresence>
       </div>
+      )}
     </section>
   );
 }
@@ -482,11 +501,13 @@ function ProjectsSection() {
   const [idx, setIdx] = useState(0);
   const p = projects[idx];
   const go = (delta: number) => setIdx((idx + delta + projects.length) % projects.length);
+  const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
-      <SectionHeader index={3} heading="PROJECTS" count={projects.length} accent={accent} />
+      <SectionHeader index={3} heading="PROJECTS" count={projects.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
 
+      {!collapsed && (<>
       <div className="flex items-center justify-between mb-4 font-headline text-xs uppercase tracking-widest">
         <button onClick={() => go(-1)} className={`flex items-center gap-2 px-3 py-2 border border-[#262528] ${accent.text} hover:bg-[color:var(--accent)]/10 transition-colors`} style={{ ['--accent' as string]: accent.hex }}>
           <ChevronLeft className="h-4 w-4" /> prev
@@ -543,6 +564,7 @@ function ProjectsSection() {
           />
         ))}
       </div>
+      </>)}
     </section>
   );
 }
@@ -551,10 +573,12 @@ function ClubsSection() {
   const accent = sectionAccent.clubs;
   const [activeKey, setActiveKey] = useState(clubExperience[0].slug);
   const active = clubExperience.find(c => c.slug === activeKey)!;
+  const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
-      <SectionHeader index={4} heading="CLUBS_AND_VOLUNTEERING" count={clubExperience.length} accent={accent} />
+      <SectionHeader index={4} heading="CLUBS_AND_VOLUNTEERING" count={clubExperience.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
+      {!collapsed && (
       <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
         <TimelineSelector
           items={clubExperience.map(c => ({ key: c.slug, title: c.title, timeline: c.timeline, iconUrl: c.iconUrl }))}
@@ -584,6 +608,7 @@ function ClubsSection() {
           </motion.div>
         </AnimatePresence>
       </div>
+      )}
     </section>
   );
 }
