@@ -271,14 +271,14 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
           <li key={item.key}>
             <button
               onClick={() => onSelect(item.key)}
-              className="w-full text-left flex items-center gap-3 p-3 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
+              className="w-full text-left flex items-center gap-3 px-3 py-2 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
-              <img src={item.iconUrl} alt="" className="w-10 h-10 rounded-full object-cover bg-[#0e0e10] shrink-0" />
-              <div className="min-w-0 flex-1">
-                <p className={`font-headline text-base md:text-lg font-bold tracking-tight break-words ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+              <img src={item.iconUrl} alt="" className="w-9 h-9 rounded-full object-cover bg-[#0e0e10] shrink-0" />
+              <div className="min-w-0 flex-1 leading-tight">
+                <p className={`font-headline text-sm md:text-base font-bold tracking-tight break-words leading-snug ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
                   {item.title}
                 </p>
-                <p className="font-headline text-xs text-[#767577] uppercase tracking-widest tabular-nums">[{item.timeline}]</p>
+                <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest tabular-nums mt-0.5 leading-none">[{item.timeline}]</p>
               </div>
             </button>
           </li>
