@@ -318,6 +318,7 @@ function BioTerminal() {
             <span className="text-[#adaaad]">:</span>
             <span className="text-[#ff58e7]">~</span>
             <span className="text-[#adaaad]">$</span>
+            <IdleGhostTyper />
             <div className="w-2.5 h-5 bg-[#00d4fd] cursor-blink" />
           </div>
         </div>
@@ -353,6 +354,65 @@ function SectionHeader({ index, heading, count, accent, collapsed, onToggle }: {
 function useCollapsed() {
   const [collapsed, setCollapsed] = useState(false);
   return { collapsed, toggle: () => setCollapsed(v => !v) };
+}
+
+const GHOST_COMMANDS = [
+  './reboot_user.sh',
+  'tail -f /var/log/thoughts.log',
+  'curl https://is.anyone.there',
+  'ping -c 3 motivation.local',
+  'export CAFFEINE_LEVEL=CRITICAL',
+  'ps aux | grep -i distractions',
+];
+
+function IdleGhostTyper() {
+  const [text, setText] = useState('');
+  const idleTimer = useRef<number | null>(null);
+  const typeTimer = useRef<number | null>(null);
+
+  const clear = () => {
+    if (idleTimer.current) window.clearTimeout(idleTimer.current);
+    if (typeTimer.current) window.clearTimeout(typeTimer.current);
+  };
+
+  const type = (target: string, i: number) => {
+    setText(target.slice(0, i));
+    if (i <= target.length) {
+      typeTimer.current = window.setTimeout(() => type(target, i + 1), 60 + Math.random() * 60);
+    } else {
+      typeTimer.current = window.setTimeout(() => erase(target, target.length), 1500);
+    }
+  };
+
+  const erase = (target: string, i: number) => {
+    setText(target.slice(0, i));
+    if (i >= 0) {
+      typeTimer.current = window.setTimeout(() => erase(target, i - 1), 35);
+    }
+  };
+
+  const scheduleIdle = () => {
+    clear();
+    setText('');
+    idleTimer.current = window.setTimeout(() => {
+      const cmd = GHOST_COMMANDS[Math.floor(Math.random() * GHOST_COMMANDS.length)];
+      type(cmd, 1);
+    }, 30000);
+  };
+
+  useEffect(() => {
+    scheduleIdle();
+    const reset = () => scheduleIdle();
+    const events = ['mousemove', 'keydown', 'scroll', 'touchstart', 'click'];
+    events.forEach(e => window.addEventListener(e, reset, { passive: true }));
+    return () => {
+      events.forEach(e => window.removeEventListener(e, reset));
+      clear();
+    };
+  }, []);
+
+  if (!text) return null;
+  return <span className="text-[#00d4fd]/60 italic">{text}</span>;
 }
 
 function SudoEasterEgg() {
