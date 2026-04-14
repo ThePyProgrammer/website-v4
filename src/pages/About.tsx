@@ -66,7 +66,7 @@ function Hero() {
             <span className="text-[#f9f5f8]">whoami</span>
           </div>
 
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.05] mb-6 text-[#f9f5f8]">
+          <h1 className="font-headline text-3xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] mb-6 text-[#f9f5f8]">
             Hey, I'm <span className="text-[#00d4fd]">Prannaya</span>.
           </h1>
 
