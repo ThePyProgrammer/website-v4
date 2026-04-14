@@ -2,6 +2,14 @@ import { WorkExperience } from '@/types/work';
 
 export const workExperience: WorkExperience[] = [
   {
+    slug: "pragnition",
+    iconUrl: "/img/cmp/pragnition.svg",
+    title: "Research Engineer @ Pragnition Labs",
+    timeline: "Mar 2026 - Present",
+    images: [],
+    reccs: []
+  },
+  {
     slug: "raid",
     iconUrl: "/img/cmp/raid.svg",
     title: "AI Researcher @ RSAF RAiD",
