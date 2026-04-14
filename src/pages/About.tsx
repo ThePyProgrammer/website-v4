@@ -43,18 +43,19 @@ function ScrambleLabel({ target }: { target: string }) {
 
   const scrambleTo = (finalText: string) => {
     clear();
-    const maxLen = Math.max(finalText.length, IDLE_TEXT.length);
+    const maxLen = IDLE_TEXT.length;
+    const padded = finalText.padEnd(maxLen, ' ');
     const totalSteps = 18;
     let step = 0;
 
     const tick = () => {
       step += 1;
-      const revealCount = Math.floor((step / totalSteps) * finalText.length);
+      const revealCount = Math.floor((step / totalSteps) * maxLen);
       let out = '';
       for (let i = 0; i < maxLen; i += 1) {
-        if (i < revealCount && i < finalText.length) {
-          out += finalText[i];
-        } else if (i < finalText.length) {
+        if (i < revealCount) {
+          out += padded[i] === ' ' ? '\u00A0' : padded[i];
+        } else {
           out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
         }
       }
@@ -64,7 +65,7 @@ function ScrambleLabel({ target }: { target: string }) {
           frameRef.current = requestAnimationFrame(tick);
         }, 30);
       } else {
-        setDisplay(finalText);
+        setDisplay(padded.replace(/ /g, '\u00A0'));
       }
     };
 
