@@ -415,6 +415,164 @@ function IdleGhostTyper() {
   return <span className="text-[#00d4fd]/60 italic">{text}</span>;
 }
 
+type VimResult = { tone: 'error' | 'info' | 'ok'; text: string } | null;
+
+function VimCommandLine() {
+  const [open, setOpen] = useState(false);
+  const [buf, setBuf] = useState('');
+  const [result, setResult] = useState<VimResult>(null);
+  const resultTimer = useRef<number | null>(null);
+
+  const show = (r: NonNullable<VimResult>, ms = 3000) => {
+    setResult(r);
+    if (resultTimer.current) window.clearTimeout(resultTimer.current);
+    resultTimer.current = window.setTimeout(() => setResult(null), ms);
+  };
+
+  const run = (raw: string) => {
+    const cmd = raw.trim().toLowerCase();
+    setOpen(false);
+    setBuf('');
+    if (!cmd) return;
+
+    switch (cmd) {
+      case 'q':
+      case 'quit':
+      case 'wq':
+      case 'q!':
+      case 'x':
+        return show({ tone: 'error', text: "E37: Can't quit — you haven't seen the projects yet." });
+      case 'help':
+      case 'h':
+        return show({ tone: 'info', text: 'cmds: :home :blog :about :whoami :ls :resume :github :linkedin :top :bottom :theme :sudo :q' }, 6000);
+      case 'home':
+        window.location.href = '/';
+        return;
+      case 'blog':
+        window.location.href = '/blog';
+        return;
+      case 'about':
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return show({ tone: 'info', text: 'you are already here.' });
+      case 'whoami':
+        document.getElementById('bio-terminal')?.scrollIntoView({ behavior: 'smooth' });
+        return show({ tone: 'ok', text: 'prannay' });
+      case 'ls':
+      case 'ls -la':
+        document.getElementById('bio-terminal')?.scrollIntoView({ behavior: 'smooth' });
+        return show({ tone: 'ok', text: '~/links — scrolled' });
+      case 'resume':
+      case 'cv':
+        window.open('/cv.pdf', '_blank');
+        return;
+      case 'github':
+      case 'gh':
+        window.open('https://github.com/ThePyProgrammer', '_blank');
+        return;
+      case 'linkedin':
+      case 'li':
+        window.open('https://www.linkedin.com/in/prannaya-gupta', '_blank');
+        return;
+      case 'twitter':
+        window.open('https://x.com/PrannayaG', '_blank');
+        return;
+      case 'top':
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      case 'bottom':
+      case '$':
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        return;
+      case 'theme':
+        document.body.classList.add('sudo-shake');
+        window.setTimeout(() => document.body.classList.remove('sudo-shake'), 600);
+        return show({ tone: 'ok', text: 'theme: watchtower-dark (only option, sorry)' });
+      case 'sudo':
+        document.body.classList.add('sudo-shake');
+        window.setTimeout(() => document.body.classList.remove('sudo-shake'), 600);
+        return show({ tone: 'error', text: 'permission denied: nice try.' });
+      default:
+        return show({ tone: 'error', text: `E492: Not an editor command: ${raw}` });
+    }
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      const inInput = !!target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+      if (inInput) return;
+
+      if (!open) {
+        if (e.key === ':' || (e.key === ';' && e.shiftKey)) {
+          e.preventDefault();
+          setBuf('');
+          setOpen(true);
+        }
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+        setBuf('');
+        return;
+      }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        run(buf);
+        return;
+      }
+      if (e.key === 'Backspace') {
+        e.preventDefault();
+        setBuf(b => b.slice(0, -1));
+        return;
+      }
+      if (e.key.length === 1) {
+        e.preventDefault();
+        setBuf(b => b + e.key);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      if (resultTimer.current) window.clearTimeout(resultTimer.current);
+    };
+  }, [open, buf]);
+
+  return (
+    <>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.12 }}
+            className="fixed bottom-0 left-0 right-0 z-[70] bg-[#0e0e10] border-t border-[#00d4fd]/40 font-mono text-sm px-4 py-2 text-[#f9f5f8] flex items-center gap-1"
+          >
+            <span className="text-[#00d4fd]">:</span>
+            <span>{buf}</span>
+            <span className="w-2 h-4 bg-[#00d4fd] cursor-blink ml-0.5" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className={`fixed bottom-0 left-0 right-0 z-[69] font-mono text-xs md:text-sm px-4 py-2 ${result.tone === 'error' ? 'bg-[#ff2e63] text-black' : result.tone === 'ok' ? 'bg-[#00d4fd] text-black' : 'bg-[#262528] text-[#f9f5f8] border-t border-[#48474a]/40'}`}
+          >
+            {result.text}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
 function SudoEasterEgg() {
   const [visible, setVisible] = useState(false);
   const bufferRef = useRef('');
@@ -422,6 +580,7 @@ function SudoEasterEgg() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (e.defaultPrevented) return;
       const target = e.target as HTMLElement | null;
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
       if (e.key.length !== 1) return;
@@ -834,6 +993,7 @@ export function About() {
       <TopNav />
       <WIPBadge />
       <SudoEasterEgg />
+      <VimCommandLine />
       <main>
         <Hero />
         <BioTerminal />
