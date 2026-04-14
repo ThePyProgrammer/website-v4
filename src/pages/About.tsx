@@ -131,7 +131,7 @@ function BioTerminal() {
         <div className="p-6 md:p-10 font-mono text-[#00d4fd] text-sm md:text-base leading-relaxed relative z-20 space-y-12">
           <div>
             <Prompt>cat bio.txt</Prompt>
-            <div className="text-[#00d4fd]/90 space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-6">
+            <div className="text-[#adaaad] space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-6">
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I am a recent graduate of the <BioLink href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</BioLink>.
