@@ -15,10 +15,10 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
   const hoverColor = hoverColors[index % 3];
 
   return (
-    <Link to={`/blog/${post.slug}`} className="block">
+    <Link to={`/blog/${post.slug}`} className="block h-full">
       <motion.article
         layoutId={`article-card-${post.slug}`}
-        className="group relative bg-[#131315] p-8 hover:bg-[#1f1f22] transition-colors duration-500 overflow-hidden cursor-pointer"
+        className="group relative bg-[#131315] p-8 hover:bg-[#1f1f22] transition-colors duration-500 overflow-hidden cursor-pointer h-full flex flex-col"
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
       >
         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
@@ -60,7 +60,7 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
           {post.frontmatter.excerpt}
         </motion.p>
 
-        <span className="inline-flex items-center gap-2 text-[#00d4fd] text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
+        <span className="mt-auto inline-flex items-center gap-2 text-[#00d4fd] text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
           INITIATE_READ →
         </span>
       </motion.article>
