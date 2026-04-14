@@ -89,7 +89,15 @@
   color: #f9f5f8;
 }
 
+.blog button,
+.blog a {
+  -webkit-tap-highlight-color: transparent;
+}
 .blog button:focus,
-.blog button:focus-visible {
+.blog button:focus-visible,
+.blog button:active,
+.blog a:focus,
+.blog a:focus-visible,
+.blog a:active {
   outline: none;
 }
