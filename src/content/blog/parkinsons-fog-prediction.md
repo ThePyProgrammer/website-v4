@@ -2,10 +2,11 @@
 title: "A Picture Is Worth A Thousand Steps: Predicting Freezing of Gait in Parkinson's Disease Patients"
 date: "2023-12-09"
 tags: [ai, healthcare, research, computer-vision]
-category: ai
+category: research
 excerpt: "How we went from signal processing to CNNs to predict Freezing of Gait in Parkinson's patients, winning Gold at SSEF (twice.) and 1st Place at ISSF along the way."
 coverImage: "/img/research/parkinsons-nush.jpg"
-splash: false
+splash: true
+splashPosition: "15%"
 ---
 
 ## How it started
