@@ -36,7 +36,7 @@ function TopNav() {
         <Link to="/" className="text-base md:text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase whitespace-nowrap">
           [prannay.dev]
         </Link>
-        <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto">
+        <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto min-w-0">
           <Link to="/" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ home ]</Link>
           <Link to="/blog" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ blog ]</Link>
           <span className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1 px-2 py-1 whitespace-nowrap">[ about ]</span>
@@ -548,7 +548,7 @@ function PageFooter() {
 
 export function About() {
   return (
-    <div className="blog min-h-screen w-full bg-[#0e0e10] text-[#f9f5f8] font-body">
+    <div className="blog min-h-screen w-full bg-[#0e0e10] text-[#f9f5f8] font-body overflow-x-hidden">
       <TopNav />
       <WIPBadge />
       <main>
