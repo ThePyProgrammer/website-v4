@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 const navLinks = [
   { label: 'home', path: '/blog' },
   { label: 'articles', path: '/blog/archives' },
-  { label: 'ai', path: 'https://ai.prannay.dev', external: true },
 ];
 
 export function BlogHeader() {
@@ -16,17 +15,20 @@ export function BlogHeader() {
           [prannay.dev]
         </Link>
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map(({ label, path, external }) => {
-            const isActive = !external && location.pathname === path;
-            const className = `font-headline tracking-tighter uppercase text-sm transition-all duration-300 px-2 py-1 ${
-              isActive
-                ? 'text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1'
-                : 'text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10'
-            }`;
-            return external ? (
-              <a key={path} href={path} className={className}>[ {label} ]</a>
-            ) : (
-              <Link key={path} to={path} className={className}>[ {label} ]</Link>
+          {navLinks.map(({ label, path }) => {
+            const isActive = location.pathname === path;
+            return (
+              <Link
+                key={path}
+                to={path}
+                className={`font-headline tracking-tighter uppercase text-sm transition-all duration-300 px-2 py-1 ${
+                  isActive
+                    ? 'text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1'
+                    : 'text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10'
+                }`}
+              >
+                [ {label} ]
+              </Link>
             );
           })}
         </nav>
