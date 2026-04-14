@@ -453,25 +453,29 @@ function VimCommandLine() {
         return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :q' }, 8000);
       case 'hero':
       case '0':
+      case '00':
         return scrollTo('hero', 'hero');
       case 'bio':
-      case '1':
         return scrollTo('bio-terminal', 'bio');
       case 'experience':
       case 'exp':
-      case '2':
+      case '1':
+      case '01':
         return scrollTo('section-experience', 'experience');
       case 'research':
       case 'res':
-      case '3':
+      case '2':
+      case '02':
         return scrollTo('section-research', 'research');
       case 'projects':
       case 'proj':
-      case '4':
+      case '3':
+      case '03':
         return scrollTo('section-projects', 'projects');
       case 'clubs':
       case 'vol':
-      case '5':
+      case '4':
+      case '04':
         return scrollTo('section-clubs', 'clubs');
       case 'home':
         window.location.href = '/';
