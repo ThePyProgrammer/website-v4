@@ -117,12 +117,12 @@ function TopNav() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[70vh] md:min-h-[85vh] w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       <div className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40" style={{ backgroundImage: 'url(/img/cern.jpg)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10]/50 via-[#0e0e10]/60 to-[#0e0e10]" />
       <ScanlineOverlay className="z-10 opacity-40" />
 
-      <div className="relative z-20 pt-24 pb-16 md:pt-32 md:pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+      <div className="relative z-20 min-h-screen flex flex-col justify-between pt-24 pb-10 md:pt-32 md:pb-12 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex flex-wrap gap-2 items-center mb-6 font-mono text-sm">
             <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
@@ -145,7 +145,7 @@ function Hero() {
           </p>
         </motion.div>
 
-        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} className="mt-16 md:mt-24 flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest">
+        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} className="flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest">
           <ArrowDown className="h-4 w-4" />
           <span>scroll_to_continue</span>
         </motion.div>
