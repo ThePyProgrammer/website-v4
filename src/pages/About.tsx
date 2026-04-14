@@ -67,8 +67,7 @@ function Hero() {
           </div>
 
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.05] mb-6 text-[#f9f5f8]">
-            <span className="text-[#00d4fd] mr-3">[#]</span>MY_NAME_IS<br />
-            <span className="text-[#00d4fd]">PRANNAYA_GUPTA</span>
+            Hey, I'm <span className="text-[#00d4fd]">Prannaya</span>.
           </h1>
 
           <p className="font-headline text-2xl md:text-3xl tracking-tight text-[#adaaad]">
