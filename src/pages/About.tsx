@@ -31,18 +31,18 @@ type Accent = typeof sectionAccent[keyof typeof sectionAccent];
 
 function TopNav() {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 bg-[#0e0e10]/90 backdrop-blur z-50 flex justify-between items-center px-8 border-b border-[#262528]">
-      <div className="flex items-center gap-6">
-        <Link to="/" className="text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase">
+    <header className="fixed top-0 left-0 right-0 h-14 md:h-16 bg-[#0e0e10]/90 backdrop-blur z-50 flex justify-between items-center px-4 md:px-8 border-b border-[#262528]">
+      <div className="flex items-center gap-3 md:gap-6 min-w-0">
+        <Link to="/" className="text-base md:text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase whitespace-nowrap">
           [prannay.dev]
         </Link>
-        <nav className="hidden md:flex items-center gap-6">
-          <Link to="/" className="font-headline tracking-tighter uppercase text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors">[ home ]</Link>
-          <Link to="/blog" className="font-headline tracking-tighter uppercase text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors">[ blog ]</Link>
-          <span className="font-headline tracking-tighter uppercase text-sm text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1 px-2 py-1">[ about ]</span>
+        <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto">
+          <Link to="/" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ home ]</Link>
+          <Link to="/blog" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ blog ]</Link>
+          <span className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1 px-2 py-1 whitespace-nowrap">[ about ]</span>
         </nav>
       </div>
-      <div className="hidden lg:flex items-center bg-[#1f1f22] px-3 py-1 text-[#00d4fd] text-[10px] font-mono">
+      <div className="hidden lg:flex items-center bg-[#1f1f22] px-3 py-1 text-[#00d4fd] text-[10px] font-mono whitespace-nowrap">
         SYS_STATUS: OPTIMAL
       </div>
     </header>
@@ -51,12 +51,12 @@ function TopNav() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[85vh] w-full overflow-hidden">
+    <section className="relative min-h-[70vh] md:min-h-[85vh] w-full overflow-hidden">
       <div className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40" style={{ backgroundImage: 'url(/img/cern.jpg)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10]/50 via-[#0e0e10]/60 to-[#0e0e10]" />
       <ScanlineOverlay className="z-10 opacity-40" />
 
-      <div className="relative z-20 pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
+      <div className="relative z-20 pt-24 pb-16 md:pt-32 md:pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex flex-wrap gap-2 items-center mb-6 font-mono text-sm">
             <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
@@ -79,7 +79,7 @@ function Hero() {
           </p>
         </motion.div>
 
-        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} className="mt-24 flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest">
+        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} className="mt-16 md:mt-24 flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest">
           <ArrowDown className="h-4 w-4" />
           <span>scroll_to_continue</span>
         </motion.div>
@@ -110,27 +110,27 @@ function Prompt({ children }: { children: React.ReactNode }) {
 
 function BioTerminal() {
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-20 max-w-6xl mx-auto">
+    <section className="px-4 md:px-12 lg:px-24 py-12 md:py-20 max-w-6xl mx-auto">
       <div className="bg-black relative border border-[#48474a]/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <ScanlineOverlay className="z-10" />
-        <div className="flex items-center justify-between px-4 py-2 bg-[#262528] border-b border-[#48474a]/20">
-          <div className="flex gap-2">
+        <div className="flex items-center justify-between gap-2 px-3 md:px-4 py-2 bg-[#262528] border-b border-[#48474a]/20">
+          <div className="flex gap-2 shrink-0">
             <div className="w-3 h-3 bg-[#d53d18]" />
             <div className="w-3 h-3 bg-[#00677e]" />
             <div className="w-3 h-3 bg-[#00b8e0]" />
           </div>
-          <div className="text-[#00d4fd]/60 font-headline text-[10px] tracking-widest uppercase">
+          <div className="hidden sm:block text-[#00d4fd]/60 font-headline text-[10px] tracking-widest uppercase truncate">
             USER_SESSION: prannay@watchtower
           </div>
-          <div className="flex gap-3 text-[#00d4fd]/40 text-xs">
+          <div className="flex gap-3 text-[#00d4fd]/40 text-xs shrink-0">
             <span>-</span><span>□</span><span>×</span>
           </div>
         </div>
 
-        <div className="p-6 md:p-10 font-mono text-[#00d4fd] text-sm md:text-base leading-relaxed relative z-20 space-y-12">
+        <div className="p-4 md:p-10 font-mono text-[#00d4fd] text-sm md:text-base leading-relaxed relative z-20 space-y-10 md:space-y-12">
           <div>
             <Prompt>cat bio.txt</Prompt>
-            <div className="text-[#adaaad] space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-6">
+            <div className="text-[#adaaad] space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-4 md:pl-6 text-sm md:text-base">
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I am a recent graduate of the <BioLink href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</BioLink>.
@@ -147,12 +147,12 @@ function BioTerminal() {
 
           <div>
             <Prompt>ls -la ~/links</Prompt>
-            <div className="space-y-2 text-[#00d4fd]/80 text-sm font-mono">
+            <div className="space-y-2 text-[#00d4fd]/80 text-xs md:text-sm font-mono">
               {contactLinks.map(({ href, text, Icon }) => (
-                <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-3 hover:text-[#00d4fd] transition-colors group">
-                  <span className="text-[#00d4fd]/40">drwxr-xr-x</span>
-                  <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd]" />
-                  <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] font-semibold transition-colors">{text}</span>
+                <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-2 md:gap-3 hover:text-[#00d4fd] transition-colors group min-w-0">
+                  <span className="hidden sm:inline text-[#00d4fd]/40 shrink-0">drwxr-xr-x</span>
+                  <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd] shrink-0" />
+                  <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] font-semibold transition-colors break-all">{text}</span>
                 </a>
               ))}
             </div>
@@ -173,12 +173,12 @@ function BioTerminal() {
 
 function SectionHeader({ index, heading, count, accent }: { index: number; heading: string; count: number; accent: Accent }) {
   return (
-    <div className="flex items-baseline gap-4 mb-10">
-      <h2 className="font-headline text-3xl md:text-4xl font-extrabold tracking-tighter text-[#f9f5f8]">
+    <div className="flex items-baseline gap-3 md:gap-4 mb-8 md:mb-10 flex-wrap">
+      <h2 className="font-headline text-2xl md:text-4xl font-extrabold tracking-tighter text-[#f9f5f8] break-all">
         <span className={accent.text}>{String(index).padStart(2, '0')}_</span>{heading}
       </h2>
-      <span className="h-[2px] flex-1 bg-[#262528]" />
-      <span className="font-headline text-xs text-[#767577] uppercase tracking-widest">
+      <span className="hidden sm:block h-[2px] flex-1 bg-[#262528]" />
+      <span className="font-headline text-[10px] md:text-xs text-[#767577] uppercase tracking-widest shrink-0">
         {count} {count === 1 ? 'entry' : 'entries'}
       </span>
     </div>
@@ -516,14 +516,14 @@ function WIPBadge() {
   const [msg] = useState(() => bugs[Math.floor(Math.random() * bugs.length)]);
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[10px] tracking-widest uppercase select-none pointer-events-none">
-      <div className="px-3 py-1.5 flex items-center gap-2 border-b border-[#ffd93d]/30">
-        <span className="w-2 h-2 bg-[#ffd93d] cursor-blink" />
+    <div className="fixed bottom-2 right-2 md:bottom-4 md:right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[9px] md:text-[10px] tracking-widest uppercase select-none pointer-events-none max-w-[calc(100vw-1rem)]">
+      <div className="px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 md:gap-2 border-b border-[#ffd93d]/30 flex-wrap">
+        <span className="w-2 h-2 bg-[#ffd93d] cursor-blink shrink-0" />
         <span className="text-[#ffd93d]">⚠ wip_build</span>
-        <span className="text-[#767577]">//</span>
-        <span className="text-[#adaaad]">v0.0.1-alpha</span>
+        <span className="hidden sm:inline text-[#767577]">//</span>
+        <span className="hidden sm:inline text-[#adaaad]">v0.0.1-alpha</span>
       </div>
-      <div className="px-3 py-1.5 text-[#adaaad]">
+      <div className="px-2 md:px-3 py-1 md:py-1.5 text-[#adaaad]">
         <span className="text-[#ff2e63]">stderr:</span> {msg}
       </div>
     </div>
