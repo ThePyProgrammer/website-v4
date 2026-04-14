@@ -275,7 +275,7 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
             >
               <img src={item.iconUrl} alt="" className="w-10 h-10 rounded-full object-cover bg-[#0e0e10] shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className={`font-headline text-base md:text-lg font-bold tracking-tight truncate ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+                <p className={`font-headline text-base md:text-lg font-bold tracking-tight break-words ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
                   {item.title}
                 </p>
                 <p className="font-headline text-xs text-[#767577] uppercase tracking-widest tabular-nums">[{item.timeline}]</p>
