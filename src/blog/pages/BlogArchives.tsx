@@ -72,7 +72,7 @@ export function BlogArchives() {
           return (
             <section key={key}>
               <div className="flex items-baseline gap-4 mb-8">
-                <h2 className={`font-headline text-4xl font-extrabold tracking-tighter text-[#f9f5f8] ${gi > 0 ? 'opacity-50 hover:opacity-100 transition-opacity' : ''}`}>
+                <h2 className={`font-headline text-4xl font-extrabold tracking-tighter text-[#f9f5f8] ${gi > 0 && groupBy === 'year' ? 'opacity-50 hover:opacity-100 transition-opacity' : ''}`}>
                   <span className={numberColor}>{String(gi + 1).padStart(2, '0')}_</span>{heading}
                 </h2>
                 <span className="h-[2px] flex-1 bg-[#262528]" />
