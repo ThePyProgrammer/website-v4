@@ -6,6 +6,7 @@ category: optimization
 excerpt: "A step-by-step post-mortem of solving MCC 2026 Problem B ("Lost Cursor") with a fleet of AI agents."
 coverImage: "/img/blog/lost-cursor/05.png"
 splash: true
+splashPosition: "-10%"
 ---
 
 
