@@ -361,11 +361,12 @@ function ResearchSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {researchProjects.map(p => {
           const isActive = activeCodename === p.codename;
+          const hideOnMobile = activeCodename !== null && !isActive;
           return (
             <button
               key={p.codename}
               onClick={() => toggle(p.codename)}
-              className="group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors"
+              className={`group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors ${hideOnMobile ? 'hidden md:block' : ''}`}
             >
               <div className="relative h-40 overflow-hidden bg-black">
                 <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
@@ -408,36 +409,50 @@ function ResearchSection() {
                   [ close ] ×
                 </button>
               </div>
-              <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
 
-              {p.awards.length > 0 && (
-                <ul className="space-y-1 mb-4">
-                  {p.awards.map((a, i) => (
-                    <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
-                      [*] <MarkdownInline text={a} />
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className={`grid gap-6 md:gap-8 ${p.imgs.length > 0 ? 'lg:grid-cols-[1fr_minmax(0,280px)]' : ''}`}>
+                <div className="min-w-0">
+                  <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
 
-              {p.links.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.links.map((l, i) => (
-                    <a key={i} href={l.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]">
-                      <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
-                      {l.text}
-                    </a>
-                  ))}
+                  {p.awards.length > 0 && (
+                    <ul className="space-y-1 mb-4">
+                      {p.awards.map((a, i) => (
+                        <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
+                          [*] <MarkdownInline text={a} />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {p.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {p.links.map((l, i) => (
+                        <a key={i} href={l.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]">
+                          <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
+                          {l.text}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+
+                  {researchContent[p.codename] && (
+                    <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
+                      <MarkdownContent content={researchContent[p.codename]} />
+                    </div>
+                  )}
                 </div>
-              )}
 
-              {researchContent[p.codename] && (
-                <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
-                  <MarkdownContent content={researchContent[p.codename]} />
-                </div>
-              )}
-
-              <Gallery images={p.imgs} />
+                {p.imgs.length > 0 && (
+                  <aside>
+                    <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
+                    <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+                      {p.imgs.map(img => (
+                        <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                      ))}
+                    </div>
+                  </aside>
+                )}
+              </div>
             </motion.div>
           );
         })()}
