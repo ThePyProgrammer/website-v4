@@ -60,7 +60,7 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
           {post.frontmatter.excerpt}
         </motion.p>
 
-        <span className="mt-auto inline-flex items-center gap-2 text-[#00d4fd] text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all">
+        <span className={`mt-auto inline-flex items-center gap-2 ${colors.text} text-xs font-bold font-headline tracking-widest uppercase group-hover:gap-4 transition-all`}>
           INITIATE_READ →
         </span>
       </motion.article>
