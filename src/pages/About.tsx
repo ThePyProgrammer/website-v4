@@ -96,8 +96,17 @@ const sectionAccent = {
 type Accent = typeof sectionAccent[keyof typeof sectionAccent];
 
 function TopNav() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 h-14 md:h-16 bg-[#0e0e10]/90 backdrop-blur z-50 flex justify-between items-center px-4 md:px-8 border-b border-[#262528]">
+    <header className={`fixed top-0 left-0 right-0 h-14 md:h-16 z-50 flex justify-between items-center px-4 md:px-8 transition-all duration-300 ${isScrolled ? 'bg-[#0e0e10]/90 backdrop-blur border-b border-[#262528]' : 'bg-transparent border-b border-transparent'}`}>
       <div className="flex items-center gap-3 md:gap-6 min-w-0">
         <Link to="/" className="text-base md:text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase whitespace-nowrap">
           [prannay.dev]
