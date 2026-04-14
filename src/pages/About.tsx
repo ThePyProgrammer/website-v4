@@ -91,7 +91,7 @@ function Hero() {
 
 function BioLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="text-[#00d4fd] hover:text-[#00d2fd] hover:underline decoration-dotted underline-offset-4 transition-colors">
+    <a href={href} target="_blank" rel="noreferrer" className="text-[#00d4fd] hover:text-[#f9f5f8] transition-colors">
       {children}
     </a>
   );
@@ -153,7 +153,7 @@ function BioTerminal() {
                 <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-3 hover:text-[#00d4fd] transition-colors group">
                   <span className="text-[#00d4fd]/40">drwxr-xr-x</span>
                   <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd]" />
-                  <span className="text-[#00d2fd] group-hover:text-[#00d4fd] group-hover:underline decoration-dotted underline-offset-4">{text}</span>
+                  <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] transition-colors">{text}</span>
                 </a>
               ))}
             </div>

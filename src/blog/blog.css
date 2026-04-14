@@ -75,10 +75,7 @@
   transition: color 0.2s;
 }
 .blog .markdown-cyber a:hover {
-  color: #00d2fd;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 3px;
+  color: #f9f5f8;
 }
 .blog .markdown-cyber code {
   background: #262528;
