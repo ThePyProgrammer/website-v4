@@ -274,6 +274,52 @@ function useCollapsed() {
   return { collapsed, toggle: () => setCollapsed(v => !v) };
 }
 
+function SudoEasterEgg() {
+  const [visible, setVisible] = useState(false);
+  const bufferRef = useRef('');
+  const timerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
+      if (e.key.length !== 1) return;
+      bufferRef.current = (bufferRef.current + e.key.toLowerCase()).slice(-4);
+      if (bufferRef.current === 'sudo') {
+        bufferRef.current = '';
+        setVisible(true);
+        document.body.classList.add('sudo-shake');
+        window.setTimeout(() => document.body.classList.remove('sudo-shake'), 600);
+        if (timerRef.current) window.clearTimeout(timerRef.current);
+        timerRef.current = window.setTimeout(() => setVisible(false), 2600);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, y: 12, x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          exit={{ opacity: 0, y: 12, x: '-50%' }}
+          transition={{ duration: 0.2 }}
+          className="fixed bottom-6 left-1/2 z-[60] bg-[#0e0e10] border border-[#ff2e63] shadow-[0_0_30px_rgba(255,46,99,0.35)] px-4 py-3 font-mono text-xs md:text-sm pointer-events-none max-w-[calc(100vw-2rem)] whitespace-nowrap"
+        >
+          <span className="text-[#ff2e63] mr-2">[sudo]</span>
+          <span className="text-[#adaaad]">permission denied:</span>
+          <span className="text-[#f9f5f8] ml-2">nice try.</span>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 type TimelineItem = { key: string; title: string; timeline: string; iconUrl: string };
 
 function TimelineSelector({ items, activeKey, onSelect, accent }: { items: TimelineItem[]; activeKey: string; onSelect: (key: string) => void; accent: Accent }) {
@@ -646,6 +692,7 @@ export function About() {
     <div className="blog min-h-screen w-full bg-[#0e0e10] text-[#f9f5f8] font-body overflow-x-hidden">
       <TopNav />
       <WIPBadge />
+      <SudoEasterEgg />
       <main>
         <Hero />
         <BioTerminal />
