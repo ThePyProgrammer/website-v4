@@ -262,7 +262,7 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
           <li key={item.key}>
             <button
               onClick={() => onSelect(item.key)}
-              className="w-full text-left flex items-center gap-3 p-3 bg-[#131315] transition-colors"
+              className="w-full text-left flex items-center gap-3 p-3 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
               <img src={item.iconUrl} alt="" className="w-10 h-10 object-contain bg-[#0e0e10] p-1 shrink-0" />
               <div className="min-w-0 flex-1">
@@ -365,7 +365,7 @@ function ResearchSection() {
             <button
               key={p.codename}
               onClick={() => toggle(p.codename)}
-              className="group block text-left bg-[#131315] transition-colors"
+              className="group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
               <div className="relative h-40 overflow-hidden bg-black">
                 <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
