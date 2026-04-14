@@ -477,8 +477,8 @@ function ProjectsSection() {
           transition={{ duration: 0.2 }}
           className="bg-[#131315] grid md:grid-cols-2 gap-6 p-6 md:p-8 min-h-[560px] md:min-h-[440px]"
         >
-          <div className="h-48 md:h-full bg-black overflow-hidden">
-            {p.image && <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80" />}
+          <div className="bg-black overflow-hidden self-start w-full">
+            {p.image && <img src={p.image} alt={p.title} className="w-full h-auto object-contain opacity-80" />}
           </div>
           <div className="flex flex-col">
             <div className="flex flex-wrap gap-2 mb-3">
