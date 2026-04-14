@@ -971,19 +971,172 @@ function WIPBadge() {
     'coffee.status: empty',
   ];
   const [msg] = useState(() => bugs[Math.floor(Math.random() * bugs.length)]);
+  const [scanOpen, setScanOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-2 right-2 md:bottom-4 md:right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[9px] md:text-[10px] tracking-widest uppercase select-none pointer-events-none max-w-[calc(100vw-1rem)]">
-      <div className="px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 md:gap-2 border-b border-[#ffd93d]/30 flex-wrap">
-        <span className="w-2 h-2 bg-[#ffd93d] cursor-blink shrink-0" />
-        <span className="text-[#ffd93d]">⚠ wip_build</span>
-        <span className="hidden sm:inline text-[#767577]">//</span>
-        <span className="hidden sm:inline text-[#adaaad]">v0.0.1-alpha</span>
-      </div>
-      <div className="px-2 md:px-3 py-1 md:py-1.5 text-[#adaaad]">
-        <span className="text-[#ff2e63]">stderr:</span> {msg}
-      </div>
-    </div>
+    <>
+      <button
+        onClick={() => setScanOpen(true)}
+        className="fixed bottom-2 right-2 md:bottom-4 md:right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[9px] md:text-[10px] tracking-widest uppercase select-none max-w-[calc(100vw-1rem)] text-left hover:border-[#ffd93d] transition-colors"
+        aria-label="Open security scan"
+      >
+        <div className="px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 md:gap-2 border-b border-[#ffd93d]/30 flex-wrap">
+          <span className="w-2 h-2 bg-[#ffd93d] cursor-blink shrink-0" />
+          <span className="text-[#ffd93d]">⚠ wip_build</span>
+          <span className="hidden sm:inline text-[#767577]">//</span>
+          <span className="hidden sm:inline text-[#adaaad]">v0.0.1-alpha</span>
+        </div>
+        <div className="px-2 md:px-3 py-1 md:py-1.5 text-[#adaaad]">
+          <span className="text-[#ff2e63]">stderr:</span> {msg}
+        </div>
+      </button>
+      <AnimatePresence>{scanOpen && <VirusScanModal onClose={() => setScanOpen(false)} />}</AnimatePresence>
+    </>
+  );
+}
+
+const SCAN_STEPS = [
+  'init antivirus.db ............ OK',
+  'loading heuristic engine ..... OK',
+  'scanning /home/prannay ........',
+  '  ↳ bio.txt .................. clean',
+  '  ↳ ~/links .................. clean',
+  '  ↳ resume.pdf ............... mildly boastful, ignored',
+  '  ↳ prannay.exe .............. !! FLAGGED',
+  'deep inspection: prannay.exe ..',
+  '  sig_match: TOO_COOL.v1',
+  '  sig_match: OVERACHIEVER.v3',
+  '  sig_match: TRIES_HARD.v7',
+];
+
+type ScanPhase = 'scanning' | 'found' | 'quarantining' | 'failed';
+
+function VirusScanModal({ onClose }: { onClose: () => void }) {
+  const [phase, setPhase] = useState<ScanPhase>('scanning');
+  const [progress, setProgress] = useState(0);
+  const [lines, setLines] = useState<string[]>([]);
+  const [qProgress, setQProgress] = useState(0);
+
+  useEffect(() => {
+    if (phase !== 'scanning') return;
+    if (lines.length >= SCAN_STEPS.length) {
+      const t = window.setTimeout(() => setPhase('found'), 400);
+      return () => window.clearTimeout(t);
+    }
+    const delay = 200 + Math.random() * 220;
+    const t = window.setTimeout(() => {
+      setLines(l => [...l, SCAN_STEPS[l.length]]);
+      setProgress(Math.floor(((lines.length + 1) / SCAN_STEPS.length) * 100));
+    }, delay);
+    return () => window.clearTimeout(t);
+  }, [phase, lines]);
+
+  useEffect(() => {
+    if (phase !== 'quarantining') return;
+    if (qProgress >= 99) {
+      const t = window.setTimeout(() => setPhase('failed'), 600);
+      return () => window.clearTimeout(t);
+    }
+    const t = window.setTimeout(() => setQProgress(p => Math.min(99, p + Math.ceil(Math.random() * 6))), 90);
+    return () => window.clearTimeout(t);
+  }, [phase, qProgress]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+      className="fixed inset-0 z-[80] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.96, y: 10 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.96, y: 10 }}
+        transition={{ duration: 0.15 }}
+        onClick={e => e.stopPropagation()}
+        className="w-full max-w-xl bg-[#0e0e10] border border-[#ffd93d]/60 shadow-[0_0_60px_rgba(255,217,61,0.2)] font-mono text-xs md:text-sm"
+      >
+        <div className="flex items-center justify-between px-4 py-2 bg-[#262528] border-b border-[#ffd93d]/30">
+          <span className="font-headline text-[10px] md:text-xs uppercase tracking-widest text-[#ffd93d]">watchtower // security scan</span>
+          <button onClick={onClose} className="text-[#adaaad] hover:text-[#f9f5f8] text-xs">×</button>
+        </div>
+
+        <div className="p-4 md:p-6 space-y-3 text-[#adaaad]">
+          {phase === 'scanning' && (
+            <>
+              <div className="flex items-center gap-2 text-[#ffd93d]">
+                <span className="w-2 h-2 bg-[#ffd93d] cursor-blink" />
+                <span className="uppercase tracking-widest text-[10px] md:text-xs">scanning…</span>
+                <span className="ml-auto tabular-nums">{progress}%</span>
+              </div>
+              <div className="h-1 bg-[#262528] overflow-hidden">
+                <div className="h-full bg-[#ffd93d] transition-all" style={{ width: `${progress}%` }} />
+              </div>
+              <div className="h-40 md:h-48 overflow-auto space-y-0.5 text-[11px] leading-relaxed">
+                {lines.map((l, i) => (
+                  <div key={i} className={l.includes('FLAGGED') ? 'text-[#ff2e63]' : l.includes('sig_match') ? 'text-[#ff2e63]/80' : ''}>
+                    {l}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {phase === 'found' && (
+            <>
+              <div className="text-[#ff2e63] font-bold uppercase tracking-widest text-xs md:text-sm">⚠ 1 threat detected</div>
+              <div className="bg-[#131315] border border-[#ff2e63]/40 p-3 space-y-1">
+                <div className="flex justify-between gap-3">
+                  <span className="text-[#f9f5f8]">prannay.exe</span>
+                  <span className="text-[#ff2e63] text-[10px]">severity: critical</span>
+                </div>
+                <div className="text-[11px] text-[#adaaad]">classification: <span className="text-[#ff2e63]">too_cool.v1</span></div>
+                <div className="text-[11px] text-[#adaaad]">location: <span className="text-[#f9f5f8]">/home/prannay/portfolio</span></div>
+                <div className="text-[11px] text-[#adaaad] italic">"exhibits unusually high output and caffeine tolerance"</div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-2 pt-2">
+                <button onClick={() => { setPhase('quarantining'); setQProgress(0); }} className="flex-1 bg-[#ff2e63] text-black font-headline uppercase tracking-widest text-[10px] md:text-xs px-4 py-2 hover:brightness-110 transition">
+                  [ quarantine ]
+                </button>
+                <button onClick={onClose} className="flex-1 bg-[#262528] text-[#adaaad] font-headline uppercase tracking-widest text-[10px] md:text-xs px-4 py-2 hover:text-[#f9f5f8] transition">
+                  [ ignore ]
+                </button>
+              </div>
+            </>
+          )}
+
+          {phase === 'quarantining' && (
+            <>
+              <div className="flex items-center gap-2 text-[#ff2e63]">
+                <span className="w-2 h-2 bg-[#ff2e63] cursor-blink" />
+                <span className="uppercase tracking-widest text-[10px] md:text-xs">quarantining prannay.exe…</span>
+                <span className="ml-auto tabular-nums">{qProgress}%</span>
+              </div>
+              <div className="h-1 bg-[#262528] overflow-hidden">
+                <div className="h-full bg-[#ff2e63] transition-all" style={{ width: `${qProgress}%` }} />
+              </div>
+              <div className="text-[11px] text-[#adaaad]">isolating signatures… re-encrypting blobs…</div>
+            </>
+          )}
+
+          {phase === 'failed' && (
+            <>
+              <div className="text-[#ff2e63] font-bold uppercase tracking-widest text-xs md:text-sm">✕ quarantine failed</div>
+              <div className="bg-[#131315] border border-[#ff2e63]/40 p-3 text-[11px] space-y-1">
+                <div className="text-[#f9f5f8]">ERR_RESTORE_FAILED: he's back.</div>
+                <div className="text-[#adaaad]">process prannay.exe respawned at PID 1337</div>
+                <div className="text-[#adaaad]">suggested action: <span className="text-[#ffd93d]">hire him instead</span></div>
+              </div>
+              <button onClick={onClose} className="w-full bg-[#ffd93d] text-black font-headline uppercase tracking-widest text-[10px] md:text-xs px-4 py-2 hover:brightness-110 transition">
+                [ dismiss ]
+              </button>
+            </>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
