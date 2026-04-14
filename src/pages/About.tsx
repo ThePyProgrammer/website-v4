@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
@@ -13,12 +13,77 @@ import { ScanlineOverlay } from '@/blog/components/ScanlineOverlay';
 import '@/blog/blog.css';
 
 const contactLinks = [
-  { href: 'mailto:prannayagupta@programmer.net', text: 'prannayagupta@programmer.net', Icon: Mail },
-  { href: 'https://github.com/ThePyProgrammer', text: 'github.com/ThePyProgrammer', Icon: Github },
-  { href: 'https://www.linkedin.com/in/prannaya-gupta', text: 'linkedin.com/in/prannaya-gupta', Icon: Linkedin },
-  { href: 'https://x.com/PrannayaG', text: 'x.com/PrannayaG', Icon: Twitter },
-  { href: '/cv.pdf', text: 'My Resume', Icon: FileText },
+  { href: 'mailto:prannayagupta@programmer.net', text: 'prannayagupta@programmer.net', Icon: Mail, label: 'email' },
+  { href: 'https://github.com/ThePyProgrammer', text: 'github.com/ThePyProgrammer', Icon: Github, label: 'github' },
+  { href: 'https://www.linkedin.com/in/prannaya-gupta', text: 'linkedin.com/in/prannaya-gupta', Icon: Linkedin, label: 'linkedin' },
+  { href: 'https://x.com/PrannayaG', text: 'x.com/PrannayaG', Icon: Twitter, label: 'twitter' },
+  { href: '/cv.pdf', text: 'My Resume', Icon: FileText, label: 'resume' },
 ];
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*<>?/';
+const IDLE_TEXT = 'drwxr-xr-x';
+
+function ScrambleLabel({ target }: { target: string }) {
+  const [display, setDisplay] = useState(IDLE_TEXT);
+  const frameRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+
+  const clear = () => {
+    if (frameRef.current !== null) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  useEffect(() => () => clear(), []);
+
+  const scrambleTo = (finalText: string) => {
+    clear();
+    const maxLen = Math.max(finalText.length, IDLE_TEXT.length);
+    const totalSteps = 18;
+    let step = 0;
+
+    const tick = () => {
+      step += 1;
+      const revealCount = Math.floor((step / totalSteps) * finalText.length);
+      let out = '';
+      for (let i = 0; i < maxLen; i += 1) {
+        if (i < revealCount && i < finalText.length) {
+          out += finalText[i];
+        } else if (i < finalText.length) {
+          out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        }
+      }
+      setDisplay(out);
+      if (step < totalSteps) {
+        timeoutRef.current = window.setTimeout(() => {
+          frameRef.current = requestAnimationFrame(tick);
+        }, 30);
+      } else {
+        setDisplay(finalText);
+      }
+    };
+
+    frameRef.current = requestAnimationFrame(tick);
+  };
+
+  return (
+    <span
+      className="hidden sm:inline text-[#00d4fd]/40 shrink-0 tabular-nums"
+      onMouseEnter={() => scrambleTo(target)}
+      onMouseLeave={() => {
+        clear();
+        setDisplay(IDLE_TEXT);
+      }}
+    >
+      {display}
+    </span>
+  );
+}
 
 const sectionAccent = {
   experience: { hex: '#00d4fd', text: 'text-[#00d4fd]', bg: 'bg-[#00d4fd]/15' },
@@ -148,9 +213,9 @@ function BioTerminal() {
           <div>
             <Prompt>ls -la ~/links</Prompt>
             <div className="space-y-2 text-[#00d4fd]/80 text-xs md:text-sm font-mono">
-              {contactLinks.map(({ href, text, Icon }) => (
+              {contactLinks.map(({ href, text, Icon, label }) => (
                 <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-2 md:gap-3 hover:text-[#00d4fd] transition-colors group min-w-0">
-                  <span className="hidden sm:inline text-[#00d4fd]/40 shrink-0">drwxr-xr-x</span>
+                  <ScrambleLabel target={label} />
                   <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd] shrink-0" />
                   <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] font-semibold transition-colors break-all">{text}</span>
                 </a>
