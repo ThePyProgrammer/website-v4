@@ -109,13 +109,12 @@ function TopNav() {
   return (
     <header className={`fixed top-0 left-0 right-0 h-14 md:h-16 z-50 flex justify-between items-center px-4 md:px-8 transition-all duration-300 ${isScrolled ? 'bg-[#0e0e10]/90 backdrop-blur border-b border-[#262528]' : 'bg-transparent border-b border-transparent'}`}>
       <div className="flex items-center gap-3 md:gap-6 min-w-0">
-        <Link to="/" className="text-base md:text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase whitespace-nowrap">
+        <Link to="/" className="text-base md:text-xl font-extrabold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase whitespace-nowrap underline underline-offset-4 decoration-2">
           [prannay.dev]
         </Link>
         <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto min-w-0">
-          <Link to="/" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ home ]</Link>
           <Link to="/blog" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ blog ]</Link>
-          <span className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd] border-b-2 border-[#00d4fd] pb-1 px-2 py-1 whitespace-nowrap">[ about ]</span>
+          <a href="https://ai.prannay.dev" className="font-headline tracking-tighter uppercase text-xs md:text-sm text-[#00d4fd]/60 hover:text-[#00d4fd] hover:bg-[#00d4fd]/10 px-2 py-1 transition-colors whitespace-nowrap">[ ai ]</a>
         </nav>
       </div>
       <div className="hidden lg:flex items-center bg-[#1f1f22] px-3 py-1 text-[#00d4fd] text-[10px] font-mono whitespace-nowrap">
