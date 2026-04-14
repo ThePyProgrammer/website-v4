@@ -196,12 +196,9 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
           <li key={item.key}>
             <button
               onClick={() => onSelect(item.key)}
-              className={`w-full text-left flex items-center gap-3 p-3 bg-[#131315] border-l-2 transition-colors ${
-                isActive
-                  ? `border-[color:var(--accent)] ${accent.bg}`
-                  : 'border-transparent hover:bg-[#1f1f22] hover:border-[#262528]'
+              className={`w-full text-left flex items-center gap-3 p-3 transition-colors ${
+                isActive ? accent.bg : 'bg-[#131315] hover:bg-[#1f1f22]'
               }`}
-              style={{ ['--accent' as string]: accent.hex }}
             >
               <img src={item.iconUrl} alt="" className="w-10 h-10 object-contain bg-[#0e0e10] p-1 shrink-0" />
               <div className="min-w-0 flex-1">
@@ -254,8 +251,7 @@ function ExperienceSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#131315] p-6 md:p-8 border-l-2 border-[color:var(--accent)]"
-            style={{ ['--accent' as string]: accent.hex }}
+            className="bg-[#131315] p-6 md:p-8"
           >
             <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text} mb-1`}>
               {active.title}
@@ -305,10 +301,9 @@ function ResearchSection() {
             <button
               key={p.codename}
               onClick={() => toggle(p.codename)}
-              className={`group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors border-l-2 ${
-                isActive ? 'border-[color:var(--accent)]' : 'border-transparent hover:border-[#262528]'
+              className={`group block text-left transition-colors ${
+                isActive ? accent.bg : 'bg-[#131315] hover:bg-[#1f1f22]'
               }`}
-              style={{ ['--accent' as string]: accent.hex }}
             >
               <div className="relative h-40 overflow-hidden bg-black">
                 <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
@@ -341,8 +336,7 @@ function ResearchSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="mt-8 bg-[#131315] border-l-2 border-[color:var(--accent)] p-6 md:p-8"
-              style={{ ['--accent' as string]: accent.hex }}
+              className="mt-8 bg-[#131315] p-6 md:p-8"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <h3 className="font-headline text-xl md:text-2xl font-bold tracking-tight text-[#f9f5f8]">
@@ -419,8 +413,7 @@ function ProjectsSection() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.2 }}
-          className="bg-[#131315] border-l-2 border-[color:var(--accent)] grid md:grid-cols-2 gap-6 p-6 md:p-8"
-          style={{ ['--accent' as string]: accent.hex }}
+          className="bg-[#131315] grid md:grid-cols-2 gap-6 p-6 md:p-8"
         >
           <div className="h-48 md:h-full bg-black overflow-hidden">
             {p.image && <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80" />}
@@ -483,8 +476,7 @@ function ClubsSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#131315] p-6 md:p-8 border-l-2 border-[color:var(--accent)]"
-            style={{ ['--accent' as string]: accent.hex }}
+            className="bg-[#131315] p-6 md:p-8"
           >
             <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text} mb-1`}>
               {active.title}
