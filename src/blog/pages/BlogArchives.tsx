@@ -61,7 +61,8 @@ export function BlogArchives() {
                   <Link
                     key={post.slug}
                     to={`/blog/${post.slug}`}
-                    className="group flex items-center justify-between p-4 bg-[#131315] hover:bg-[#262528] transition-colors cursor-pointer border-l-2 border-transparent hover:border-[#00d2fd]"
+                    className="group flex items-center justify-between p-4 bg-[#131315] hover:bg-[#262528] transition-[background-color,border-color] cursor-pointer border-l-2 border-transparent hover:border-[color:var(--accent)]"
+                    style={{ ['--accent' as string]: colors.hex }}
                   >
                     <div className="flex items-center gap-6 min-w-0 flex-1">
                       <span className="font-headline text-xs text-[#767577] tabular-nums shrink-0 w-28">[{post.frontmatter.date}]</span>
