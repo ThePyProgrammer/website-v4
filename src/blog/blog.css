@@ -88,3 +88,11 @@
 .blog .markdown-cyber strong {
   color: #f9f5f8;
 }
+
+.blog button:focus {
+  outline: none;
+}
+.blog button:focus-visible {
+  outline: 1px solid rgba(0, 212, 253, 0.5);
+  outline-offset: 2px;
+}
