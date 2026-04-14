@@ -37,13 +37,14 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  max-width: 100%;
+  width: 100%;
 }
 body {
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+#root {
+  width: 100%;
 }
 
 h1 {
