@@ -62,7 +62,7 @@ export function BlogArchives() {
                 >
                   <div className="flex items-center gap-6 min-w-0 flex-1">
                     <span className="font-headline text-xs text-[#767577] tabular-nums shrink-0 w-28">[{post.frontmatter.date}]</span>
-                    <h3 className="font-headline text-lg font-medium text-[#f9f5f8] group-hover:text-[#00d4fd] transition-colors uppercase tracking-tight min-w-0 truncate">
+                    <h3 className="font-headline text-lg font-medium text-[#f9f5f8] group-hover:text-[#00d4fd] transition-colors uppercase tracking-tight min-w-0">
                       {renderTitle(post.frontmatter.title)}
                     </h3>
                   </div>
