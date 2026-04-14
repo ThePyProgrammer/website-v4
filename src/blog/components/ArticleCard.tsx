@@ -3,17 +3,16 @@ import { motion } from 'framer-motion';
 import { BlogPost } from '@/types/blog';
 import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
 
-const categoryColors: Record<string, { text: string; bg: string }> = {
-  'ai': { text: 'text-[#00d4fd]', bg: 'bg-[#00b8e0]/20' },
-  'web-dev': { text: 'text-[#00d2fd]', bg: 'bg-[#00677e]/20' },
-  'rust': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20' },
-  'security': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20' },
+const categoryColors: Record<string, { text: string; bg: string; hover: string }> = {
+  'ai': { text: 'text-[#00d4fd]', bg: 'bg-[#00b8e0]/20', hover: 'hover:text-[#00d4fd]' },
+  'web-dev': { text: 'text-[#00d2fd]', bg: 'bg-[#00677e]/20', hover: 'hover:text-[#00d2fd]' },
+  'rust': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20', hover: 'hover:text-[#ff58e7]' },
+  'security': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20', hover: 'hover:text-[#ff58e7]' },
+  'optimization': { text: 'text-[#ffd93d]', bg: 'bg-[#f5c518]/20', hover: 'hover:text-[#ffd93d]' },
 };
 
 export function ArticleCard({ post, index }: { post: BlogPost; index: number }) {
-  const colors = categoryColors[post.frontmatter.category] ?? { text: 'text-[#00d4fd]', bg: 'bg-[#00d4fd]/20' };
-  const hoverColors = ['hover:text-[#00d4fd]', 'hover:text-[#00d2fd]', 'hover:text-[#ff58e7]'];
-  const hoverColor = hoverColors[index % 3];
+  const colors = categoryColors[post.frontmatter.category] ?? { text: 'text-[#00d4fd]', bg: 'bg-[#00d4fd]/20', hover: 'hover:text-[#00d4fd]' };
 
   return (
     <Link to={`/blog/${post.slug}`} className="block h-full">
@@ -49,7 +48,7 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
 
         <motion.h3
           layoutId={`article-title-${post.slug}`}
-          className={`font-headline text-xl font-bold mb-4 ${hoverColor} transition-colors leading-tight`}
+          className={`font-headline text-xl font-bold mb-4 ${colors.hover} transition-colors leading-tight`}
         >
           {renderTitle(post.frontmatter.title)}
         </motion.h3>
