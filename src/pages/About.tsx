@@ -10,6 +10,7 @@ import { clubExperience } from '@/data/clubs';
 import { experienceContent, researchContent, clubsContent } from '@/content';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { ScanlineOverlay } from '@/blog/components/ScanlineOverlay';
+import { BlogFooter } from '@/blog/BlogFooter';
 import '@/blog/blog.css';
 
 const contactLinks = [
@@ -640,22 +641,6 @@ function WIPBadge() {
   );
 }
 
-function PageFooter() {
-  return (
-    <footer className="px-6 md:px-12 lg:px-24 py-12 max-w-6xl mx-auto border-t border-[#262528] mt-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest">
-          END_OF_FILE // prannaya_gupta.about
-        </p>
-        <div className="flex gap-4">
-          <Link to="/" className="font-headline text-xs text-[#00d4fd]/60 hover:text-[#00d4fd] uppercase tracking-widest">[ home ]</Link>
-          <Link to="/blog" className="font-headline text-xs text-[#00d4fd]/60 hover:text-[#00d4fd] uppercase tracking-widest">[ blog ]</Link>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export function About() {
   return (
     <div className="blog min-h-screen w-full bg-[#0e0e10] text-[#f9f5f8] font-body overflow-x-hidden">
@@ -668,7 +653,7 @@ export function About() {
         <ResearchSection />
         <ProjectsSection />
         <ClubsSection />
-        <PageFooter />
+        <BlogFooter />
       </main>
     </div>
   );
