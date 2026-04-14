@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { blogPosts } from '@/content/blog';
 import { SearchBar } from '../components/SearchBar';
+import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
 
 export function BlogArchives() {
   const [query, setQuery] = useState('');
@@ -10,7 +11,7 @@ export function BlogArchives() {
 
   const filtered = blogPosts.filter(p => {
     const matchesQuery = !query ||
-      p.frontmatter.title.toLowerCase().includes(query.toLowerCase()) ||
+      stripTitleMarkup(p.frontmatter.title).toLowerCase().includes(query.toLowerCase()) ||
       p.frontmatter.tags.some(t => t.toLowerCase().includes(query.toLowerCase()));
     const matchesCategory = !categoryFilter || p.frontmatter.category === categoryFilter;
     return matchesQuery && matchesCategory;
@@ -62,7 +63,7 @@ export function BlogArchives() {
                   <div className="flex items-center gap-6">
                     <span className="font-headline text-xs text-[#767577] tabular-nums">[{post.frontmatter.date}]</span>
                     <h3 className="font-headline text-lg font-medium text-[#f9f5f8] group-hover:text-[#00d4fd] transition-colors uppercase tracking-tight">
-                      {post.frontmatter.title}
+                      {renderTitle(post.frontmatter.title)}
                     </h3>
                   </div>
                   <div className="hidden md:flex items-center gap-3">

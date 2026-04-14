@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BlogPost } from '@/types/blog';
+import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
 
 const categoryColors: Record<string, { text: string; bg: string }> = {
   'ai': { text: 'text-[#00d4fd]', bg: 'bg-[#00b8e0]/20' },
@@ -31,7 +32,7 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
           <motion.div layoutId={`article-image-${post.slug}`} className="mb-6 relative h-48 bg-black overflow-hidden">
             <img
               src={post.frontmatter.coverImage}
-              alt={post.frontmatter.title}
+              alt={stripTitleMarkup(post.frontmatter.title)}
               className="w-full h-full object-cover transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-110"
             />
           </motion.div>
@@ -50,7 +51,7 @@ export function ArticleCard({ post, index }: { post: BlogPost; index: number }) 
           layoutId={`article-title-${post.slug}`}
           className={`font-headline text-xl font-bold mb-4 ${hoverColor} transition-colors leading-tight`}
         >
-          {post.frontmatter.title}
+          {renderTitle(post.frontmatter.title)}
         </motion.h3>
 
         <motion.p

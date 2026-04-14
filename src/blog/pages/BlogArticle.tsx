@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { getBlogPost } from '@/content/blog';
 import { ArticleRenderer } from '../components/ArticleRenderer';
 import { ArticleSidebar } from '../components/ArticleSidebar';
+import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
 
 export function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
@@ -41,7 +42,7 @@ export function BlogArticle() {
         >
           <img
             src={post.frontmatter.coverImage}
-            alt={post.frontmatter.title}
+            alt={stripTitleMarkup(post.frontmatter.title)}
             className="w-full h-full object-cover object-center opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e10]" />
@@ -66,7 +67,7 @@ export function BlogArticle() {
                 className="font-headline text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-6"
               >
                 <span className="text-[#00d4fd] mr-4">[#]</span>
-                {post.frontmatter.title.toUpperCase()}
+                {renderTitle(post.frontmatter.title, (s) => s.toUpperCase())}
               </motion.h1>
               <motion.p
                 layoutId={`article-excerpt-${post.slug}`}
