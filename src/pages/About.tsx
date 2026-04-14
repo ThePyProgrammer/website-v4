@@ -4,11 +4,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
 import { ArrowDown, ChevronLeft, ChevronRight, ExternalLink, FileText, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { workExperience } from '@/data/experience';
-import type { Recommendation } from '@/types/work';
 import { researchProjects } from '@/data/research';
 import { projects } from '@/data/projects';
 import { clubExperience } from '@/data/clubs';
-import { experienceContent, researchContent, clubsContent, reccsContent } from '@/content';
+import { experienceContent, researchContent, clubsContent } from '@/content';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { ScanlineOverlay } from '@/blog/components/ScanlineOverlay';
 import '@/blog/blog.css';
@@ -92,7 +91,7 @@ function Hero() {
 
 function BioLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="text-[#00d4fd] hover:text-[#f9f5f8] font-bold transition-colors">
+    <a href={href} target="_blank" rel="noreferrer" className="text-[#00d4fd] hover:text-[#f9f5f8] font-semibold transition-colors">
       {children}
     </a>
   );
@@ -154,7 +153,7 @@ function BioTerminal() {
                 <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-3 hover:text-[#00d4fd] transition-colors group">
                   <span className="text-[#00d4fd]/40">drwxr-xr-x</span>
                   <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd]" />
-                  <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] font-bold transition-colors">{text}</span>
+                  <span className="text-[#00d2fd] group-hover:text-[#f9f5f8] font-semibold transition-colors">{text}</span>
                 </a>
               ))}
             </div>
@@ -220,36 +219,6 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
   );
 }
 
-function RecCard({ rec, accent }: { rec: Recommendation; accent: Accent }) {
-  const [expanded, setExpanded] = useState(false);
-  return (
-    <div className="bg-[#0e0e10] border border-[#262528] p-4">
-      <div className="flex items-start gap-3 mb-3">
-        <img src={rec.avatarUrl} alt={rec.name} className="w-12 h-12 object-cover rounded-full" />
-        <div className="flex-1 min-w-0">
-          <a href={rec.link} target="_blank" rel="noreferrer" className={`font-headline font-bold text-sm ${accent.text} hover:text-[#f9f5f8] transition-colors block`}>
-            {rec.name}
-          </a>
-          <p className="text-[10px] text-[#767577] uppercase font-headline tracking-widest">{rec.relationship} // {rec.role}</p>
-          <p className="text-[10px] text-[#adaaad] font-mono mt-1">{rec.currentJob}</p>
-        </div>
-      </div>
-      <div className={`relative text-[13px] text-[#adaaad] leading-relaxed italic markdown-cyber ${expanded ? '' : 'max-h-20 overflow-hidden'}`}>
-        <MarkdownContent content={reccsContent[rec.slug] ?? ''} />
-        {!expanded && (
-          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#0e0e10] to-transparent pointer-events-none" />
-        )}
-      </div>
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className={`mt-3 font-headline text-[10px] uppercase tracking-widest ${accent.text} hover:text-[#f9f5f8] transition-colors`}
-      >
-        {expanded ? '[ collapse ] ▲' : '[ read_more ] ▼'}
-      </button>
-    </div>
-  );
-}
-
 function Gallery({ images }: { images: string[] }) {
   if (images.length === 0) return null;
   return (
@@ -299,17 +268,6 @@ function ExperienceSection() {
             </div>
 
             <Gallery images={active.images} />
-
-            {active.reccs.length > 0 && (
-              <div className="mt-8">
-                <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// recommendations</h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {active.reccs.map(r => (
-                    <RecCard key={r.slug} rec={r} accent={accent} />
-                  ))}
-                </div>
-              </div>
-            )}
           </motion.div>
         </AnimatePresence>
       </div>
