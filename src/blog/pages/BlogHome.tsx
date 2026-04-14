@@ -3,7 +3,7 @@ import { ArticleCard } from '../components/ArticleCard';
 
 export function BlogHome() {
   return (
-    <div className="max-w-7xl mx-auto w-full">
+    <div className="max-w-5xl mx-auto w-full">
       {/* Hero */}
       <section className="px-6 md:px-12 pt-16 pb-12 max-w-4xl">
         <span className="font-headline text-[#00d4fd] text-xs mb-4 block tracking-widest uppercase">// welcome</span>

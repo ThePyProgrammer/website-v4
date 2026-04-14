@@ -5,6 +5,7 @@ import { getBlogPost } from '@/content/blog';
 import { ArticleRenderer } from '../components/ArticleRenderer';
 import { ArticleSidebar } from '../components/ArticleSidebar';
 import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
+import { BlogSidebar } from '../BlogSidebar';
 
 function resolveSplashPosition(value?: string): string {
   if (!value) return '50%';
@@ -42,11 +43,13 @@ export function BlogArticle() {
   }
 
   return (
-    <motion.div
-      layoutId={`article-card-${post.slug}`}
-      className="min-h-screen bg-[#0e0e10] lg:pl-64"
-      transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-    >
+    <>
+      <BlogSidebar />
+      <motion.div
+        layoutId={`article-card-${post.slug}`}
+        className="min-h-screen bg-[#0e0e10] lg:pl-64"
+        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+      >
       {/* Splash Image */}
       {post.frontmatter.splash && post.frontmatter.coverImage && (
         <motion.div
@@ -122,6 +125,7 @@ export function BlogArticle() {
           <ArticleSidebar content={post.content} />
         </div>
       </main>
-    </motion.div>
+      </motion.div>
+    </>
   );
 }
