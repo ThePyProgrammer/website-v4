@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ReactTyped } from 'react-typed';
-import { ArrowDown, FileText, Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { ArrowDown, ChevronLeft, ChevronRight, ExternalLink, FileText, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { workExperience } from '@/data/experience';
 import { researchProjects } from '@/data/research';
 import { projects } from '@/data/projects';
@@ -51,19 +52,12 @@ function TopNav() {
 function Hero() {
   return (
     <section className="relative min-h-[85vh] w-full overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40"
-        style={{ backgroundImage: 'url(/img/cern.jpg)' }}
-      />
+      <div className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40" style={{ backgroundImage: 'url(/img/cern.jpg)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10]/50 via-[#0e0e10]/60 to-[#0e0e10]" />
       <ScanlineOverlay className="z-10 opacity-40" />
 
       <div className="relative z-20 pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex flex-wrap gap-2 items-center mb-6 font-mono text-sm">
             <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
             <span className="text-[#adaaad]">:</span>
@@ -80,23 +74,13 @@ function Hero() {
           <p className="font-headline text-2xl md:text-3xl tracking-tight text-[#adaaad]">
             <span className="text-[#ff58e7]">{'>'}</span> I'm a{' '}
             <span className="text-[#f9f5f8]">
-              <ReactTyped
-                strings={['Student', 'Developer', 'Engineer', 'Researcher']}
-                typeSpeed={100}
-                backSpeed={50}
-                backDelay={2000}
-                loop
-              />
+              <ReactTyped strings={['Student', 'Developer', 'Engineer', 'Researcher']} typeSpeed={100} backSpeed={50} backDelay={2000} loop />
             </span>
             <span className="cursor-blink inline-block w-2 h-6 md:h-8 bg-[#00d4fd] ml-1 align-middle" />
           </p>
         </motion.div>
 
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }}
-          className="mt-24 flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest"
-        >
+        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }} className="mt-24 flex items-center gap-2 text-[#00d4fd]/60 font-headline text-xs uppercase tracking-widest">
           <ArrowDown className="h-4 w-4" />
           <span>scroll_to_continue</span>
         </motion.div>
@@ -105,12 +89,31 @@ function Hero() {
   );
 }
 
+function BioLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className="text-[#00d4fd] hover:text-[#00d2fd] underline decoration-dotted underline-offset-4 transition-colors">
+      {children}
+    </a>
+  );
+}
+
+function Prompt({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex flex-wrap gap-2 items-center mb-6 font-mono">
+      <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
+      <span className="text-[#adaaad]">:</span>
+      <span className="text-[#ff58e7]">~</span>
+      <span className="text-[#adaaad]">$</span>
+      <span className="text-[#f9f5f8]">{children}</span>
+    </div>
+  );
+}
+
 function BioTerminal() {
   return (
     <section className="px-6 md:px-12 lg:px-24 py-20 max-w-6xl mx-auto">
       <div className="bg-black relative border border-[#48474a]/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <ScanlineOverlay className="z-10" />
-
         <div className="flex items-center justify-between px-4 py-2 bg-[#262528] border-b border-[#48474a]/20">
           <div className="flex gap-2">
             <div className="w-3 h-3 bg-[#d53d18]" />
@@ -147,13 +150,7 @@ function BioTerminal() {
             <Prompt>ls -la ~/links</Prompt>
             <div className="space-y-2 text-[#00d4fd]/80 text-sm font-mono">
               {contactLinks.map(({ href, text, Icon }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target={href.startsWith('http') ? '_blank' : undefined}
-                  rel="noreferrer"
-                  className="flex items-center gap-3 hover:text-[#00d4fd] transition-colors group"
-                >
+                <a key={href} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-3 hover:text-[#00d4fd] transition-colors group">
                   <span className="text-[#00d4fd]/40">drwxr-xr-x</span>
                   <Icon className="h-4 w-4 text-[#00d2fd] group-hover:text-[#00d4fd]" />
                   <span className="text-[#00d2fd] group-hover:text-[#00d4fd] underline decoration-dotted underline-offset-4">{text}</span>
@@ -175,26 +172,6 @@ function BioTerminal() {
   );
 }
 
-function BioLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a href={href} target="_blank" rel="noreferrer" className="text-[#ff58e7] hover:text-[#00d4fd] underline decoration-dotted underline-offset-4 transition-colors">
-      {children}
-    </a>
-  );
-}
-
-function Prompt({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex flex-wrap gap-2 items-center mb-6 font-mono">
-      <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
-      <span className="text-[#adaaad]">:</span>
-      <span className="text-[#ff58e7]">~</span>
-      <span className="text-[#adaaad]">$</span>
-      <span className="text-[#f9f5f8]">{children}</span>
-    </div>
-  );
-}
-
 function SectionHeader({ index, heading, count, accent }: { index: number; heading: string; count: number; accent: Accent }) {
   return (
     <div className="flex items-baseline gap-4 mb-10">
@@ -209,48 +186,94 @@ function SectionHeader({ index, heading, count, accent }: { index: number; headi
   );
 }
 
+type TimelineItem = { key: string; title: string; timeline: string; iconUrl: string };
+
+function TimelineSelector({ items, activeKey, onSelect, accent }: { items: TimelineItem[]; activeKey: string; onSelect: (key: string) => void; accent: Accent }) {
+  return (
+    <ul className="space-y-1">
+      {items.map(item => {
+        const isActive = item.key === activeKey;
+        return (
+          <li key={item.key}>
+            <button
+              onClick={() => onSelect(item.key)}
+              className={`w-full text-left flex items-center gap-3 p-3 bg-[#131315] border-l-2 transition-colors ${
+                isActive
+                  ? `border-[color:var(--accent)] ${accent.bg}`
+                  : 'border-transparent hover:bg-[#1f1f22] hover:border-[#262528]'
+              }`}
+              style={{ ['--accent' as string]: accent.hex }}
+            >
+              <img src={item.iconUrl} alt="" className="w-10 h-10 object-contain bg-[#0e0e10] p-1 shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className={`font-headline text-sm font-bold tracking-tight truncate ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+                  {item.title}
+                </p>
+                <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest tabular-nums">[{item.timeline}]</p>
+              </div>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function Gallery({ images }: { images: string[] }) {
+  if (images.length === 0) return null;
+  return (
+    <div className="mt-6">
+      <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        {images.map(img => (
+          <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ExperienceSection() {
   const accent = sectionAccent.experience;
+  const [activeKey, setActiveKey] = useState(workExperience[0].slug);
+  const active = workExperience.find(e => e.slug === activeKey)!;
+
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
       <SectionHeader index={1} heading="EXPERIENCE" count={workExperience.length} accent={accent} />
-      <div className="space-y-12">
-        {workExperience.map(exp => (
-          <article
-            key={exp.slug}
-            className="bg-[#131315] border-l-2 border-transparent hover:border-[color:var(--accent)] transition-colors p-6 md:p-8"
+      <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
+        <TimelineSelector
+          items={workExperience.map(e => ({ key: e.slug, title: e.title, timeline: e.timeline, iconUrl: e.iconUrl }))}
+          activeKey={activeKey}
+          onSelect={setActiveKey}
+          accent={accent}
+        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.slug}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="bg-[#131315] p-6 md:p-8 border-l-2 border-[color:var(--accent)]"
             style={{ ['--accent' as string]: accent.hex }}
           >
-            <header className="flex items-start gap-4 mb-6">
-              <img src={exp.iconUrl} alt={exp.title} className="w-12 h-12 object-contain bg-[#0e0e10] p-1 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text}`}>
-                  {exp.title}
-                </h3>
-                <p className="font-headline text-xs text-[#767577] uppercase tracking-widest mt-1 tabular-nums">[{exp.timeline}]</p>
-              </div>
-            </header>
+            <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text} mb-1`}>
+              {active.title}
+            </h3>
+            <p className="font-headline text-xs text-[#767577] uppercase tracking-widest mb-6 tabular-nums">[{active.timeline}]</p>
 
-            <div className="prose-invert max-w-none text-[#adaaad] leading-relaxed markdown-cyber">
-              <MarkdownContent content={experienceContent[exp.slug] ?? ''} />
+            <div className="text-[#adaaad] leading-relaxed markdown-cyber">
+              <MarkdownContent content={experienceContent[active.slug] ?? ''} />
             </div>
 
-            {exp.images.length > 0 && (
-              <div className="mt-8">
-                <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                  {exp.images.map(img => (
-                    <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                  ))}
-                </div>
-              </div>
-            )}
+            <Gallery images={active.images} />
 
-            {exp.reccs.length > 0 && (
+            {active.reccs.length > 0 && (
               <div className="mt-8">
                 <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// recommendations</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {exp.reccs.map(r => (
+                  {active.reccs.map(r => (
                     <div key={r.slug} className="bg-[#0e0e10] border border-[#262528] p-4">
                       <div className="flex items-start gap-3 mb-3">
                         <img src={r.avatarUrl} alt={r.name} className="w-12 h-12 object-cover rounded-full" />
@@ -270,88 +293,8 @@ function ExperienceSection() {
                 </div>
               </div>
             )}
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ResearchSection() {
-  const accent = sectionAccent.research;
-  return (
-    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
-      <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} />
-      <div className="space-y-16">
-        {researchProjects.map(p => (
-          <article
-            key={p.codename}
-            className="bg-[#131315] border-l-2 border-transparent hover:border-[color:var(--accent)] transition-colors"
-            style={{ ['--accent' as string]: accent.hex }}
-          >
-            {p.cover && (
-              <div className="relative h-56 md:h-64 overflow-hidden bg-black">
-                <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#131315]" />
-              </div>
-            )}
-            <div className="p-6 md:p-8">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className={`px-2 py-0.5 ${accent.bg} ${accent.text} text-[10px] font-headline uppercase border border-[color:var(--accent)]/30`}>[research]</span>
-                <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.timeline}</span>
-              </div>
-
-              <h3 className="font-headline text-xl md:text-2xl font-bold tracking-tight text-[#f9f5f8] mb-2">
-                {p.title}
-              </h3>
-              <p className="text-[#adaaad] text-sm md:text-base leading-relaxed mb-4">{p.subtitle}</p>
-
-              {p.awards.length > 0 && (
-                <ul className="space-y-1 mb-4">
-                  {p.awards.map((a, i) => (
-                    <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
-                      [*] <MarkdownInline text={a} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {p.links.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.links.map((l, i) => (
-                    <a
-                      key={i}
-                      href={l.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]"
-                    >
-                      <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
-                      {l.text}
-                    </a>
-                  ))}
-                </div>
-              )}
-
-              {researchContent[p.codename] && (
-                <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
-                  <MarkdownContent content={researchContent[p.codename]} />
-                </div>
-              )}
-
-              {p.imgs.length > 0 && (
-                <div className="mt-6">
-                  <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    {p.imgs.map(img => (
-                      <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </article>
-        ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -372,51 +315,173 @@ function MarkdownInline({ text }: { text: string }) {
   );
 }
 
+function ResearchSection() {
+  const accent = sectionAccent.research;
+  const [activeCodename, setActiveCodename] = useState<string | null>(null);
+  const toggle = (c: string) => setActiveCodename(prev => (prev === c ? null : c));
+
+  return (
+    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
+      <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {researchProjects.map(p => {
+          const isActive = activeCodename === p.codename;
+          return (
+            <button
+              key={p.codename}
+              onClick={() => toggle(p.codename)}
+              className={`group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors border-l-2 ${
+                isActive ? 'border-[color:var(--accent)]' : 'border-transparent hover:border-[#262528]'
+              }`}
+              style={{ ['--accent' as string]: accent.hex }}
+            >
+              <div className="relative h-40 overflow-hidden bg-black">
+                <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#131315]" />
+              </div>
+              <div className="p-5">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.timeline}</span>
+                </div>
+                <h3 className={`font-headline text-base font-bold tracking-tight mb-2 ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+                  {p.title}
+                </h3>
+                <p className="text-[#adaaad] text-xs leading-relaxed mb-2 line-clamp-3">{p.subtitle}</p>
+                <span className={`text-[10px] font-headline uppercase tracking-widest ${accent.text}`}>
+                  {isActive ? '[ collapse ] ▲' : '[ expand ] ▼'}
+                </span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <AnimatePresence>
+        {activeCodename && (() => {
+          const p = researchProjects.find(x => x.codename === activeCodename)!;
+          return (
+            <motion.div
+              key={activeCodename}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-8 bg-[#131315] border-l-2 border-[color:var(--accent)] p-6 md:p-8"
+              style={{ ['--accent' as string]: accent.hex }}
+            >
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="font-headline text-xl md:text-2xl font-bold tracking-tight text-[#f9f5f8]">
+                  {p.title}
+                </h3>
+                <button onClick={() => setActiveCodename(null)} className={`shrink-0 text-xs font-headline uppercase tracking-widest ${accent.text} hover:opacity-80`}>
+                  [ close ] ×
+                </button>
+              </div>
+              <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
+
+              {p.awards.length > 0 && (
+                <ul className="space-y-1 mb-4">
+                  {p.awards.map((a, i) => (
+                    <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
+                      [*] <MarkdownInline text={a} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {p.links.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {p.links.map((l, i) => (
+                    <a key={i} href={l.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]">
+                      <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
+                      {l.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              {researchContent[p.codename] && (
+                <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
+                  <MarkdownContent content={researchContent[p.codename]} />
+                </div>
+              )}
+
+              <Gallery images={p.imgs} />
+            </motion.div>
+          );
+        })()}
+      </AnimatePresence>
+    </section>
+  );
+}
+
 function ProjectsSection() {
   const accent = sectionAccent.projects;
+  const [idx, setIdx] = useState(0);
+  const p = projects[idx];
+  const go = (delta: number) => setIdx((idx + delta + projects.length) % projects.length);
+
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
       <SectionHeader index={3} heading="PROJECTS" count={projects.length} accent={accent} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map(p => {
-          const body = (
-            <article className="bg-[#131315] hover:bg-[#1f1f22] transition-colors p-6 h-full flex flex-col border-l-2 border-transparent hover:border-[color:var(--accent)]">
-              {p.image && (
-                <div className="mb-4 h-40 bg-black overflow-hidden">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80" />
-                </div>
-              )}
-              <div className="flex flex-wrap gap-2 mb-3">
-                <span className={`px-2 py-0.5 ${accent.bg} ${accent.text} text-[10px] font-headline uppercase border border-[color:var(--accent)]/30`}>[project]</span>
-                <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.date}</span>
-              </div>
-              <h3 className={`font-headline text-lg font-bold tracking-tight text-[#f9f5f8] mb-2`}>{p.title}</h3>
-              <p className="text-[#adaaad] text-sm italic mb-3">{p.subtitle}</p>
-              <p className="text-[#adaaad]/80 text-sm leading-relaxed mb-4 flex-1">{p.description}</p>
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {p.technologies.map(t => (
-                  <span key={t} className="text-[10px] font-headline uppercase tracking-widest text-[#adaaad] bg-[#262528] px-1.5 py-0.5">
-                    {t}
-                  </span>
-                ))}
-              </div>
-              {p.link && (
-                <span className={`mt-auto inline-flex items-center gap-2 ${accent.text} text-[10px] font-headline tracking-widest uppercase`}>
-                  visit_project →
-                </span>
-              )}
-            </article>
-          );
-          return p.link ? (
-            <a key={p.codename} href={p.link} target="_blank" rel="noreferrer" style={{ ['--accent' as string]: accent.hex }} className="block h-full">
-              {body}
-            </a>
-          ) : (
-            <div key={p.codename} style={{ ['--accent' as string]: accent.hex }} className="h-full">
-              {body}
+
+      <div className="flex items-center justify-between mb-4 font-headline text-xs uppercase tracking-widest">
+        <button onClick={() => go(-1)} className={`flex items-center gap-2 px-3 py-2 border border-[#262528] ${accent.text} hover:bg-[color:var(--accent)]/10 transition-colors`} style={{ ['--accent' as string]: accent.hex }}>
+          <ChevronLeft className="h-4 w-4" /> prev
+        </button>
+        <span className="text-[#adaaad] tabular-nums">
+          [ {String(idx + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')} ]
+        </span>
+        <button onClick={() => go(1)} className={`flex items-center gap-2 px-3 py-2 border border-[#262528] ${accent.text} hover:bg-[color:var(--accent)]/10 transition-colors`} style={{ ['--accent' as string]: accent.hex }}>
+          next <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.article
+          key={p.codename}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.2 }}
+          className="bg-[#131315] border-l-2 border-[color:var(--accent)] grid md:grid-cols-2 gap-6 p-6 md:p-8"
+          style={{ ['--accent' as string]: accent.hex }}
+        >
+          <div className="h-48 md:h-full bg-black overflow-hidden">
+            {p.image && <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80" />}
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.date}</span>
             </div>
-          );
-        })}
+            <h3 className="font-headline text-2xl font-bold tracking-tight text-[#f9f5f8] mb-2">{p.title}</h3>
+            <p className="text-[#adaaad] italic text-sm mb-4">{p.subtitle}</p>
+            <p className="text-[#adaaad]/80 text-sm leading-relaxed mb-4">{p.description}</p>
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {p.technologies.map(t => (
+                <span key={t} className="text-[10px] font-headline uppercase tracking-widest text-[#adaaad] bg-[#262528] px-1.5 py-0.5">{t}</span>
+              ))}
+            </div>
+            {p.link && (
+              <a href={p.link} target="_blank" rel="noreferrer" className="mt-auto inline-flex items-center gap-2 text-[#00d4fd] hover:text-[#00d2fd] text-xs font-headline tracking-widest uppercase hover:underline">
+                visit_project <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
+          </div>
+        </motion.article>
+      </AnimatePresence>
+
+      <div className="mt-4 flex flex-wrap gap-1">
+        {projects.map((pp, i) => (
+          <button
+            key={pp.codename}
+            onClick={() => setIdx(i)}
+            className={`h-1 flex-1 min-w-[20px] transition-colors ${i === idx ? 'bg-[color:var(--accent)]' : 'bg-[#262528] hover:bg-[#48474a]'}`}
+            style={{ ['--accent' as string]: accent.hex }}
+            aria-label={`Jump to ${pp.title}`}
+          />
+        ))}
       </div>
     </section>
   );
@@ -424,42 +489,41 @@ function ProjectsSection() {
 
 function ClubsSection() {
   const accent = sectionAccent.clubs;
+  const [activeKey, setActiveKey] = useState(clubExperience[0].slug);
+  const active = clubExperience.find(c => c.slug === activeKey)!;
+
   return (
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
       <SectionHeader index={4} heading="CLUBS_AND_VOLUNTEERING" count={clubExperience.length} accent={accent} />
-      <div className="space-y-12">
-        {clubExperience.map(c => (
-          <article
-            key={c.slug}
-            className="bg-[#131315] border-l-2 border-transparent hover:border-[color:var(--accent)] transition-colors p-6 md:p-8"
+      <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
+        <TimelineSelector
+          items={clubExperience.map(c => ({ key: c.slug, title: c.title, timeline: c.timeline, iconUrl: c.iconUrl }))}
+          activeKey={activeKey}
+          onSelect={setActiveKey}
+          accent={accent}
+        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.slug}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="bg-[#131315] p-6 md:p-8 border-l-2 border-[color:var(--accent)]"
             style={{ ['--accent' as string]: accent.hex }}
           >
-            <header className="flex items-start gap-4 mb-6">
-              <img src={c.iconUrl} alt={c.title} className="w-12 h-12 object-contain bg-[#0e0e10] p-1 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text}`}>
-                  {c.title}
-                </h3>
-                <p className="font-headline text-xs text-[#767577] uppercase tracking-widest mt-1 tabular-nums">[{c.timeline}]</p>
-              </div>
-            </header>
+            <h3 className={`font-headline text-xl md:text-2xl font-bold tracking-tight ${accent.text} mb-1`}>
+              {active.title}
+            </h3>
+            <p className="font-headline text-xs text-[#767577] uppercase tracking-widest mb-6 tabular-nums">[{active.timeline}]</p>
 
             <div className="text-[#adaaad] leading-relaxed markdown-cyber">
-              <MarkdownContent content={clubsContent[c.slug] ?? ''} />
+              <MarkdownContent content={clubsContent[active.slug] ?? ''} />
             </div>
 
-            {c.images.length > 0 && (
-              <div className="mt-8">
-                <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                  {c.images.map(img => (
-                    <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                  ))}
-                </div>
-              </div>
-            )}
-          </article>
-        ))}
+            <Gallery images={active.images} />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
