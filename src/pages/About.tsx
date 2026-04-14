@@ -179,7 +179,7 @@ function Hero() {
   };
 
   return (
-    <section onContextMenu={onContext} className="relative min-h-screen w-full overflow-hidden">
+    <section id="hero" onContextMenu={onContext} className="relative min-h-screen w-full overflow-hidden">
       <div className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40" style={{ backgroundImage: 'url(/img/cern.jpg)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10]/50 via-[#0e0e10]/60 to-[#0e0e10]" />
       <ScanlineOverlay className="z-10 opacity-40" />
@@ -262,7 +262,7 @@ function BioTerminal() {
   };
 
   return (
-    <section id="bio-terminal" className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 max-w-4xl mx-auto">
+    <section id="bio-terminal" className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 max-w-4xl mx-auto scroll-mt-20">
       <div
         className={`bg-black relative border border-[#48474a]/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-300 ${inverted ? 'invert hue-rotate-180' : ''} ${zoomed ? 'fixed inset-4 md:inset-8 z-[70] overflow-auto max-w-none' : ''}`}
       >
@@ -435,6 +435,13 @@ function VimCommandLine() {
     setBuf('');
     if (!cmd) return;
 
+    const scrollTo = (id: string, label: string) => {
+      const el = document.getElementById(id);
+      if (!el) return show({ tone: 'error', text: `E5000: buffer '${label}' not found` });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return show({ tone: 'ok', text: `jumped to ${label}` }, 1500);
+    };
+
     switch (cmd) {
       case 'q':
       case 'quit':
@@ -444,7 +451,29 @@ function VimCommandLine() {
         return show({ tone: 'error', text: "E37: Can't quit — you haven't seen the projects yet." });
       case 'help':
       case 'h':
-        return show({ tone: 'info', text: 'cmds: :home :blog :about :whoami :ls :resume :github :linkedin :top :bottom :theme :sudo :q' }, 6000);
+        return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :q' }, 8000);
+      case 'hero':
+      case '0':
+        return scrollTo('hero', 'hero');
+      case 'bio':
+      case '1':
+        return scrollTo('bio-terminal', 'bio');
+      case 'experience':
+      case 'exp':
+      case '2':
+        return scrollTo('section-experience', 'experience');
+      case 'research':
+      case 'res':
+      case '3':
+        return scrollTo('section-research', 'research');
+      case 'projects':
+      case 'proj':
+      case '4':
+        return scrollTo('section-projects', 'projects');
+      case 'clubs':
+      case 'vol':
+      case '5':
+        return scrollTo('section-clubs', 'clubs');
       case 'home':
         window.location.href = '/';
         return;
@@ -682,7 +711,7 @@ function ExperienceSection() {
   const { collapsed, toggle } = useCollapsed();
 
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
+    <section id="section-experience" className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto scroll-mt-20">
       <SectionHeader index={1} heading="EXPERIENCE" count={workExperience.length} accent={accent} collapsed={collapsed} onToggle={toggle} />
       {!collapsed && (
       <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
@@ -741,7 +770,7 @@ function ResearchSection() {
   const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
+    <section id="section-research" className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto scroll-mt-20">
       <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
 
       {!collapsed && (
@@ -856,7 +885,7 @@ function ProjectsSection() {
   const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
+    <section id="section-projects" className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto scroll-mt-20">
       <SectionHeader index={3} heading="PROJECTS" count={projects.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
 
       {!collapsed && (<>
@@ -928,7 +957,7 @@ function ClubsSection() {
   const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
+    <section id="section-clubs" className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto scroll-mt-20">
       <SectionHeader index={4} heading="CLUBS_AND_VOLUNTEERING" count={clubExperience.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
       {!collapsed && (
       <div className="grid md:grid-cols-[320px_1fr] gap-8 items-start">
