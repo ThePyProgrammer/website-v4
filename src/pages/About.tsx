@@ -410,7 +410,7 @@ function ResearchSection() {
                 </button>
               </div>
 
-              <div className={`grid gap-6 md:gap-8 ${p.imgs.length > 0 ? 'lg:grid-cols-[1fr_minmax(0,280px)]' : ''}`}>
+              <div className={`grid gap-6 md:gap-8 ${p.imgs.length > 0 ? 'md:grid-cols-[1fr_minmax(0,240px)] lg:grid-cols-[1fr_minmax(0,300px)]' : ''}`}>
                 <div className="min-w-0">
                   <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
 
@@ -445,7 +445,7 @@ function ResearchSection() {
                 {p.imgs.length > 0 && (
                   <aside>
                     <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
-                    <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
                       {p.imgs.map(img => (
                         <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
                       ))}
