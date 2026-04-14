@@ -6,6 +6,9 @@ export interface BlogFrontmatter {
   excerpt: string;
   coverImage?: string;
   splash?: boolean;
+  /** Vertical crop anchor for the splash image. Accepts "20%" (from top),
+   *  "-20%" (from bottom), "top", "center", "bottom". Defaults to center. */
+  splashPosition?: string;
   published?: boolean;
   /** Optional override. When omitted, computed automatically from content. */
   readingTime?: string;

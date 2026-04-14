@@ -6,6 +6,19 @@ import { ArticleRenderer } from '../components/ArticleRenderer';
 import { ArticleSidebar } from '../components/ArticleSidebar';
 import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
 
+function resolveSplashPosition(value?: string): string {
+  if (!value) return '50%';
+  const v = value.trim().toLowerCase();
+  if (v === 'top') return '0%';
+  if (v === 'bottom') return '100%';
+  if (v === 'center' || v === 'middle') return '50%';
+  const match = v.match(/^(-?)(\d+(?:\.\d+)?)%?$/);
+  if (!match) return '50%';
+  const pct = parseFloat(match[2]);
+  const clamped = Math.max(0, Math.min(100, pct));
+  return match[1] === '-' ? `${100 - clamped}%` : `${clamped}%`;
+}
+
 export function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
 
@@ -43,7 +56,8 @@ export function BlogArticle() {
           <img
             src={post.frontmatter.coverImage}
             alt={stripTitleMarkup(post.frontmatter.title)}
-            className="w-full h-full object-cover object-center opacity-50"
+            className="w-full h-full object-cover opacity-50"
+            style={{ objectPosition: `center ${resolveSplashPosition(post.frontmatter.splashPosition)}` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0e0e10]" />
         </motion.div>
