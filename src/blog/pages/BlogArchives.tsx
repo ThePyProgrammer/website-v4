@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { blogPosts } from '@/content/blog';
 import { SearchBar } from '../components/SearchBar';
 import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
+import { getCategoryColor } from '../utils/categoryColors';
 
 export function BlogArchives() {
   const [query, setQuery] = useState('');
@@ -54,21 +55,24 @@ export function BlogArchives() {
             </div>
 
             <div className="space-y-1">
-              {byYear[year].map(post => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  className="group flex items-center justify-between p-4 bg-[#131315] hover:bg-[#262528] transition-colors cursor-pointer border-l-2 border-transparent hover:border-[#00d2fd]"
-                >
-                  <div className="flex items-center gap-6 min-w-0 flex-1">
-                    <span className="font-headline text-xs text-[#767577] tabular-nums shrink-0 w-28">[{post.frontmatter.date}]</span>
-                    <h3 className="font-headline text-lg font-medium text-[#f9f5f8] group-hover:text-[#00d4fd] transition-colors uppercase tracking-tight min-w-0">
-                      {renderTitle(post.frontmatter.title)}
-                    </h3>
-                  </div>
-                  <span className="text-[#767577] group-hover:text-[#00d4fd] transition-colors hidden md:inline">→</span>
-                </Link>
-              ))}
+              {byYear[year].map(post => {
+                const colors = getCategoryColor(post.frontmatter.category);
+                return (
+                  <Link
+                    key={post.slug}
+                    to={`/blog/${post.slug}`}
+                    className="group flex items-center justify-between p-4 bg-[#131315] hover:bg-[#262528] transition-colors cursor-pointer border-l-2 border-transparent hover:border-[#00d2fd]"
+                  >
+                    <div className="flex items-center gap-6 min-w-0 flex-1">
+                      <span className="font-headline text-xs text-[#767577] tabular-nums shrink-0 w-28">[{post.frontmatter.date}]</span>
+                      <h3 className={`font-headline text-lg font-medium text-[#f9f5f8] ${colors.groupHover} transition-colors uppercase tracking-tight min-w-0`}>
+                        {renderTitle(post.frontmatter.title)}
+                      </h3>
+                    </div>
+                    <span className={`text-[#767577] ${colors.groupHover} transition-colors hidden md:inline`}>→</span>
+                  </Link>
+                );
+              })}
             </div>
           </section>
         ))}

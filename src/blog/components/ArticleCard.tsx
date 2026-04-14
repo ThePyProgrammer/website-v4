@@ -2,17 +2,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BlogPost } from '@/types/blog';
 import { renderTitle, stripTitleMarkup } from '../utils/renderTitle';
-
-const categoryColors: Record<string, { text: string; bg: string; hover: string }> = {
-  'ai': { text: 'text-[#00d4fd]', bg: 'bg-[#00b8e0]/20', hover: 'hover:text-[#00d4fd]' },
-  'web-dev': { text: 'text-[#00d2fd]', bg: 'bg-[#00677e]/20', hover: 'hover:text-[#00d2fd]' },
-  'rust': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20', hover: 'hover:text-[#ff58e7]' },
-  'security': { text: 'text-[#ff58e7]', bg: 'bg-[#fe00e9]/20', hover: 'hover:text-[#ff58e7]' },
-  'optimization': { text: 'text-[#ffd93d]', bg: 'bg-[#f5c518]/20', hover: 'hover:text-[#ffd93d]' },
-};
+import { getCategoryColor } from '../utils/categoryColors';
 
 export function ArticleCard({ post, index }: { post: BlogPost; index: number }) {
-  const colors = categoryColors[post.frontmatter.category] ?? { text: 'text-[#00d4fd]', bg: 'bg-[#00d4fd]/20', hover: 'hover:text-[#00d4fd]' };
+  const colors = getCategoryColor(post.frontmatter.category);
 
   return (
     <Link to={`/blog/${post.slug}`} className="block h-full">
