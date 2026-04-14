@@ -358,7 +358,7 @@ function ResearchSection() {
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
       <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} />
 
-      <div className={`grid gap-6 ${activeCodename ? 'lg:grid-cols-[minmax(0,340px)_1fr]' : ''}`}>
+      <div className={`grid gap-6 items-start ${activeCodename ? 'lg:grid-cols-[minmax(0,340px)_1fr]' : ''}`}>
         <div className={`grid gap-4 ${activeCodename ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
           {researchProjects.map(p => {
             const isActive = activeCodename === p.codename;
