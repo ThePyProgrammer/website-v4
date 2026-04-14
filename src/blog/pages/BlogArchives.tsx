@@ -66,14 +66,7 @@ export function BlogArchives() {
                       {renderTitle(post.frontmatter.title)}
                     </h3>
                   </div>
-                  <div className="hidden md:flex items-center gap-3">
-                    {post.frontmatter.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-2 py-0.5 text-[9px] font-headline border border-[#00d4fd]/30 text-[#00d4fd] bg-[#00d4fd]/5 uppercase">
-                        {tag}
-                      </span>
-                    ))}
-                    <span className="text-[#767577] group-hover:text-[#00d4fd] transition-colors">→</span>
-                  </div>
+                  <span className="text-[#767577] group-hover:text-[#00d4fd] transition-colors hidden md:inline">→</span>
                 </Link>
               ))}
             </div>
