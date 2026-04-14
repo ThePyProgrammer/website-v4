@@ -13,15 +13,15 @@ const About = lazy(() => import('./pages/About').then(m => ({ default: m.About }
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-  },
-  {
-    path: '/about',
     element: (
       <Suspense fallback={<div className="min-h-screen bg-[#0e0e10]" />}>
         <About />
       </Suspense>
     ),
+  },
+  {
+    path: '/about',
+    element: <App />,
   },
   {
     path: '/blog',
