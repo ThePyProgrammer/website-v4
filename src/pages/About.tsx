@@ -264,21 +264,21 @@ type TimelineItem = { key: string; title: string; timeline: string; iconUrl: str
 
 function TimelineSelector({ items, activeKey, onSelect, accent }: { items: TimelineItem[]; activeKey: string; onSelect: (key: string) => void; accent: Accent }) {
   return (
-    <ul className="space-y-1">
+    <ul className="space-y-0">
       {items.map(item => {
         const isActive = item.key === activeKey;
         return (
           <li key={item.key}>
             <button
               onClick={() => onSelect(item.key)}
-              className="w-full text-left flex items-center gap-3 px-3 py-2 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
+              className="w-full text-left flex items-center gap-3 px-3 py-1.5 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
               <img src={item.iconUrl} alt="" className="w-9 h-9 rounded-full object-cover bg-[#0e0e10] shrink-0" />
-              <div className="min-w-0 flex-1 leading-tight">
-                <p className={`font-headline text-sm md:text-base font-bold tracking-tight break-words leading-snug ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+              <div className="min-w-0 flex-1">
+                <p className={`font-headline text-sm md:text-base font-bold tracking-tight break-words leading-tight ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
                   {item.title}
                 </p>
-                <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest tabular-nums mt-0.5 leading-none">[{item.timeline}]</p>
+                <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest tabular-nums leading-none">[{item.timeline}]</p>
               </div>
             </button>
           </li>
