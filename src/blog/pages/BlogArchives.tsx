@@ -65,7 +65,12 @@ export function BlogArchives() {
                     style={{ ['--accent' as string]: colors.hex }}
                   >
                     <div className="flex items-center gap-6 min-w-0 flex-1">
-                      <span className="font-headline text-xs text-[#767577] tabular-nums shrink-0 w-28">[{post.frontmatter.date}]</span>
+                      <div className="flex flex-col gap-1 shrink-0 w-28">
+                        <span className="font-headline text-xs text-[#767577] tabular-nums">[{post.frontmatter.date}]</span>
+                        <span className={`self-start px-2 py-0.5 ${colors.bg} ${colors.text} text-[10px] font-headline uppercase`}>
+                          [{post.frontmatter.category}]
+                        </span>
+                      </div>
                       <h3 className={`font-headline text-lg font-medium text-[#f9f5f8] ${colors.groupHover} transition-colors uppercase tracking-tight min-w-0`}>
                         {renderTitle(post.frontmatter.title)}
                       </h3>
