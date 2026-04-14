@@ -8,11 +8,20 @@ const BlogLayout = lazy(() => import('./blog/BlogLayout').then(m => ({ default: 
 const BlogHome = lazy(() => import('./blog/pages/BlogHome').then(m => ({ default: m.BlogHome })));
 const BlogArticle = lazy(() => import('./blog/pages/BlogArticle').then(m => ({ default: m.BlogArticle })));
 const BlogArchives = lazy(() => import('./blog/pages/BlogArchives').then(m => ({ default: m.BlogArchives })));
+const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/about',
+    element: (
+      <Suspense fallback={<div className="min-h-screen bg-[#0e0e10]" />}>
+        <About />
+      </Suspense>
+    ),
   },
   {
     path: '/blog',

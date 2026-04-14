@@ -68,3 +68,23 @@
 .blog .font-headline {
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
+
+.blog .markdown-cyber a {
+  color: #ff58e7;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.blog .markdown-cyber a:hover {
+  color: #00d4fd;
+}
+.blog .markdown-cyber code {
+  background: #262528;
+  color: #00d4fd;
+  padding: 0 0.3rem;
+  font-size: 0.9em;
+}
+.blog .markdown-cyber strong {
+  color: #f9f5f8;
+}
