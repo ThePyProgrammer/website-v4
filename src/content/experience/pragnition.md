@@ -1,0 +1,1 @@
+I've been largely conducting applied research and building agentic solutions in areas spanning agentic AI optimization, agentic engineering harnesses, healthcare solutioning and end-to-end robotics.
