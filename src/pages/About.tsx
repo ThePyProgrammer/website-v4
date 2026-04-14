@@ -497,6 +497,11 @@ function VimCommandLine() {
   };
 
   useEffect(() => {
+    if (open || result) document.body.classList.add('vim-bar-open');
+    else document.body.classList.remove('vim-bar-open');
+  }, [open, result]);
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       const inInput = !!target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
@@ -609,7 +614,7 @@ function SudoEasterEgg() {
           animate={{ opacity: 1, y: 0, x: '-50%' }}
           exit={{ opacity: 0, y: 12, x: '-50%' }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-6 left-1/2 z-[60] bg-[#0e0e10] border border-[#ff2e63] shadow-[0_0_30px_rgba(255,46,99,0.35)] px-4 py-3 font-mono text-xs md:text-sm pointer-events-none max-w-[calc(100vw-2rem)] whitespace-nowrap"
+          className="sudo-toast fixed bottom-6 left-1/2 z-[60] bg-[#0e0e10] border border-[#ff2e63] shadow-[0_0_30px_rgba(255,46,99,0.35)] px-4 py-3 font-mono text-xs md:text-sm pointer-events-none max-w-[calc(100vw-2rem)] whitespace-nowrap"
         >
           <span className="text-[#ff2e63] mr-2">[sudo]</span>
           <span className="text-[#adaaad]">permission denied:</span>
@@ -977,7 +982,7 @@ function WIPBadge() {
     <>
       <button
         onClick={() => setScanOpen(true)}
-        className="fixed bottom-2 right-2 md:bottom-4 md:right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[9px] md:text-[10px] tracking-widest uppercase select-none max-w-[calc(100vw-1rem)] text-left hover:border-[#ffd93d] transition-colors"
+        className="wip-badge fixed bottom-2 right-2 md:bottom-4 md:right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[9px] md:text-[10px] tracking-widest uppercase select-none max-w-[calc(100vw-1rem)] text-left hover:border-[#ffd93d] transition-all"
         aria-label="Open security scan"
       >
         <div className="px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 md:gap-2 border-b border-[#ffd93d]/30 flex-wrap">

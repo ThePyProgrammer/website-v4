@@ -83,6 +83,19 @@ body.sudo-shake {
   animation: sudo-shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+.wip-badge,
+.sudo-toast {
+  transition: bottom 0.18s ease-out;
+}
+
+body.vim-bar-open .wip-badge {
+  bottom: 3.25rem;
+}
+
+body.vim-bar-open .sudo-toast {
+  bottom: 3.5rem;
+}
+
 .blog .font-headline {
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
