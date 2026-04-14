@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
+  { label: 'home', path: '/blog' },
   { label: 'articles', path: '/blog/archives' },
   { label: 'ai', path: 'https://ai.prannay.dev', external: true },
 ];
@@ -11,7 +12,7 @@ export function BlogHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 h-16 bg-[#0e0e10] z-50 flex justify-between items-center px-8">
       <div className="flex items-center gap-6">
-        <Link to="/" className="text-xl font-extrabold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase underline underline-offset-4 decoration-2">
+        <Link to="/" className="text-xl font-bold text-[#00d4fd] drop-shadow-[0_0_8px_rgba(0,212,253,0.4)] font-headline tracking-tighter uppercase">
           [prannay.dev]
         </Link>
         <nav className="hidden md:flex items-center gap-6">
