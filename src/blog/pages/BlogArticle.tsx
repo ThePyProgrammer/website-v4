@@ -44,7 +44,7 @@ export function BlogArticle() {
   return (
     <motion.div
       layoutId={`article-card-${post.slug}`}
-      className="min-h-screen bg-[#0e0e10]"
+      className="min-h-screen bg-[#0e0e10] lg:pl-64"
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
     >
       {/* Splash Image */}

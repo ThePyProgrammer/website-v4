@@ -44,7 +44,7 @@ export function BlogArchives() {
   }
 
   return (
-    <div className="pt-8 pb-16 px-6 md:px-12 w-full">
+    <div className="pt-8 pb-16 px-6 md:px-12 w-full max-w-6xl mx-auto">
       <SearchBar value={query} onChange={setQuery} />
 
       <div className="mb-8 flex items-center gap-3">
