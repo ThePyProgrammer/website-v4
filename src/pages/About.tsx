@@ -266,10 +266,10 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
             >
               <img src={item.iconUrl} alt="" className="w-10 h-10 object-contain bg-[#0e0e10] p-1 shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className={`font-headline text-sm font-bold tracking-tight truncate ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+                <p className={`font-headline text-base md:text-lg font-bold tracking-tight truncate ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
                   {item.title}
                 </p>
-                <p className="font-headline text-[10px] text-[#767577] uppercase tracking-widest tabular-nums">[{item.timeline}]</p>
+                <p className="font-headline text-xs text-[#767577] uppercase tracking-widest tabular-nums">[{item.timeline}]</p>
               </div>
             </button>
           </li>
@@ -475,7 +475,7 @@ function ProjectsSection() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.2 }}
-          className="bg-[#131315] grid md:grid-cols-2 gap-6 p-6 md:p-8"
+          className="bg-[#131315] grid md:grid-cols-2 gap-6 p-6 md:p-8 min-h-[560px] md:min-h-[440px]"
         >
           <div className="h-48 md:h-full bg-black overflow-hidden">
             {p.image && <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-80" />}
