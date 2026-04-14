@@ -134,7 +134,7 @@ function Hero() {
       <div className="relative z-20 min-h-screen flex flex-col justify-between pt-24 pb-10 md:pt-32 md:pb-12 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex flex-wrap gap-2 items-center mb-6 font-mono text-sm">
-            <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
+            <span className="text-[#00d2fd] font-bold">prannay@watchtower</span>
             <span className="text-[#adaaad]">:</span>
             <span className="text-[#ff58e7]">~</span>
             <span className="text-[#adaaad]">$</span>
@@ -174,7 +174,7 @@ function BioLink({ href, children }: { href: string; children: React.ReactNode }
 function Prompt({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-wrap gap-2 items-center mb-6 font-mono">
-      <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
+      <span className="text-[#00d2fd] font-bold">prannay@watchtower</span>
       <span className="text-[#adaaad]">:</span>
       <span className="text-[#ff58e7]">~</span>
       <span className="text-[#adaaad]">$</span>
@@ -234,7 +234,7 @@ function BioTerminal() {
           </div>
 
           <div className="flex flex-wrap gap-2 items-center">
-            <span className="text-[#00d2fd] font-bold">prannay@terminal</span>
+            <span className="text-[#00d2fd] font-bold">prannay@watchtower</span>
             <span className="text-[#adaaad]">:</span>
             <span className="text-[#ff58e7]">~</span>
             <span className="text-[#adaaad]">$</span>
