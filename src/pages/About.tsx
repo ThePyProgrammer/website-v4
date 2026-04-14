@@ -110,7 +110,7 @@ function Prompt({ children }: { children: React.ReactNode }) {
 
 function BioTerminal() {
   return (
-    <section className="px-4 md:px-12 lg:px-24 py-12 md:py-20 max-w-6xl mx-auto">
+    <section className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 max-w-4xl mx-auto">
       <div className="bg-black relative border border-[#48474a]/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <ScanlineOverlay className="z-10" />
         <div className="flex items-center justify-between gap-2 px-3 md:px-4 py-2 bg-[#262528] border-b border-[#48474a]/20">
