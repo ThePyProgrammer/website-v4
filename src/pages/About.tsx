@@ -264,7 +264,7 @@ function TimelineSelector({ items, activeKey, onSelect, accent }: { items: Timel
               onClick={() => onSelect(item.key)}
               className="w-full text-left flex items-center gap-3 p-3 bg-[#131315] hover:bg-[#1f1f22] transition-colors"
             >
-              <img src={item.iconUrl} alt="" className="w-10 h-10 object-contain bg-[#0e0e10] p-1 shrink-0" />
+              <img src={item.iconUrl} alt="" className="w-10 h-10 rounded-full object-cover bg-[#0e0e10] shrink-0" />
               <div className="min-w-0 flex-1">
                 <p className={`font-headline text-base md:text-lg font-bold tracking-tight truncate ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
                   {item.title}
@@ -358,105 +358,104 @@ function ResearchSection() {
     <section className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto">
       <SectionHeader index={2} heading="RESEARCH" count={researchProjects.length} accent={accent} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {researchProjects.map(p => {
-          const isActive = activeCodename === p.codename;
-          const hideOnMobile = activeCodename !== null && !isActive;
-          return (
-            <button
-              key={p.codename}
-              onClick={() => toggle(p.codename)}
-              className={`group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors ${hideOnMobile ? 'hidden md:block' : ''}`}
-            >
-              <div className="relative h-40 overflow-hidden bg-black">
-                <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#131315]" />
-              </div>
-              <div className="p-5">
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.timeline}</span>
+      <div className={`grid gap-6 ${activeCodename ? 'lg:grid-cols-[minmax(0,340px)_1fr]' : ''}`}>
+        <div className={`grid gap-4 ${activeCodename ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+          {researchProjects.map(p => {
+            const isActive = activeCodename === p.codename;
+            const hideOnMobile = activeCodename !== null && !isActive;
+            return (
+              <button
+                key={p.codename}
+                onClick={() => toggle(p.codename)}
+                className={`group block text-left bg-[#131315] hover:bg-[#1f1f22] transition-colors ${hideOnMobile ? 'hidden lg:block' : ''} ${isActive ? 'ring-1 ring-[color:var(--accent)]' : ''}`}
+                style={{ ['--accent' as string]: accent.hex }}
+              >
+                <div className="relative h-40 overflow-hidden bg-black">
+                  <img src={p.cover} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#131315]" />
                 </div>
-                <h3 className={`font-headline text-base font-bold tracking-tight mb-2 ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
-                  {p.title}
-                </h3>
-                <p className="text-[#adaaad] text-xs leading-relaxed mb-2 line-clamp-3">{p.subtitle}</p>
-                <span className={`text-[10px] font-headline uppercase tracking-widest ${accent.text}`}>
-                  {isActive ? '[ collapse ] ▲' : '[ expand ] ▼'}
-                </span>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      <AnimatePresence>
-        {activeCodename && (() => {
-          const p = researchProjects.find(x => x.codename === activeCodename)!;
-          return (
-            <motion.div
-              key={activeCodename}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="mt-8 bg-[#131315] p-6 md:p-8"
-            >
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="font-headline text-xl md:text-2xl font-bold tracking-tight text-[#f9f5f8]">
-                  {p.title}
-                </h3>
-                <button onClick={() => setActiveCodename(null)} className={`shrink-0 text-xs font-headline uppercase tracking-widest ${accent.text} hover:opacity-80`}>
-                  [ close ] ×
-                </button>
-              </div>
-
-              <div className={`grid gap-6 md:gap-8 ${p.imgs.length > 0 ? 'md:grid-cols-[1fr_minmax(0,240px)] lg:grid-cols-[1fr_minmax(0,300px)]' : ''}`}>
-                <div className="min-w-0">
-                  <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
-
-                  {p.awards.length > 0 && (
-                    <ul className="space-y-1 mb-4">
-                      {p.awards.map((a, i) => (
-                        <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
-                          [*] <MarkdownInline text={a} />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {p.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {p.links.map((l, i) => (
-                        <a key={i} href={l.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]">
-                          <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
-                          {l.text}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-
-                  {researchContent[p.codename] && (
-                    <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
-                      <MarkdownContent content={researchContent[p.codename]} />
-                    </div>
-                  )}
+                <div className="p-5">
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 bg-[#262528] text-[#adaaad] text-[10px] font-headline uppercase tabular-nums">{p.timeline}</span>
+                  </div>
+                  <h3 className={`font-headline text-base font-bold tracking-tight mb-2 ${isActive ? accent.text : 'text-[#f9f5f8]'}`}>
+                    {p.title}
+                  </h3>
+                  <p className="text-[#adaaad] text-xs leading-relaxed mb-2 line-clamp-3">{p.subtitle}</p>
+                  <span className={`text-[10px] font-headline uppercase tracking-widest ${accent.text}`}>
+                    {isActive ? '[ collapse ] ▲' : '[ expand ] ▼'}
+                  </span>
                 </div>
+              </button>
+            );
+          })}
+        </div>
+
+        <AnimatePresence mode="wait">
+          {activeCodename && (() => {
+            const p = researchProjects.find(x => x.codename === activeCodename)!;
+            return (
+              <motion.div
+                key={activeCodename}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="bg-[#131315] p-6 md:p-8 min-w-0"
+              >
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <h3 className="font-headline text-xl md:text-2xl font-bold tracking-tight text-[#f9f5f8]">
+                    {p.title}
+                  </h3>
+                  <button onClick={() => setActiveCodename(null)} className={`shrink-0 text-xs font-headline uppercase tracking-widest ${accent.text} hover:opacity-80`}>
+                    [ close ] ×
+                  </button>
+                </div>
+
+                <p className="text-[#adaaad] leading-relaxed mb-4">{p.subtitle}</p>
+
+                {p.awards.length > 0 && (
+                  <ul className="space-y-1 mb-4">
+                    {p.awards.map((a, i) => (
+                      <li key={i} className={`font-headline text-[11px] uppercase tracking-widest ${accent.text}`}>
+                        [*] <MarkdownInline text={a} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {p.links.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {p.links.map((l, i) => (
+                      <a key={i} href={l.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#0e0e10] border border-[#262528] hover:border-[color:var(--accent)] transition-colors px-3 py-1.5 text-[11px] font-headline uppercase tracking-widest text-[#adaaad] hover:text-[#f9f5f8]">
+                        <img src={l.icon} alt="" className="h-4 w-4 object-contain" />
+                        {l.text}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {researchContent[p.codename] && (
+                  <div className="text-[#adaaad] leading-relaxed markdown-cyber border-t border-[#262528] pt-6">
+                    <MarkdownContent content={researchContent[p.codename]} />
+                  </div>
+                )}
 
                 {p.imgs.length > 0 && (
-                  <aside>
+                  <div className="mt-6">
                     <h4 className="font-headline text-[10px] text-[#767577] uppercase tracking-widest mb-3">// gallery</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       {p.imgs.map(img => (
                         <img key={img} src={img} alt="" className="w-full aspect-video object-cover opacity-80 hover:opacity-100 transition-opacity" />
                       ))}
                     </div>
-                  </aside>
+                  </div>
                 )}
-              </div>
-            </motion.div>
-          );
-        })()}
-      </AnimatePresence>
+              </motion.div>
+            );
+          })()}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
