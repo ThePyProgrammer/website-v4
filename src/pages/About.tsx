@@ -529,6 +529,33 @@ function ClubsSection() {
   );
 }
 
+function WIPBadge() {
+  const bugs = [
+    'polish.exe // not found',
+    'expect dangling refs',
+    'here be dragons 🐉',
+    'caffeine levels: critical',
+    'semicolons: optional',
+    'dependencies: unresolved',
+    'coffee.status: empty',
+  ];
+  const [msg] = useState(() => bugs[Math.floor(Math.random() * bugs.length)]);
+
+  return (
+    <div className="fixed bottom-4 right-4 z-40 bg-[#0e0e10]/95 backdrop-blur border border-[#ffd93d]/60 shadow-[0_0_20px_rgba(255,217,61,0.15)] font-headline text-[10px] tracking-widest uppercase select-none pointer-events-none">
+      <div className="px-3 py-1.5 flex items-center gap-2 border-b border-[#ffd93d]/30">
+        <span className="w-2 h-2 bg-[#ffd93d] cursor-blink" />
+        <span className="text-[#ffd93d]">⚠ wip_build</span>
+        <span className="text-[#767577]">//</span>
+        <span className="text-[#adaaad]">v0.0.1-alpha</span>
+      </div>
+      <div className="px-3 py-1.5 text-[#adaaad]">
+        <span className="text-[#ff2e63]">stderr:</span> {msg}
+      </div>
+    </div>
+  );
+}
+
 function PageFooter() {
   return (
     <footer className="px-6 md:px-12 lg:px-24 py-12 max-w-6xl mx-auto border-t border-[#262528] mt-12">
@@ -549,6 +576,7 @@ export function About() {
   return (
     <div className="blog min-h-screen w-full bg-[#0e0e10] text-[#f9f5f8] font-body">
       <TopNav />
+      <WIPBadge />
       <main>
         <Hero />
         <BioTerminal />
