@@ -125,12 +125,65 @@ function TopNav() {
   );
 }
 
-function Hero() {
+type HeroMenuState = { x: number; y: number } | null;
+
+const HERO_MENU_ITEMS: { label: string; detail: string; run: () => void }[] = [
+  { label: 'whoami', detail: 'prannay', run: () => document.getElementById('bio-terminal')?.scrollIntoView({ behavior: 'smooth' }) },
+  { label: 'cat /etc/passwd', detail: 'root:x:0:0::/root:/bin/zsh', run: () => alert('prannay:x:1000:1000:gupta,prannaya,,,:/home/prannay:/bin/zsh\nroot:x:0:0::/root:/bin/nope') },
+  { label: 'ls ~/secrets', detail: '404', run: () => alert('ls: cannot access \'/home/prannay/secrets\': No such file or directory') },
+  { label: 'rm -rf /', detail: 'destructive', run: () => { document.body.classList.add('sudo-shake'); window.setTimeout(() => document.body.classList.remove('sudo-shake'), 600); } },
+  { label: 'exit', detail: 'back to browser', run: () => {} },
+];
+
+function HeroContextMenu({ pos, onClose }: { pos: HeroMenuState; onClose: () => void }) {
+  useEffect(() => {
+    if (!pos) return;
+    const close = () => onClose();
+    window.addEventListener('click', close);
+    window.addEventListener('scroll', close, true);
+    return () => {
+      window.removeEventListener('click', close);
+      window.removeEventListener('scroll', close, true);
+    };
+  }, [pos, onClose]);
+
+  if (!pos) return null;
+  const left = Math.min(pos.x, window.innerWidth - 260);
+  const top = Math.min(pos.y, window.innerHeight - 240);
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <div
+      className="fixed z-[70] w-[260px] bg-[#0e0e10]/95 backdrop-blur border border-[#00d4fd]/40 shadow-[0_0_40px_rgba(0,212,253,0.25)] font-mono text-xs py-1"
+      style={{ left, top }}
+      onClick={e => e.stopPropagation()}
+    >
+      <div className="px-3 py-2 text-[#00d4fd]/60 uppercase text-[10px] tracking-widest border-b border-[#262528]">watchtower // ctx</div>
+      {HERO_MENU_ITEMS.map(item => (
+        <button
+          key={item.label}
+          onClick={() => { item.run(); onClose(); }}
+          className="w-full flex items-center justify-between gap-4 px-3 py-1.5 text-left text-[#adaaad] hover:bg-[#00d4fd]/10 hover:text-[#00d4fd] transition-colors"
+        >
+          <span>{item.label}</span>
+          <span className="text-[#767577] text-[10px] truncate">{item.detail}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Hero() {
+  const [menu, setMenu] = useState<HeroMenuState>(null);
+  const onContext = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMenu({ x: e.clientX, y: e.clientY });
+  };
+
+  return (
+    <section onContextMenu={onContext} className="relative min-h-screen w-full overflow-hidden">
       <div className="absolute inset-0 z-0 bg-cover bg-right bg-no-repeat opacity-40" style={{ backgroundImage: 'url(/img/cern.jpg)' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e10]/50 via-[#0e0e10]/60 to-[#0e0e10]" />
       <ScanlineOverlay className="z-10 opacity-40" />
+      <HeroContextMenu pos={menu} onClose={() => setMenu(null)} />
 
       <div className="relative z-20 min-h-screen flex flex-col justify-between pt-24 pb-10 md:pt-32 md:pb-12 px-6 md:px-12 lg:px-24 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -209,7 +262,7 @@ function BioTerminal() {
   };
 
   return (
-    <section className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 max-w-4xl mx-auto">
+    <section id="bio-terminal" className="px-4 sm:px-6 md:px-12 lg:px-24 py-12 md:py-20 max-w-4xl mx-auto">
       <div
         className={`bg-black relative border border-[#48474a]/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-300 ${inverted ? 'invert hue-rotate-180' : ''} ${zoomed ? 'fixed inset-4 md:inset-8 z-[70] overflow-auto max-w-none' : ''}`}
       >
