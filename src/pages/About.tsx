@@ -416,11 +416,63 @@ function IdleGhostTyper() {
 
 type VimResult = { tone: 'error' | 'info' | 'ok'; text: string } | null;
 
+const BIRTHDAY_ISO = '2005-12-16T00:00:00+08:00';
+const YEAR_MS = 365.25 * 24 * 60 * 60 * 1000;
+
+function UptimePanel({ onClose }: { onClose: () => void }) {
+  const [age, setAge] = useState(() => (Date.now() - new Date(BIRTHDAY_ISO).getTime()) / YEAR_MS);
+
+  useEffect(() => {
+    let raf = 0;
+    const tick = () => {
+      setAge((Date.now() - new Date(BIRTHDAY_ISO).getTime()) / YEAR_MS);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    const close = window.setTimeout(onClose, 30000);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(close);
+    };
+  }, [onClose]);
+
+  const ageStr = age.toFixed(15);
+  const load = [
+    (0.3 + Math.random() * 0.2).toFixed(2),
+    (0.9 + Math.random() * 0.3).toFixed(2),
+    '∞',
+  ].join(', ');
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.15 }}
+      className="fixed bottom-0 left-0 right-0 z-[68] bg-[#0e0e10] border-t border-[#00d4fd]/40 font-mono text-[11px] md:text-xs px-4 py-2 text-[#adaaad]"
+    >
+      <div className="flex justify-between items-baseline gap-3 flex-wrap">
+        <span>
+          <span className="text-[#00d4fd]">up since</span> 2005-12-16 00:00:00 +08 //{' '}
+          <span className="text-[#00d4fd]">load average:</span> {load}
+        </span>
+        <button onClick={onClose} className="text-[#767577] hover:text-[#f9f5f8] text-[10px] uppercase tracking-widest">[ close ]</button>
+      </div>
+      <div className="mt-1">
+        <span className="text-[#00d4fd]">age:</span>{' '}
+        <span className="text-[#f9f5f8] tabular-nums">{ageStr}</span>{' '}
+        <span className="text-[#767577]">years</span>
+      </div>
+    </motion.div>
+  );
+}
+
 function VimCommandLine() {
   const [open, setOpen] = useState(false);
   const [buf, setBuf] = useState('');
   const [result, setResult] = useState<VimResult>(null);
   const [pingLines, setPingLines] = useState<string[] | null>(null);
+  const [uptimeOpen, setUptimeOpen] = useState(false);
   const resultTimer = useRef<number | null>(null);
   const pingTimers = useRef<number[]>([]);
 
@@ -481,9 +533,11 @@ function VimCommandLine() {
         return show({ tone: 'error', text: "E37: Can't quit — you haven't seen the projects yet." });
       case 'help':
       case 'h':
-        return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :ping :q' }, 8000);
+        return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :ping :uptime :q' }, 8000);
       case 'ping':
         return startPing();
+      case 'uptime':
+        return setUptimeOpen(true);
       case 'hero':
       case '0':
       case '00':
@@ -562,11 +616,11 @@ function VimCommandLine() {
   };
 
   useEffect(() => {
-    if (open || result || pingLines) document.body.classList.add('vim-bar-open');
+    if (open || result || pingLines || uptimeOpen) document.body.classList.add('vim-bar-open');
     else document.body.classList.remove('vim-bar-open');
     if (pingLines) document.body.classList.add('vim-ping-open');
     else document.body.classList.remove('vim-ping-open');
-  }, [open, result, pingLines]);
+  }, [open, result, pingLines, uptimeOpen]);
 
   useEffect(() => () => {
     pingTimers.current.forEach(window.clearTimeout);
@@ -644,6 +698,9 @@ function VimCommandLine() {
             {result.text}
           </motion.div>
         )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {uptimeOpen && <UptimePanel onClose={() => setUptimeOpen(false)} />}
       </AnimatePresence>
       <AnimatePresence>
         {pingLines && (
