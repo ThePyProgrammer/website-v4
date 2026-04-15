@@ -420,7 +420,38 @@ function VimCommandLine() {
   const [open, setOpen] = useState(false);
   const [buf, setBuf] = useState('');
   const [result, setResult] = useState<VimResult>(null);
+  const [pingLines, setPingLines] = useState<string[] | null>(null);
   const resultTimer = useRef<number | null>(null);
+  const pingTimers = useRef<number[]>([]);
+
+  const startPing = () => {
+    pingTimers.current.forEach(window.clearTimeout);
+    pingTimers.current = [];
+    setPingLines(['PING prannay.dev (127.0.0.1): 56 data bytes']);
+    const bases = [0.422, 0.518, 0.371, 0.604];
+    bases.forEach((rtt, i) => {
+      const t = window.setTimeout(() => {
+        setPingLines(prev => [...(prev ?? []), `64 bytes from 127.0.0.1: icmp_seq=${i} ttl=64 time=${(rtt + Math.random() * 0.08).toFixed(3)} ms`]);
+      }, 600 * (i + 1));
+      pingTimers.current.push(t);
+    });
+    const summaryT = window.setTimeout(() => {
+      const rtts = bases.map(b => b + Math.random() * 0.08);
+      const min = Math.min(...rtts).toFixed(3);
+      const max = Math.max(...rtts).toFixed(3);
+      const avg = (rtts.reduce((a, b) => a + b, 0) / rtts.length).toFixed(3);
+      setPingLines(prev => [
+        ...(prev ?? []),
+        '',
+        '--- prannay.dev ping statistics ---',
+        '4 packets transmitted, 4 received, 0% packet loss — still alive.',
+        `round-trip min/avg/max = ${min}/${avg}/${max} ms`,
+      ]);
+    }, 600 * (bases.length + 1));
+    pingTimers.current.push(summaryT);
+    const closeT = window.setTimeout(() => setPingLines(null), 600 * (bases.length + 1) + 4000);
+    pingTimers.current.push(closeT);
+  };
 
   const show = (r: NonNullable<VimResult>, ms = 3000) => {
     setResult(r);
@@ -450,7 +481,9 @@ function VimCommandLine() {
         return show({ tone: 'error', text: "E37: Can't quit — you haven't seen the projects yet." });
       case 'help':
       case 'h':
-        return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :q' }, 8000);
+        return show({ tone: 'info', text: 'nav: :hero :bio :experience :research :projects :clubs | go: :home :blog :resume :github :linkedin :twitter | misc: :top :bottom :theme :sudo :ping :q' }, 8000);
+      case 'ping':
+        return startPing();
       case 'hero':
       case '0':
       case '00':
@@ -529,9 +562,15 @@ function VimCommandLine() {
   };
 
   useEffect(() => {
-    if (open || result) document.body.classList.add('vim-bar-open');
+    if (open || result || pingLines) document.body.classList.add('vim-bar-open');
     else document.body.classList.remove('vim-bar-open');
-  }, [open, result]);
+    if (pingLines) document.body.classList.add('vim-ping-open');
+    else document.body.classList.remove('vim-ping-open');
+  }, [open, result, pingLines]);
+
+  useEffect(() => () => {
+    pingTimers.current.forEach(window.clearTimeout);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -603,6 +642,23 @@ function VimCommandLine() {
             className={`fixed bottom-0 left-0 right-0 z-[69] font-mono text-xs md:text-sm px-4 py-2 ${result.tone === 'error' ? 'bg-[#ff2e63] text-black' : result.tone === 'ok' ? 'bg-[#00d4fd] text-black' : 'bg-[#262528] text-[#f9f5f8] border-t border-[#48474a]/40'}`}
           >
             {result.text}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {pingLines && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.15 }}
+            className="fixed bottom-0 left-0 right-0 z-[68] bg-[#0e0e10] border-t border-[#00d4fd]/40 font-mono text-[11px] md:text-xs px-4 py-2 text-[#adaaad] max-h-[45vh] overflow-auto"
+          >
+            {pingLines.map((l, i) => (
+              <div key={i} className={l.startsWith('64 bytes') ? 'text-[#f9f5f8]' : l.includes('still alive') ? 'text-[#00d4fd]' : ''}>
+                {l || '\u00A0'}
+              </div>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
