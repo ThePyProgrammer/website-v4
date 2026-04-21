@@ -1,1 +1,1 @@
-I am in charge of youth engagement, be it organising hackathons or mentorship programmes for youths. I also serve as an ad-hoc executive committee member, helping out with various planning activities in my free time.
+I was in charge of youth engagement, be it organising hackathons or mentorship programmes for youths. I also served as an ad-hoc executive committee member, helping out with various planning activities in my free time.

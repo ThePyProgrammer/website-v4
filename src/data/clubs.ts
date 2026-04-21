@@ -5,7 +5,7 @@ export const clubExperience: ClubExperience[] = [
         slug: "bettersg",
         iconUrl: "/img/clubs/bettersg.png",
         title: "EXCO Member @ Better.sg",
-        timeline: "Aug 2023 - Present",
+        timeline: "Aug 2023 - Aug 2025",
         images: [
             "/img/clubs/better-beacon24.jpg",
             "/img/clubs/better-gin.jpg",
@@ -48,7 +48,7 @@ export const clubExperience: ClubExperience[] = [
         slug: "sphl",
         iconUrl: "/img/clubs/sphl.png",
         title: "Frontend Developer @ SPhL",
-        timeline: "Oct 2023 - Present",
+        timeline: "Oct 2023 - Jul 2025",
         images: [
             "/img/clubs/sphl-2024.jpg",
             "/img/clubs/sphl-2025.jpg"
