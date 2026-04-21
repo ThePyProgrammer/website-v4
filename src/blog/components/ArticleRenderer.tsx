@@ -15,6 +15,13 @@ import { TestRef } from './TestRef';
 import { AgentGallery } from './AgentGallery';
 import { ContributionGrid } from './ContributionGrid';
 import { FailureGallery } from './FailureGallery';
+import { DatasetProfile } from './DatasetProfile';
+import { ResultsLadder } from './ResultsLadder';
+import { PersonRef } from './PersonRef';
+import { LabramAttempts } from './LabramAttempts';
+import { ModelComparison } from './ModelComparison';
+import { TrainingRun } from './TrainingRun';
+import { MusePlacement } from './MusePlacement';
 
 // Build a map from heading text -> display number.
 // h2 headings get "01", "02", ...
@@ -135,6 +142,8 @@ export function ArticleRenderer({ content }: { content: string }) {
           const text = childrenToText(children);
           const refMatch = /^T(\d{1,2})$/.exec(text);
           if (refMatch) return <TestRef id={refMatch[1].padStart(2, '0')} />;
+          const personMatch = /^@(\w+)$/.exec(text);
+          if (personMatch) return <PersonRef id={personMatch[1]} />;
           return <code className="bg-[#262528] px-1.5 py-0.5 text-[#00d2fd] font-mono text-sm">{children}</code>;
         },
         pre: ({ children }) => {
@@ -154,6 +163,12 @@ export function ArticleRenderer({ content }: { content: string }) {
             if (lang === 'agent-gallery') return <AgentGallery />;
             if (lang === 'contribution-grid') return <ContributionGrid />;
             if (lang === 'failure-gallery') return <FailureGallery />;
+            if (lang === 'labram-attempts') return <LabramAttempts />;
+            if (lang === 'model-comparison') return <ModelComparison />;
+            if (lang === 'training-run') return <TrainingRun />;
+            if (lang === 'muse-placement') return <MusePlacement />;
+            if (lang === 'dataset-profile') return <DatasetProfile />;
+            if (lang === 'results-ladder') return <ResultsLadder />;
             if (lang === 'grid-simulator') {
               const body = codeText.trim();
               const tokens = body.split(/\s+/).filter(t => t && t.toLowerCase() !== 'explore');
