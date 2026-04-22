@@ -20,7 +20,11 @@ const allPosts: BlogPost[] = Object.entries(blogMd)
   })
   .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 
-export const blogPosts: BlogPost[] = allPosts.filter(p => p.frontmatter.published !== false);
+export const blogPosts: BlogPost[] = allPosts.filter(p => {
+  if (p.frontmatter.published === false) return false;
+  // WIP posts: show in dev (full article), show in prod (disabled card)
+  return true;
+});
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return allPosts.find(p => p.slug === slug);

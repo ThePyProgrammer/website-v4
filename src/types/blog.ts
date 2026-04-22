@@ -10,6 +10,8 @@ export interface BlogFrontmatter {
    *  "-20%" (from bottom), "top", "center", "bottom". Defaults to center. */
   splashPosition?: string;
   published?: boolean;
+  /** Mark as work-in-progress. Shows a disabled card in prod, full article in dev. */
+  wip?: boolean;
   /** Optional override. When omitted, computed automatically from content. */
   readingTime?: string;
 }

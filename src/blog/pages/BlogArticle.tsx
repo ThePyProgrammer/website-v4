@@ -28,7 +28,7 @@ export function BlogArticle() {
   }, [slug]);
   const post = slug ? getBlogPost(slug) : undefined;
 
-  if (!post) {
+  if (!post || (post.frontmatter.wip && import.meta.env.PROD)) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
