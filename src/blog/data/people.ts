@@ -105,6 +105,20 @@ const PEOPLE: Person[] = [
     }
   },
   {
+    key: 'ethanc',
+    name: 'Ethan Chew Ming Hong',
+    ping: 'Ethan',
+    links: [
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/ethan-chew/' },
+      { type: 'github', url: 'https://github.com/Ethan-Chew' },
+      { type: 'website', url: 'https://www.ethanchew.com/' }
+    ],
+    previous: {
+      kind: 'work',
+      label: 'Software Dev Intern @ AETHER'
+    }
+  },
+  {
     key: 'enjia',
     name: 'Wu Enjia',
     ping: 'Enjia',
