@@ -22,6 +22,9 @@ import { LabramAttempts } from './LabramAttempts';
 import { ModelComparison } from './ModelComparison';
 import { TrainingRun } from './TrainingRun';
 import { MusePlacement } from './MusePlacement';
+import { Callout, type CalloutKind } from './Callout';
+
+const CALLOUT_KINDS: readonly CalloutKind[] = ['info', 'note', 'warning', 'success', 'danger', 'tip'];
 
 // Build a map from heading text -> display number.
 // h2 headings get "01", "02", ...
@@ -169,6 +172,10 @@ export function ArticleRenderer({ content }: { content: string }) {
             if (lang === 'muse-placement') return <MusePlacement />;
             if (lang === 'dataset-profile') return <DatasetProfile />;
             if (lang === 'results-ladder') return <ResultsLadder />;
+            if ((CALLOUT_KINDS as readonly string[]).includes(lang)) {
+              const title = codeTitles.get(codeText.trim().slice(0, 100));
+              return <Callout kind={lang as CalloutKind} title={title}>{codeText}</Callout>;
+            }
             if (lang === 'grid-simulator') {
               const body = codeText.trim();
               const tokens = body.split(/\s+/).filter(t => t && t.toLowerCase() !== 'explore');
