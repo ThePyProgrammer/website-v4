@@ -31,7 +31,9 @@ It is now two weeks later and I've brought the tally of phases up to seventeen a
 
 ## AITC, or: an ATC radar scope for your repo
 
-The shortest possible description of **AITC (AI Traffic Control)** is a desktop app that watches every coding agent on your codebase, draws them onto a radar-style map of your repo as little pulsing dots, and yells when two of them are about to crash into the same file. The "planes" are simply coding agent sessions traversing my codebase like an airspace.
+The **AITC** (AI Traffic Control) system is a desktop app that primarily functions as a visual representation of a codebase (hereby referred to as a "codebase map"), with every coding agent within said codebase being represented like little "planes" traversing across the map like an airspace.
+
+
 
 
 
@@ -109,92 +111,6 @@ matching my Canvas draw calls against until the two looked the same.
 I'd love to tell you it just worked. It did not just work. Some
 highlights.
 
-### Phase 18: the registry keeps flooding because other Claudes exist
-
-The passive-scan subsystem watches for `claude` / `codex` /
-`opencode` processes on the machine and registers them into the
-agent registry automatically, so you don't have to manually tell
-AITC "hey, here's a new agent." Convenient!
-
-Except: it matches *every* `claude`-named process on the machine.
-Including every unrelated terminal where I'd absent-mindedly typed
-`claude` to start a session in some other repo. Including every
-short-lived subprocess those sessions spawned. Including the
-little shell wrapper Claude Code uses for git operations.
-
-The registry has a `MAX_AGENTS` cap (originally 100, because why
-would you ever have more than 100 agents? lol). Within about 20
-seconds of booting AITC, the cap would slam shut, and any *new*
-legit agent I tried to launch would fail with `Registry at
-capacity (100)`.
-
-The app for managing AI agents was being defeated by the existence
-of other AI agents on the same machine. Unrelated AI agents. Agents
-that weren't even being controlled by AITC were DDoSing AITC by
-*being running processes.* The call was coming from inside the
-house, except the house also contained eight other houses, and
-they were all also making calls.
-
-The fix (Phase 18, four plans): raise `MAX_AGENTS` to 1000 as a
-safety net, scope passive detection to only register processes
-whose `cwd` is the monitored repo root, and add
-`capacity_hits_since_start` as a registry-level metric so the next
-time this happens I can at least laugh about it with data.
-
-### Phase 11.1: the great NaN zoom bomb
-
-You know how `ctx.setTransform(NaN, 0, 0, NaN, 0, 0)` silently no-ops
-on a canvas? I didn't, and now I do. Here's how I found out.
-
-The radar supports wheel-based zoom with pan. At normal zoom levels,
-everything's fine. Scroll in really fast on certain WebKitGTK builds
-and the wheel event delivers a nonsense `deltaY`. That gets
-multiplied through the viewport math, produces a NaN somewhere in
-the scale calculation, and the NaN then propagates through every
-subsequent `min(…)`, `max(…)`, and `+` in the viewport state
-because NaN is the friendship-ender of floating point.
-
-Result: the entire canvas blanks. And the minimap. Pan stops working
-because your pan delta is being added to NaN. Zoom-out doesn't
-recover because your zoom is also NaN. The only way out is
-force-quit.
-
-I shipped a defensive `sanitizeViewport()` wrapper that falls back
-per-axis on non-finite input, plus a store-level filter on incoming
-partial updates, because I could not for the life of me reproduce
-the trigger consistently — but I could, empirically, make the
-symptom go away by not trusting any number anywhere.
-
-Sometimes you don't debug. Sometimes you just throw an `isFinite()`
-check at it and keep moving.
-
-### The great treemap crushing of April 14
-
-My radar renders the codebase tree as a treemap-style spatial
-layout. Each file's path gets split on `/` and turned into a
-hierarchy. Seems simple.
-
-What I had been doing was handing the frontend fully-qualified
-absolute paths like `/home/prannayag/projects/aitc/src/App.tsx`.
-
-The treemap builder would split on `/`, see `['', 'home',
-'prannayag', 'projects', 'aitc', 'src', 'App.tsx']`, and build a
-hierarchy with FIVE SINGLE-CHILD DIRECTORY WRAPPERS before it got
-to anything interesting. Every one of those wrappers consumed a
-significant chunk of the visible rectangle, and since each one
-had only one child, the actual repo content got crushed into
-the bottom-right corner like someone had sat on it.
-
-As a bonus, at one point the tree was dominated by a couple of
-massive PNGs in `/public/img/`. Those were being sized by their
-byte count, so the radar was proudly displaying: "this PNG is
-huge, and also there are some files near it, who cares." Filtering
-binary assets out of the treemap fixed the secondary symptom.
-Stripping `repo_root` out of the paths fixed the primary one.
-
-The fix is a seven-line Rust helper. It took me about 90 minutes
-to notice the root cause, because I kept debugging the layout
-engine rather than the data I was feeding it. Classic.
 
 ## The recursive part (this is where it gets funny)
 
@@ -209,12 +125,6 @@ could see when my AI agents were about to collide on a file in the
 AITC codebase. AITC is its own biggest user. I've been dogfooding
 it on itself since approximately week two.
 
-It gets better. AITC supports spawning agents in isolated git
-worktrees as a first-class concept — you can kick off a phase
-executor named something like `worktree-agent-a7dc46fa`, which
-spawns a Claude in its own copy of the repo so it can't step on
-your main branch. When I do that, *those worktree agents also show
-up on AITC's own radar as dots flying around the airspace.*
 
 Imagine being an air traffic controller watching the planes above
 your head land at the airport you're currently using to build more
