@@ -3,7 +3,7 @@ I led a team of interns to develop an [LLM-powered HR management system](https:/
 I also worked on two side projects:
 
 - a prompt engineering application supporting various service LLMs.
-- a simple Air Traffic Control roleplaying software demo for [RSAF's RAiD](https://rsaf-agile-inno-digital.defence.gov.sg/).
+- a simple Air Traffic Control roleplaying software demo for [RSAF's RAiD](https://www.rsaf.gov.sg/raid/).
   <small>with <a href="https://www.linkedin.com/in/jamieljs/">Jamie Lim</a></small>
 
 I was later given the informal appointment "senior intern" for my contribution managing three interns on the project.

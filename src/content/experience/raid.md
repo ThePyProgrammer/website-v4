@@ -1,4 +1,4 @@
-I served my National Service obligations as a Software Support Assistant (colloquially an AI Engineer / Researcher) at the [RSAF Agile Innovation Digital (RAiD)](https://rsaf-agile-inno-digital.defence.gov.sg/), under their Experimentations branch, [AETHER](https://maps.app.goo.gl/GLhfqexgm6xFeuRS9).
+I served my National Service obligations as a Software Support Assistant (colloquially an AI Engineer / Researcher) at the [RSAF Agile Innovation Digital (RAiD)](https://www.rsaf.gov.sg/raid/), under their Experimentations branch, [AETHER](https://maps.app.goo.gl/GLhfqexgm6xFeuRS9).
 
 I served on dual appointment as the lead of the Cognitive Superiority and AETHER AI Agents (A3) Teams.
 

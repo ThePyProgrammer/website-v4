@@ -288,7 +288,7 @@ function BioTerminal() {
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I am a recent graduate of the <BioLink href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</BioLink>.
-                I recently completed my National Service at the <BioLink href="https://rsaf-agile-inno-digital.defence.gov.sg/">RSAF Agile Innovation Digital (RAiD)</BioLink> as an AI Researcher under the AETHER Branch.
+                I recently completed my National Service at the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink> as an AI Researcher under the AETHER Branch.
                 I also currently serve as the Youth Community Lead at <BioLink href="https://better.sg/">better.sg</BioLink>, as part of the larger volunteer-composed executive committee.
               </p>
               <p>
