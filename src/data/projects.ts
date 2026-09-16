@@ -28,7 +28,7 @@ export const projects: Project[] = [
       technologies: ["VSCode", "React", "Material UI", "OpenCV", "NLTK"],
       image: "/img/projects/gitpolice.jpg",
       date: "Jan 2025",
-      link: "https://github.com/GitPoliceGroup/lib"
+      link: "https://github.com/ThePyProgrammer/git-police"
     },
     {
       codename: "figglespeak",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
       technologies: ["Android", "Tensorflow"],
       image: "/img/projects/hearme.png",
       date: "Jun - Oct 2022",
-      link: "https://github.com/terminalai/HearMe"
+      link: "https://github.com/ThePyProgrammer/HearMe"
     },
     {
       codename: "cura",
@@ -66,7 +66,8 @@ export const projects: Project[] = [
       description: "An Android Application linked with Firebase that uses a matching algorithm to match caregivers for relatable conversations, with AI-powered models to identify potential suicidal tendencies.",
       technologies: ["Android", "Firebase", "Tensorflow"],
       image: "/img/projects/cura.webp",
-      date: "Jul - Sep 2022"
+      date: "Jul - Sep 2022",
+      link: "https://github.com/ThePyProgrammer/cura"
     },
     {
       codename: "face",

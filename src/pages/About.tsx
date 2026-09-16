@@ -18,7 +18,7 @@ const contactLinks = [
   { href: 'https://github.com/ThePyProgrammer', text: 'github.com/ThePyProgrammer', Icon: Github, label: 'github' },
   { href: 'https://www.linkedin.com/in/prannaya-gupta', text: 'linkedin.com/in/prannaya-gupta', Icon: Linkedin, label: 'linkedin' },
   { href: 'https://x.com/PrannayaG', text: 'x.com/PrannayaG', Icon: Twitter, label: 'twitter' },
-  { href: '/cv.pdf', text: 'My Resume', Icon: FileText, label: 'resume' },
+  { href: '/resume.pdf', text: 'My Resume', Icon: FileText, label: 'resume' },
 ];
 
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*<>?/';
@@ -287,14 +287,15 @@ function BioTerminal() {
             <div className="text-[#adaaad] space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-4 md:pl-6 text-sm md:text-base">
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
-                I am a recent graduate of the <BioLink href="https://www.nushigh.edu.sg/">NUS High School of Math and Science</BioLink>.
-                I recently completed my National Service at the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink> as an AI Researcher under the AETHER Branch.
-                I also currently serve as the Youth Community Lead at <BioLink href="https://better.sg/">better.sg</BioLink>, as part of the larger volunteer-composed executive committee.
+                I'm a CS undergrad at <BioLink href="https://www.gatech.edu/">Georgia Tech</BioLink>, and I graduated from <BioLink href="https://www.nushigh.edu.sg/">NUS High</BioLink> in 2023 and recently
+                completed my National Service at the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink>
+                as an AI Researcher under <BioLink href="https://aether.sutd.edu.sg/">AETHER</BioLink>.
               </p>
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I have previously conducted research at <BioLink href="https://github.com/walledai">Walled AI Labs</BioLink> as a volunteer research assistant while serving my NS obligations.
-                I also served as the Overall-in-Charge at <BioLink href="https://buildingblocs.sg/">BuildingBloCS</BioLink> in 2023, and as president of NUS High's computing club, <BioLink href="https://nush.app/">AppVenture</BioLink>.
+                I served as the Overall-in-Charge at <BioLink href="https://buildingblocs.sg/">BuildingBloCS</BioLink> in 2023, and as president of NUS High's computing club, <BioLink href="https://nush.app/">AppVenture</BioLink>.
+                I also served as the Youth Community Lead at <BioLink href="https://better.sg/">better.sg</BioLink>, as part of the larger volunteer-composed executive committee.
               </p>
             </div>
           </div>
@@ -582,7 +583,7 @@ function VimCommandLine() {
         return show({ tone: 'ok', text: '~/links — scrolled' });
       case 'resume':
       case 'cv':
-        window.open('/cv.pdf', '_blank');
+        window.open('/resume.pdf', '_blank');
         return;
       case 'github':
       case 'gh':
