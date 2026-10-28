@@ -31,9 +31,9 @@ const PEOPLE: Person[] = [
       kind: 'education',
       label: "NUS High School"
     },
-    incoming: {
+    current: {
       kind: 'education',
-      label: 'CalTech'
+      label: 'Caltech'
     }
   },
   {
@@ -48,7 +48,7 @@ const PEOPLE: Person[] = [
       kind: 'education',
       label: "NUS High School"
     },
-    incoming: {
+    current: {
       kind: 'education',
       label: 'Cambridge Nat. Sci.'
     }
@@ -66,7 +66,7 @@ const PEOPLE: Person[] = [
       kind: 'education',
       label: "NUS High School"
     },
-    incoming: {
+    current: {
       kind: 'education',
       label: 'NUS CS'
     }
@@ -79,13 +79,13 @@ const PEOPLE: Person[] = [
       { type: 'linkedin', url: 'https://www.linkedin.com/in/jiang-pang-3213161b6/' },
       { type: 'github', url: 'https://github.com/jiangpang0910' }
     ],
-    current: { 
+    previous: { 
       kind: 'work',
       label: 'Research Engineer @ Pragnition Labs' 
     },
-    incoming: {
+    current: {
       kind: 'education',
-      label: 'Columbia Math'
+      label: 'Columbia Math & CS'
     }
   },
   { 
@@ -95,11 +95,11 @@ const PEOPLE: Person[] = [
     links: [
       { type: 'github', url: 'https://github.com/h1810126' }
     ],
-    current: {
+    previous: {
       kind: 'work',
       label: 'Research Engineer @ Pragnition Labs'
     },
-    incoming: {
+    current: {
       kind: 'education',
       label: 'NUS CS'
     }
@@ -116,6 +116,10 @@ const PEOPLE: Person[] = [
     previous: {
       kind: 'work',
       label: 'Software Dev Intern @ AETHER'
+    },
+    current: {
+      kind: 'work',
+      label: 'Cyber Operator @ DIS'
     }
   },
   {
@@ -127,9 +131,13 @@ const PEOPLE: Person[] = [
       { type: 'github', url: 'https://github.com/enjiawu' },
       { type: 'website', url: 'https://wuenjia.com/' }
     ],
-    current: {
+    previous: {
       kind: 'work',
       label: 'AI Research Intern @ AETHER'
+    },
+    current: {
+      kind: 'education',
+      label: 'NUS CS'
     }
   },
 ];
