@@ -7,7 +7,7 @@ import { workExperience } from '@/data/experience';
 import { researchProjects } from '@/data/research';
 import { projects } from '@/data/projects';
 import { clubExperience } from '@/data/clubs';
-import { experienceContent, researchContent, clubsContent } from '@/content';
+import { experienceContent, researchContent, clubsContent, projectContent } from '@/content';
 import { MarkdownContent } from '@/components/MarkdownContent';
 import { ScanlineOverlay } from '@/blog/components/ScanlineOverlay';
 import { BlogFooter } from '@/blog/BlogFooter';
@@ -997,7 +997,7 @@ function ResearchSection() {
 function ProjectsSection() {
   const accent = sectionAccent.projects;
   const [idx, setIdx] = useState(0);
-  const p = projects[idx];
+  const p = projects[idx] ?? projects[0];
   const go = (delta: number) => setIdx((idx + delta + projects.length) % projects.length);
   const { collapsed, toggle: toggleCollapsed } = useCollapsed();
 
@@ -1005,7 +1005,7 @@ function ProjectsSection() {
     <section id="section-projects" className="px-6 md:px-12 lg:px-24 py-16 max-w-6xl mx-auto scroll-mt-20">
       <SectionHeader index={3} heading="PROJECTS" count={projects.length} accent={accent} collapsed={collapsed} onToggle={toggleCollapsed} />
 
-      {!collapsed && (<>
+      {!collapsed && p && (<>
       <div className="flex items-center justify-between mb-4 font-headline text-xs uppercase tracking-widest">
         <button onClick={() => go(-1)} className={`flex items-center gap-2 px-3 py-2 border border-[#262528] ${accent.text} hover:bg-[color:var(--accent)]/10 transition-colors`} style={{ ['--accent' as string]: accent.hex }}>
           <ChevronLeft className="h-4 w-4" /> prev
@@ -1036,7 +1036,7 @@ function ProjectsSection() {
             </div>
             <h3 className="font-headline text-2xl font-bold tracking-tight text-[#f9f5f8] mb-2">{p.title}</h3>
             <p className="text-[#adaaad] italic text-sm mb-4">{p.subtitle}</p>
-            <p className="text-[#adaaad]/80 text-sm leading-relaxed mb-4">{p.description}</p>
+            <MarkdownContent content={projectContent[p.codename] ?? ''} className="text-[#adaaad]/80 text-sm leading-relaxed mb-4" />
             <div className="flex flex-wrap gap-1.5 mb-4">
               {p.technologies.map(t => (
                 <span key={t} className="text-[10px] font-headline uppercase tracking-widest text-[#adaaad] bg-[#262528] px-1.5 py-0.5">{t}</span>

@@ -1,0 +1,1 @@
+Developed as a side project at Temus. Developed a React+FastAPI based application to leverage service LLMs like GPT-4 and Claude. Application to create system prompts and test agentic behaviour of LLMs for production LLM testing. Deployed with Firebase for easy usage within Temus.

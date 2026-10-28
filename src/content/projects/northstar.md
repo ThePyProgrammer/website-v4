@@ -1,0 +1,1 @@
+Project done at Temus, HR management software. Set up LLM-assisted resume evaluation and summarisation with retrieval-augmented chatbot. Leveraged tool-calling in GPT-4 API to create custom views in chatbot. Contributed to React-based user interface and FastAPI-based server, and led project development in later half. Set up GitHub Projects and Google Cloud Actions.

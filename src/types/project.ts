@@ -8,7 +8,7 @@ export type Project = {
     codename: string,
     title: string,
     subtitle: string,
-    description: string,
+    published: boolean,
     technologies: string[],
     image: string,
     date: string,

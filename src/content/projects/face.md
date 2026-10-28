@@ -1,0 +1,1 @@
+Used Tensorflow to develop a CNN model to perform Visual Sentiment Analysis over Facial Expressions. Developed a frotnend with Tkinter to visualise the outputs of the CNN and set up an inference server for the application.

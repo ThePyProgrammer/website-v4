@@ -17,3 +17,6 @@ export const experienceContent = buildContentMap(experienceMd);
 export const reccsContent = buildContentMap(reccsMd);
 export const researchContent = buildContentMap(researchMd);
 export const clubsContent = buildContentMap(clubsMd);
+
+const projectsMd = import.meta.glob('./projects/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+export const projectContent = buildContentMap(projectsMd);

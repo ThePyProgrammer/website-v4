@@ -1,11 +1,42 @@
 import { Project } from '@/types/project';
 
-export const projects: Project[] = [
+// Metadata order determines display order. Set published: true when ready to show a project.
+const projectMetadata: Project[] = [
+    {
+      codename: "researchos",
+      title: "ResearchOS",
+      subtitle: "What if your research papers, notes, experiments, and AI agents could all live in one place? ResearchOS turns a scattered research workflow into a connected, AI-powered workspace.",
+      published: true,
+      technologies: ["React", "FastAPI", "Supabase", "Pydantic AI"],
+      image: "/img/projects/researchos.png",
+      date: "Feb 2026 - Present",
+      link: "https://github.com/ThePyProgrammer/ResearchOS"
+    },
+    {
+      codename: "argus",
+      title: "Argus",
+      subtitle: "",
+      published: true,
+      technologies: ["MuJoCo", "Three.js", "FastAPI"],
+      image: "/img/projects/argus.png",
+      date: "Mar 2026 - Present",
+      link: "https://github.com/ThePyProgrammer/argus"
+    },
+    {
+      codename: "aitc",
+      title: "AI Traffic Controller",
+      subtitle: "Running five coding agents at once sounds great until two of them edit the same file and a third deletes it. Someone needs to control the airspace.",
+      published: true,
+      technologies: ["Tauri", "React", "tree-sitter"],
+      image: "/img/projects/aitc.png",
+      date: "Apr 2026 - Jun 2026",
+      link: "https://github.com/ThePyProgrammer/aitc"
+    },
     {
       codename: "northstar",
       title: "Northstar",
       subtitle: "A Talent Acquisition and Development Software",
-      description: "Project done at Temus, HR management software. Set up LLM-assisted resume evaluation and summarisation with retrieval-augmented chatbot. Leveraged tool-calling in GPT-4 API to create custom views in chatbot. Contributed to React-based user interface and FastAPI-based server, and led project development in later half. Set up GitHub Projects and Google Cloud Actions.",
+      published: false,
       technologies: ["React", "Material UI", "FastAPI", "LLM"],
       image: "/img/projects/northstar.webp",
       date: "Nov 2023 - Jan 2024"
@@ -13,18 +44,18 @@ export const projects: Project[] = [
     {
       codename: "arxivnush",
       title: "arXiv.nush",
-      subtitle: "Compile your research projects, collaborate on competitions and more!",
-      description: "A Website to compile your research projects, collaborate on competitions and more. Built with Flask, Vue3 and MySQL.",
+      subtitle: "Ever wondered what research your classmates have been working on, or where all those award-winning projects end up? Think arXiv, but for an entire school's research ecosystem!",
+      published: false,
       technologies: ["Flask", "Vue3", "MySQL"],
       image: "/img/projects/arxivnush.png",
-      date: "Dec 2022 -",
+      date: "Dec 2022 - Nov 2023",
       link: "https://github.com/ThePyProgrammer/arxiv.nush"
     },
     {
       codename: "gitpolice",
       title: "Git Police",
       subtitle: "Tired of boring or \"undescriptive\" commits? Make them fun (or mildly annoying) with challenges like puzzles, answering trivia, or enduring code roasts—ensuring your commits are always engaging!",
-      description: "Git Police is a VSCode extension that enforces creative commit messages through entertaining challenges. Inspired by \"The Password Game,\" it requires users to meet various rules when writing commit messages, such as composing haikus, creating palindromes, or using pig latin. The extension also includes interactive elements like answering trivia questions and using facial recognition to ensure users are smiling while committing. Built using Typer, NLTK, OpenCV2, and deepface, it integrates with VSCode through a React/MUI webview interface to make git commits more engaging while preventing generic messages like \"fix: minor fix.\"",
+      published: false,
       technologies: ["VSCode", "React", "Material UI", "OpenCV", "NLTK"],
       image: "/img/projects/gitpolice.jpg",
       date: "Jan 2025",
@@ -34,7 +65,7 @@ export const projects: Project[] = [
       codename: "figglespeak",
       title: "FiggleSpeak",
       subtitle: "The all in one, AI-powered speech therapy toolkit. Get instant feedback on your pronunciation, and tips to improve!",
-      description: "FiggleSpeak is an AI-powered speech therapy tool that helps users improve their pronunciation. Users select a language and difficulty level, record themselves reading text, and receive feedback on incorrect phonemes. The platform provides AI-generated pronunciation demonstrations and includes gamification features to track progress. Users get specific guidance on pronunciation mistakes and can watch visual demonstrations of correct pronunciations.",
+      published: false,
       technologies: ["Vue3", "Material UI", "Tensorflow"],
       image: "/img/projects/figglespeak.png",
       date: "Feb 2024",
@@ -44,7 +75,7 @@ export const projects: Project[] = [
       codename: "protoprompter",
       title: "ProtoPrompter",
       subtitle: "A Comprehensive (at the time) Prompt Engineering Application",
-      description: "Developed as a side project at Temus. Developed a React+FastAPI based application to leverage service LLMs like GPT-4 and Claude. Application to create system prompts and test agentic behaviour of LLMs for production LLM testing. Deployed with Firebase for easy usage within Temus.",
+      published: false,
       technologies: ["React", "Material UI", "LLM"],
       image: "/img/projects/protoprompter.png",
       date: "Dec 2023 - Jan 2024"
@@ -53,7 +84,7 @@ export const projects: Project[] = [
       codename: "hearme",
       title: "HearMe",
       subtitle: "An AI-powered Utility for Lip Readers",
-      description: "An Android Application capable of taking in audio recordings and converting them into text and moving lips using AI algorithms.",
+      published: false,
       technologies: ["Android", "Tensorflow"],
       image: "/img/projects/hearme.png",
       date: "Jun - Oct 2022",
@@ -63,7 +94,7 @@ export const projects: Project[] = [
       codename: "cura",
       title: "Cura",
       subtitle: "An AI-powered Social Network for Caregivers",
-      description: "An Android Application linked with Firebase that uses a matching algorithm to match caregivers for relatable conversations, with AI-powered models to identify potential suicidal tendencies.",
+      published: false,
       technologies: ["Android", "Firebase", "Tensorflow"],
       image: "/img/projects/cura.webp",
       date: "Jul - Sep 2022",
@@ -73,9 +104,12 @@ export const projects: Project[] = [
       codename: "face",
       title: "Project FACE",
       subtitle: "Facial-recognition AI for Communicating Emotions (FACE) - An application for visual sentimental analysis",
-      description: "Used Tensorflow to develop a CNN model to perform Visual Sentiment Analysis over Facial Expressions. Developed a frotnend with Tkinter to visualise the outputs of the CNN and set up an inference server for the application.",
+      published: false,
       technologies: ["OpenCV", "Tensorflow", "Tkinter"],
       image: "/img/projects/face.png",
       date: "Jun 2021"
     }
 ];
+
+// Explicit opt-in keeps new projects hidden until they are ready.
+export const projects = projectMetadata.filter(project => project.published === true);

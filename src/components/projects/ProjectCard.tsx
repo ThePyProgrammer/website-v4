@@ -1,3 +1,5 @@
+import { projectContent } from '@/content';
+import { MarkdownContent } from '../MarkdownContent';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Project } from "@/types/project"
 import { Badge } from "../ui/badge"
@@ -20,7 +22,7 @@ export function ProjectCard({ project, index, total }: { project: Project, index
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-4 w-full">
             <h3 className="text-xl font-semibold">Project Details</h3>
-            <p className="text-muted-foreground">{project.description}</p>
+            <MarkdownContent content={projectContent[project.codename] ?? ''} className="text-muted-foreground" />
             {(project.technologies.length) && (
                 // <>
                     <div className="flex flex-wrap gap-2">

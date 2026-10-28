@@ -4,6 +4,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { projects } from '@/data/projects';
 
 export function Projects() {
+  if (projects.length === 0) return null;
+
   return (
     <section id="projects" className="bg-muted/50 pb-20">
       <div className="container px-8">
