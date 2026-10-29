@@ -15,7 +15,7 @@ const projectMetadata: Project[] = [
     {
       codename: "argus",
       title: "Argus",
-      subtitle: "",
+      subtitle: "One robot can only see so much. Give it a hundred eyes, a few teammates, and a shared understanding of the world, and suddenly things get interesting.",
       published: true,
       technologies: ["MuJoCo", "Three.js", "FastAPI"],
       image: "/img/projects/argus.png",
