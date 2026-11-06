@@ -5,7 +5,7 @@ export const workExperience: WorkExperience[] = [
     slug: "pragnition",
     iconUrl: "/img/cmp/pragnition.svg",
     title: "Research Engineer @ Pragnition Labs",
-    timeline: "Mar 2026 - Present",
+    timeline: "Mar 2026 - Jul 2026",
     images: [],
     reccs: []
   },
