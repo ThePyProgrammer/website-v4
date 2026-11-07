@@ -33,6 +33,17 @@ const projectMetadata: Project[] = [
       link: "https://github.com/ThePyProgrammer/aitc"
     },
     {
+      codename: "unicv",
+      title: "UniCV",
+      subtitle: "Different computer vision models, different APIs, different representations. What if switching from depth estimation to 3D reconstruction were as simple as swapping a module?",
+      published: true,
+      technologies: ["PyTorch", "OpenCV", "Transformers"],
+      image: "/img/projects/unicv.png",
+      date: "Feb 2026 - Present",
+      link: "https://github.com/ThePyProgrammer/UniCV"
+
+    },
+    {
       codename: "northstar",
       title: "Northstar",
       subtitle: "A Talent Acquisition and Development Software",
