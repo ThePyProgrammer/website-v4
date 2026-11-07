@@ -1,1 +1,1 @@
-I've been largely conducting applied research and building agentic solutions in areas spanning agentic AI optimization, agentic engineering harnesses, healthcare solutioning and end-to-end robotics.
+I built agentic solutions for medical coding (presenting my work to Minister of Health Ong Ye Kung at NCS Impact 2026), end-to-end robotics (specifically optimizing NVIDIA Cosmos inference on constrained hardware), real-time geopolitical analytics (building a multi-agent debate system).
