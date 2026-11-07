@@ -287,13 +287,19 @@ function BioTerminal() {
             <div className="text-[#adaaad] space-y-4 font-body md:max-w-3xl border-l border-[#00d4fd]/20 pl-4 md:pl-6 text-sm md:text-base">
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
-                I'm a CS undergrad at <BioLink href="https://www.gatech.edu/">Georgia Tech</BioLink>, and I graduated from <BioLink href="https://www.nushigh.edu.sg/">NUS High</BioLink> in 2023 and recently
-                completed my National Service at the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink>
-                as an AI Researcher under <BioLink href="https://aether.sutd.edu.sg/">AETHER</BioLink>.
+                I'm a CS undergrad at <BioLink href="https://www.gatech.edu/">Georgia Tech</BioLink>. I'm what one would call a "sidequester", hopping between projects faster
+                 that I'd like to admit. Recently, I've been fascinated by robot learning, perception, and planning, digesting papers with <BioLink href="https://github.com/ThePyProgrammer/ResearchOS">ResearchOS</BioLink>, 
+                 building a multi-robot planning workbench called <BioLink href="https://github.com/ThePyProgrammer/argus">Argus</BioLink>, 
+                 and pursuing AI and robotics projects within and outside class.
               </p>
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
-                I have previously conducted research at <BioLink href="https://github.com/walledai">Walled AI Labs</BioLink> as a volunteer research assistant while serving my NS obligations.
+                I graduated from <BioLink href="https://www.nushigh.edu.sg/">NUS High</BioLink> in 2023 and spent two years building language models for the brain at
+                the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink> under their experimentations lab, <BioLink href="https://aether.sutd.edu.sg/">AETHER</BioLink>.
+                I also research on safety evaluation of LLMs at <BioLink href="https://github.com/walledai">Walled AI Labs</BioLink>.
+              </p>
+              <p>
+                <span className="text-[#00d4fd] mr-2">[#]</span>
                 I served as the Overall-in-Charge at <BioLink href="https://buildingblocs.sg/">BuildingBloCS</BioLink> in 2023, and as president of NUS High's computing club, <BioLink href="https://nush.app/">AppVenture</BioLink>.
                 I also served as the Youth Community Lead at <BioLink href="https://better.sg/">better.sg</BioLink>, as part of the larger volunteer-composed executive committee.
               </p>
