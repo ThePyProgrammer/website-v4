@@ -296,7 +296,7 @@ function BioTerminal() {
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I graduated from <BioLink href="https://www.nushigh.edu.sg/">NUS High</BioLink> in 2023 and spent two years building language models for the brain at
                 the <BioLink href="https://www.rsaf.gov.sg/raid/">RSAF Agile Innovation Digital (RAiD)</BioLink> under their experimentations lab, <BioLink href="https://aether.sutd.edu.sg/">AETHER</BioLink>.
-                I also research on safety evaluation of LLMs at <BioLink href="https://github.com/walledai">Walled AI Labs</BioLink>.
+                I also conducted research on safety evaluation of LLMs at <BioLink href="https://github.com/walledai">Walled AI Labs</BioLink>.
               </p>
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
