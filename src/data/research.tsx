@@ -113,16 +113,16 @@ export const researchProjects: ResearchProject[] = [
             "/img/research/malware-ssef.jpg"
         ]
     },
-    {
-        codename: "nushsat",
-        title: <span>Optimization of the Telemetry, Tracking and Commmunications System in a CubeSat</span>,
-        subtitle: <span>Designed a link budget and fragmentation protocol inspired by NASA's ICER system. Developed a primitive user interface in PyQt5 for receiving data transmission from satellite.</span>,
-        awards: [],
-        links: [],
-        timeline: "Mar 2021 - Jun 2023",
-        cover: "/img/research/nushsat-cover.jpg",
-        imgs: ["/img/research/nushsat-camera.png", "/img/research/nushsat-2022.jpg"]
-    },
+    // {
+    //     codename: "nushsat",
+    //     title: <span>Optimization of the Telemetry, Tracking and Commmunications System in a CubeSat</span>,
+    //     subtitle: <span>Designed a link budget and fragmentation protocol inspired by NASA's ICER system. Developed a primitive user interface in PyQt5 for receiving data transmission from satellite.</span>,
+    //     awards: [],
+    //     links: [],
+    //     timeline: "Mar 2021 - Jun 2023",
+    //     cover: "/img/research/nushsat-cover.jpg",
+    //     imgs: ["/img/research/nushsat-camera.png", "/img/research/nushsat-2022.jpg"]
+    // },
     {
         codename: "embodiedai",
         title: <span>Embodied AI for Computational Perception of Spatial Designs</span>,
@@ -164,21 +164,21 @@ export const researchProjects: ResearchProject[] = [
         timeline: "Feb 2022 - May 2022",
         cover: "/img/research/writinganalysis-cover.png",
         imgs: []
-    },
-    {
-        codename: "atcSpeech",
-        title: <span>Adapting Automatic Speech Recognition for Accented Air Traffic Control Communications</span>,
-        subtitle: <span>We developed and fine-tuned ASR models for Southeast Asian-accented ATC speech using a new dataset, achieving a 9.82% WER. Work done at RSAF RAiD.</span>,
-        awards: [],
-        links: [
-            {
-                link: "https://arxiv.org/pdf/2502.20311",
-                text: "pdf",
-                icon: "/img/research/logos/arxiv.png"
-            },
-        ],
-        timeline: "Nov 2024 - Jan 2025",
-        cover: "/img/research/atcspeech-cover.jpg",
-        imgs: []
     }
+    // {
+    //     codename: "atcSpeech",
+    //     title: <span>Adapting Automatic Speech Recognition for Accented Air Traffic Control Communications</span>,
+    //     subtitle: <span>We developed and fine-tuned ASR models for Southeast Asian-accented ATC speech using a new dataset, achieving a 9.82% WER. Work done at RSAF RAiD.</span>,
+    //     awards: [],
+    //     links: [
+    //         {
+    //             link: "https://arxiv.org/pdf/2502.20311",
+    //             text: "pdf",
+    //             icon: "/img/research/logos/arxiv.png"
+    //         },
+    //     ],
+    //     timeline: "Nov 2024 - Jan 2025",
+    //     cover: "/img/research/atcspeech-cover.jpg",
+    //     imgs: []
+    // }
 ];

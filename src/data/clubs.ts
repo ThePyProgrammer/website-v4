@@ -60,5 +60,12 @@ export const clubExperience: ClubExperience[] = [
         title: "Club Director @ NUSH Astro",
         timeline: "Dec 2021 - Nov 2022",
         images: ["/img/clubs/astro-club.jpg"]
+    },
+    {
+        slug: "galileo",
+        iconUrl: "/img/clubs/nushsat.png",
+        title: "Engineer @ NUSH Galileo Programme",
+        timeline: "Mar 2021 - Jun 2023",
+        images: ["/img/research/nushsat-camera.png", "/img/research/nushsat-2022.jpg"]
     }
 ];
