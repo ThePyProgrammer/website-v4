@@ -125,8 +125,8 @@ export const researchProjects: ResearchProject[] = [
     // },
     {
         codename: "embodiedai",
-        title: <span>Embodied AI for Computational Perception of Spatial Designs</span>,
-        subtitle: <span>Trained Semantic Segmentation Models via Transfer Learning capable of segmenting HDB interiors and exteriors.</span>,
+        title: <span>Fine-Tuning Semantic Segmentation Models for Building Interiors and Exterior Facades</span>,
+        subtitle: <span>Fine-Tuned UPerNet Models capable of segmenting HDB interiors and exteriors.</span>,
         awards: [],
         links: [
             {
