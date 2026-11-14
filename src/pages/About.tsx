@@ -288,7 +288,7 @@ function BioTerminal() {
               <p>
                 <span className="text-[#00d4fd] mr-2">[#]</span>
                 I'm a CS undergrad at <BioLink href="https://www.gatech.edu/">Georgia Tech</BioLink>. I'm what one would call a "sidequester", hopping between projects faster
-                 that I'd like to admit. Recently, I've been fascinated by robot learning, perception, and planning, digesting papers with <BioLink href="https://github.com/ThePyProgrammer/ResearchOS">ResearchOS</BioLink>, 
+                 than I'd like to admit. Recently, I've been fascinated by robot learning, perception, and planning, digesting papers with <BioLink href="https://github.com/ThePyProgrammer/ResearchOS">ResearchOS</BioLink>, 
                  building a multi-robot planning workbench called <BioLink href="https://github.com/ThePyProgrammer/argus">Argus</BioLink>, 
                  and pursuing AI and robotics projects within and outside class.
               </p>
